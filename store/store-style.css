@@ -1,0 +1,70 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #1a1a1a, #4a4a4a); /* Background futuristik */
+    color: #ffffff;
+}
+
+.rank-card {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.rank-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.rank-header {
+    padding: 20px;
+    border-radius: 8px 8px 0 0;
+}
+
+.rank-body {
+    padding: 20px;
+}
+
+.rank-feature {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 10px; /* Jarak antar fitur */
+}
+
+.rank-feature:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #28a745;
+    font-weight: bold;
+}
+
+.rank-feature1 {
+	position: relative;
+	padding-left: 1.5rem;
+	margin-bottom: 10px;
+}
+
+.rank-feature1:before {
+	content: "→";
+	position: absolute;
+	left: 0;
+	color: #000000;
+	font-weight: bold;
+}
+
+.btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    display: block;
+    width: 100%; /* Membuat tombol lebar penuh */
+}
+
+.btn:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
