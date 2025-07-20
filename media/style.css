@@ -1,9 +1,10 @@
 :root {
     --nice-padding: 6rem;
     --roundness: 0.75rem;
-    --accent1: #02db02;
-    --accent2: #05b305;
-    --accent2_transp: #05b30555;
+    --accent1: #ff9203;
+    --accent2: #fc9700dc;
+    --accentdc: #5865F2;
+    --accent2_transp: #fc9700dc;
     --background1: #212529;
     --background2: #16191b;
 
@@ -410,7 +411,7 @@ body {
     text-decoration: none;
     color: #fff;
     text-align: center;
-    border: solid var(--accent1) 1px;
+    border: solid var(--accentdc) 1px;
     border-radius: var(--roundness);
     margin-top: auto;
     margin-left: auto;
@@ -419,8 +420,8 @@ body {
     transition: all .5s;
 }
 .main4_dc_button_a:hover{
-    border: solid 1px var(--accent2);
-    background-color: var(--accent2);
+    border: solid 1px var(--accentdc);
+    background-color: var(--accentdc);
     transform: scale(1.05)
 }
 .main4_dc_button {
