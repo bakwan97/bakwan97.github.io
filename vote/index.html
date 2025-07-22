@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bakwan Jagung - Vote</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 10px rgba(255, 165, 0, 0.7); }
+            50% { box-shadow: 0 0 25px rgba(255, 165, 0, 0.9); }
+            100% { box-shadow: 0 0 10px rgba(255, 165, 0, 0.7); }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .server-card {
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, rgba(34, 34, 34, 0.8) 0%, rgba(68, 68, 68, 0.8) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 165, 0, 0.3);
+            border-radius: 20px 0 20px 0;
+            border-top: 4px solid rgba(255, 165, 0, 0.5); 
+            border-right: 4px solid rgba(255, 165, 0, 0.3);
+        }
+        
+        .server-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 25px rgba(255, 165, 0, 0.4);
+        }
+        
+        .vote-btn {
+            transition: all 0.3s ease;
+            background: linear-gradient(45deg, #ff8c00, #ff6b00);
+        }
+        
+        .vote-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 107, 0, 0.4);
+        }
+        
+        .glow {
+            animation: pulse-glow 2s infinite;
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen font-sans">
+    <!-- Hero Section -->
+    <div class="relative overflow-hidden rounded-xl">
+        <div class="absolute inset-0 bg-gradient-to-br from-orange-900 to-gray-900 opacity-90 rounded-xl"></div>
+        <div class="container mx-auto px-4 py-24 relative z-10">
+            <div class="text-center">
+                <div class="inline-block mb-8 floating">
+                    <img src="media/favicon.png" alt="Bakwan Jagung Minecraft Server Logo - Futuristic diamond-shaped orange logo with jagged edges and glowing effects" class="w-48 h-48 rounded-xl glow object-cover border-4 border-l-orange-400 border-r-orange-600 border-t-orange-500 border-b-orange-300" />
+                </div>
+                <h1 class="text-5xl md:text-6xl font-bold mb-4 text-orange-400">BAKWAN JAGUNG</h1>
+                <p class="text-xl md:text-2xl text-orange-200 mb-8">Vote for our Minecraft Server and help us grow!</p>
+                
+                <!-- Stats Counter -->
+                <div class="flex justify-center gap-8 mb-12">
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-orange-400">99.9%</div>
+                        <div class="text-orange-200">Uptime</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-orange-400">24/7</div>
+                        <div class="text-orange-200">Online</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-orange-400">5★</div>
+                        <div class="text-orange-200">Rating</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Voting Section -->
+    <div class="container mx-auto px-4 py-16">
+        <div class="max-w-3xl mx-auto mb-16">
+            <h2 class="text-3xl font-bold text-center mb-4 text-orange-400">HOW TO VOTE</h2>
+            <p class="text-center text-gray-300 mb-8">Voting helps our server grow! Click on any voting site below to support us.</p>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Vote Option 1 -->
+                <div class="server-card p-6 rounded-xl">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-orange-600 flex items-center justify-center mr-4">
+                            <i class="fas fa-vote-yea text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">Vote Site #1</h3>
+                    </div>
+                    <p class="text-gray-300 mb-6">Click the button below to vote on our primary voting site.</p>
+                    <a href="https://minecraft-mp.com/server/346310/vote/" class="vote-btn text-white font-bold py-3 px-6 rounded-lg inline-block text-center" id="vote1">
+                        VOTE NOW
+                    </a>
+                    <div class="mt-4 text-sm text-orange-300">Cooldown: <span class="font-bold">24 hours/Vote</span></div>
+                </div>
+                
+                <!-- Vote Option 2 -->
+                <div class="server-card p-6 rounded-xl">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-orange-600 flex items-center justify-center mr-4">
+                            <i class="fas fa-poll-h text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">Vote Site #2</h3>
+                    </div>
+                    <p class="text-gray-300 mb-6">Click the button below to vote on our secondary voting site.</p>
+                    <a href="https://minecraftpocket-servers.com/server/131398/vote/" class="vote-btn text-white font-bold py-3 px-6 rounded-lg inline-block text-center" id="vote2">
+                        VOTE NOW
+                    </a>
+                    <div class="mt-4 text-sm text-orange-300">Cooldown: <span class="font-bold">24 hours/Vote</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rewards Section -->
+    <div class="bg-gray-800 py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-orange-400">VOTING REWARDS</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Reward 1 -->
+                <div class="server-card p-6 rounded-xl">
+                    <div class="w-16 h-16 rounded-full bg-orange-600 flex items-center justify-center mb-4 mx-auto">
+                        <i class="fas fa-gem text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-3">In-Game Currency</h3>
+                    <p class="text-gray-300 text-center">Receive $300 in-game currency for each vote!</p>
+                </div>
+                
+                <!-- Reward 2 -->
+                <div class="server-card p-6 rounded-xl">
+                    <div class="w-16 h-16 rounded-full bg-orange-600 flex items-center justify-center mb-4 mx-auto">
+                        <i class="fas fa-box-open text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-3">Vote Key</h3>
+                    <p class="text-gray-300 text-center">Get vote key to open crates with rare items!</p>
+                </div>
+                
+                <!-- Reward 3 -->
+                <div class="server-card p-6 rounded-xl">
+                    <div class="w-16 h-16 rounded-full bg-orange-600 flex items-center justify-center mb-4 mx-auto">
+                        <i class="fas fa-trophy text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-3">Seasonal Voter Rank</h3>
+                    <p class="text-gray-300 text-center">Compete for the top voter title and rewards!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Leaderboard -->
+    <div class="container mx-auto px-4 py-16">
+        <h2 class="text-3xl font-bold text-center mb-8 text-orange-400">TOP VOTERS</h2>
+        
+        <div class="max-w-2xl mx-auto">
+            <div class="server-card rounded-xl overflow-hidden">
+                <table class="w-full">
+                    <thead>
+                        <tr class="bg-orange-600 text-white">
+                            <th class="py-3 px-4 text-left">Rank</th>
+                            <th class="py-3 px-4 text-left">Player</th>
+                            <th class="py-3 px-4 text-right">Votes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-gray-700 hover:bg-gray-700">
+                            <td class="py-3 px-4">1</td>
+                            <td class="py-3 px-4">-</td>
+                            <td class="py-3 px-4 text-right">-</td>
+                        </tr>
+                        <tr class="border-b border-gray-700 hover:bg-gray-700">
+                            <td class="py-3 px-4">2</td>
+                            <td class="py-3 px-4">-</td>
+                            <td class="py-3 px-4 text-right">-</td>
+                        </tr>
+                        <tr class="border-b border-gray-700 hover:bg-gray-700">
+                            <td class="py-3 px-4">3</td>
+                            <td class="py-3 px-4">-</td>
+                            <td class="py-3 px-4 text-right">-</td>
+                        </tr>
+                        <tr class="border-b border-gray-700 hover:bg-gray-700">
+                            <td class="py-3 px-4">4</td>
+                            <td class="py-3 px-4">-</td>
+                            <td class="py-3 px-4 text-right">-</td>
+                        </tr>
+                        <tr class="hover:bg-gray-700">
+                            <td class="py-3 px-4">5</td>
+                            <td class="py-3 px-4">-</td>
+                            <td class="py-3 px-4 text-right">-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="server-card text-center mt-6 p-4 max-w-md mx-auto">
+                <p class="text-orange-300"><i class="fas fa-info-circle mr-1"></i> Top voter stats will be reset at the end of each season</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 border-t border-gray-700 py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <h3 class="text-xl font-bold text-orange-400">BAKWAN JAGUNG</h3>
+                    <p class="text-gray-400">The best Minecraft server experience</p>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="https://discord.bakwanjagung.my.id" class="text-orange-400 hover:text-orange-300 text-2xl"><i class="fab fa-discord"></i></a>
+					<a href="https://chat.whatsapp.com/F1RIJgYIpZtHs4KZ1lTdUC" class="text-orange-400 hover:text-orange-300 text-2xl"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="mt-6 text-center text-gray-500 text-sm">
+                © 2025 Bakwan Jagung Minecraft Server. All rights reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+
