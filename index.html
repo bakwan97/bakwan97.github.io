@@ -1,206 +1,340 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bakwan Jagung</title>
-    <link rel="icon" type="image/png" href="media/favicon.png">
-    <link rel="stylesheet" href="media/style.css">
-    <link href="https://fonts.bunny.net/css?family=Space+Grotesk:wght@500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Bakwan Jagung Minecraft Server</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0F172A;
+            color: white;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        
+        .orbitron { font-family: 'Orbitron', sans-serif; }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #FF9800, #FF5722);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .glow { text-shadow: 0 0 10px rgba(255, 152, 0, 0.7); }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+            transform: translateY(0);
+            box-shadow: 0 4px 6px rgba(255, 152, 0, 0.1);
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(255, 152, 0, 0.2);
+        }
+        
+        .server-status::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 12px;
+            height: 12px;
+            background-color: #10B981;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+        
+        .minecraft-button {
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+            transition: all 0.3s;
+            z-index: 1;
+            background: #FF9800;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .minecraft-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #FF9800, #E65100);
+            z-index: -1;
+            clip-path: polygon(
+                0% 0%,
+                100% 0%,
+                100% 25%,
+                95% 25%,
+                95% 100%,
+                85% 100%,
+                85% 25%,
+                0% 25%
+            );
+            transition: all 0.3s;
+        }
+        
+        .minecraft-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(255, 152, 0, 0.3);
+        }
+        
+        .minecraft-button:hover::before {
+            clip-path: polygon(
+                0% 0%,
+                100% 0%,
+                100% 15%,
+                85% 15%,
+                85% 100%,
+                75% 100%,
+                75% 15%,
+                0% 15%
+            );
+            background: linear-gradient(45deg, #E65100, #FF9800);
+        }
+
+        .logo-container {
+            transition: all 0.5s ease;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .logo-container:hover {
+            transform: scale(1.05);
+            animation-play-state: paused;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
 </head>
 <body>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <nav class="desktop_navbar">
-      <a href="#"><img class="desktop_navbar_logo_img" src="media/logo_small.png" alt="logo"></a>
-      <a href="store/" class="desktop_navbar_link">Store</a>
-	  <a href="vote/" class="desktop_navbar_link">Vote</a>
-	  <a href="https://wa.me/6285835339743" class="desktop_navbar_link">Admin Contact</a>
-      <div class="desktop_navbar_link2_div">
-          <a href="#join" class="desktop_navbar_link2 scroll">Join Us!</a>
-      </div>
+    <!-- Navbar -->
+    <nav class="bg-gray-900/80 backdrop-blur-md fixed top-0 w-full z-50 border-b border-orange-900/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center h-16 justify-between">
+                <div class="flex items-center">
+                    <!-- Left-aligned text -->
+                    <div class="mr-4">
+                        <span class="text-orange-400 text-2xl orbitron">BAKWAN JAGUNG</span>
+                        <div class="server-status relative inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-900 text-green-100">
+                        ONLINE
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right-aligned logo -->
+                <div class="flex items-center ml-auto">
+                    <div class="logo-container animate__animated animate__fadeIn animate__slower">
+                        <img src="media/favicon.png" alt="Bakwan Jagung Server Logo" class="h-16 w-16 rounded-full">
+                    </div>
+                </div>
+            </div>
+        </div>
     </nav>
-    <div class="mobile_navbar">
-      <a href="#" class="mobile_navbar_logo_img_a"><img class="mobile_navbar_logo_img" src="media/logo_small.png" alt="logo"></a>
-      <div id="mobile_navbar_links">
-	 <a class="mobile_navbar_link" onclick="mobile_navbar_link_hider()" href="store/">Store</a>
-		  <a class="mobile_navbar_link" onclick="mobile_navbar_link_hider()" href="vote/">Vote</a>
-		  <a class="mobile_navbar_link" onclick="mobile_navbar_link_hider()" href="https://wa.me/6285835339743">Admin Contact</a>
-          <a class="mobile_navbar_link scroll" onclick="mobile_navbar_link_hider()" href="#join">Join Us</a>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-40 pb-20 relative animate__animated animate__fadeIn">
+        <div class="absolute inset-0 z-0">
+            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/e6b3ec1c-539a-469a-a5dd-9abc6417a031.png" alt="Futuristic Minecraft landscape with orange-themed buildings and sunset" class="w-full h-full object-cover opacity-20">
+            <div class="absolute inset-0 bg-gradient-to-b from-orange-900/10 to-gray-900"></div>
         </div>
-        <div class="icon" onclick="mobile_navbar_link_hider()">
-            <i class="fa fa-bars"></i>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center">
+                <h1 class="text-5xl md:text-6xl font-bold mb-4 glow">
+                    <span class="gradient-text">BAKWAN JAGUNG</span>
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 orbitron">The Ultimate Minecraft Experience</p>
+                <p class="text-gray-300 max-w-2xl mx-auto mb-8">
+                    Join our vibrant community in this unique orange-themed Minecraft universe with futuristic gameplay and exclusive features!
+                </p>
+                <div class="flex gap-4 justify-center">
+                    <a href="#join" onclick="smoothScroll('join')" class="minecraft-button px-8 py-3 rounded-lg text-white font-bold text-lg">
+                        JOIN NOW
+                    </a>
+                </div>
+            </div>
         </div>
-        <script>
-            function mobile_navbar_link_hider() {
-            var x = document.getElementById("mobile_navbar_links");
-            if (x.style.display === "flex") {
-                x.style.display = "none";
-            } else {
-                x.style.display = "flex";
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="py-16 bg-gray-900/50 animate__animated animate__fadeIn">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 gradient-text">SERVER ADVANTAGES</h2>
+                <div class="w-20 h-1 bg-orange-500 mx-auto"></div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-gray-800/50 rounded-xl p-6 border border-gray-700 card-hover animate__animated">
+                    <div class="w-12 h-12 bg-orange-900/20 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-rocket text-orange-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Futuristic Gameplay</h3>
+                    <p class="text-gray-300">Advanced tech trees, space exploration, and custom machinery</p>
+                </div>
+                
+                <div class="bg-gray-800/50 rounded-xl p-6 border border-gray-700 card-hover">
+                    <div class="w-12 h-12 bg-orange-900/20 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-users text-orange-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Active Community</h3>
+                    <p class="text-gray-300">Daily events, competitions, and friendly players</p>
+                </div>
+                
+                <div class="bg-gray-800/50 rounded-xl p-6 border border-gray-700 card-hover">
+                    <div class="w-12 h-12 bg-orange-900/20 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-shield-alt text-orange-400 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Premium Security</h3>
+                    <p class="text-gray-300">Advanced anti-cheat and active moderators</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery" class="py-16 animate__animated animate__fadeIn">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 gradient-text">GALLERY</h2>
+                <div class="w-20 h-1 bg-orange-500 mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="group overflow-hidden rounded-xl animate__animated animate__zoomIn">
+                    <img src="media/tutorial.png" alt="tutorial" class="w-full h-64 object-cover group-hover:scale-105 transition duration-300">
+                </div>
+                <div class="group overflow-hidden rounded-xl">
+                    <img src="media/crates.png" alt="crates" class="w-full h-64 object-cover group-hover:scale-105 transition duration-300">
+                </div>
+                <div class="group overflow-hidden rounded-xl">
+                    <img src="media/arena.png" alt="arena" class="w-full h-64 object-cover group-hover:scale-105 transition duration-300">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catalog Section -->
+    <section class="py-16 bg-gray-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 gradient-text">OUR OTHER WEBSITES</h2>
+                <div class="w-20 h-1 bg-orange-500 mx-auto"></div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-gray-800/50 rounded-xl p-6 border border-gray-700 card-hover">
+                    <div class="w-full h-48 bg-orange-900/20 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-globe text-orange-400 text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Store</h3>
+                    <p class="text-gray-300 mb-4">Purchase Rank/Permission</p>
+                    <a href="store/" class="minecraft-button px-6 py-2 rounded-lg text-white font-bold text-sm inline-block">
+                        VISIT SITE
+                    </a>
+                </div>
+                <div class="bg-gray-800/50 rounded-xl p-6 border border-gray-700 card-hover">
+                    <div class="w-full h-48 bg-orange-900/20 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-globe text-orange-400 text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Vote</h3>
+                    <p class="text-gray-300 mb-4">Dont forget to vote server</p>
+                    <a href="vote/" class="minecraft-button px-6 py-2 rounded-lg text-white font-bold text-sm inline-block">
+                        VISIT SITE
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join Section -->
+    <section id="join" class="py-16 bg-gray-900/50 animate__animated animate__fadeIn">
+        <div class="max-w-md mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 gradient-text">JOIN NOW</h2>
+                <p class="text-gray-300">Connect to our server using this IP:</p>
+            </div>
+
+            <div class="bg-gray-800/70 rounded-xl p-6 border border-orange-500/30">
+                <h3 class="text-orange-400 font-bold mb-3">Java Edition</h3>
+                <div class="flex mb-4">
+                    <input type="text" value="bakwanjagung.my.id" readonly class="bg-gray-900 text-white px-4 py-2 rounded-l-lg flex-grow">
+                </div>
+
+                <h3 class="text-orange-400 font-bold mb-3">Bedrock Edition</h3>
+                <div class="flex">
+                    <input type="text" value="bakwanjagung.my.id (19132)" readonly class="bg-gray-900 text-white px-4 py-2 rounded-l-lg flex-grow">
+                </div>
+                <p class="text-gray-400 text-sm mt-2"><i class="fas fa-info-circle text-orange-400 mr-1"></i> Versi: 1.20.1-NEWEST</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900/90 py-8 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-gray-400">© 2025 Bakwan Jagung Minecraft Server. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple copy function
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text);
+            const alertMsg = text.includes(':19132') ? 
+                'Copied Bedrock Address: ' + text + '\n(Include the port when connecting)' : 
+                'Copied: ' + text;
+            alert(alertMsg);
+        }
+
+        // Smooth scroll function
+        function smoothScroll(targetId) {
+            const target = document.getElementById(targetId);
+            if (target) {
+                // Remove all animation classes first
+                document.querySelectorAll('section').forEach(section => {
+                    section.classList.remove('animate__fadeIn');
+                });
+                
+                // Add smooth appearance to target section
+                target.style.opacity = '0';
+                target.style.transition = 'opacity 0.5s ease';
+                target.style.opacity = '1';
+                
+                window.scrollTo({
+                    top: target.offsetTop - 100,
+                    behavior: 'smooth'
+                });
             }
-            } 
-        </script>
-    </div>
-    <div class="mainflex">
-      <div class="main1">
-        <a class="main1_logo_a" href="#">
-          <img class="main1_logo" src="media/logo.png" alt="logo">
-        </a>
-        <div class="main1_description">
-          <a>Berpetualang,<br>Seru</a>
-          <a class="main1_actcent">di dunia Minecraft</a><a>.</a>
-        </div>
-        <div class="main1_ipcopier_div">
-          <button class="main1_ipcopier" onclick="copyText()" type="button">
-            <span class="main1_ipcopier_text1">bakwanjagung.my.id</span>
-            <br>
-            <span class="main1_ipcopier_text2">Click to copy</span>
-          </button>
-          <script>
-            function copyText() {
-                navigator.clipboard.writeText
-            ("bakwanjagung.my.id");
-                }
-            $(document).ready(function() {
-            $('.main1_ipcopier').click(function() {
-                var popup = $('<div>', { class: 'main1_popup' })
-                .append($('<h3 class="copy_confirm">').text('Copied IP to clipboard'))
-                $(this).after(popup);
-                setTimeout(function() {
-                popup.remove();
-                }, 1000);
-            });
-            });
-        </script>
-        </div>
-        <a href="#more" class="scroll">
-          <img alt="downarrow" class="main1_downarrow" src="media/downarrow.png">
-        </a>
-        <script>
-          const scrollLinks = document.querySelectorAll('.scroll');
-          scrollLinks.forEach(function(link) {
-            link.addEventListener('click', function(event) {
-              event.preventDefault();
-              const target = document.querySelector(link.getAttribute('href'));
-              const offsetTop = target.offsetTop;
-              window.scrollTo({
-                top: offsetTop,
-                behavior: 'smooth'
-              });
-            });
-          });
-        </script>
-      </div>
-      <div id="more"></div>
-      <div class="main2">
-        <a class="headline">Fitur yang kami berikan</a>
-        <div class="main2_features_div">
-          <div class="main2_feature">
-            <img class="main2_feature_img" alt="Feature Image" src="media/rank.png">
-            <a class="main2_feature_headline">Fitur 1</a>
-            <a class="main2_feature_text">Rank</a>
-          </div>
-          <div class="main2_feature">
-            <img class="main2_feature_img" alt="Feature Image" src="media/kit.png">
-            <a class="main2_feature_headline">Fitur 2</a>
-            <a class="main2_feature_text">Kit Bagi Newbie</a>
-          </div>
-          <div class="main2_feature">
-            <img class="main2_feature_img" alt="Feature Image" src="media/gacha.png">
-            <a class="main2_feature_headline">Fitur 3</a>
-            <a class="main2_feature_text">Gacha</a>
-          </div>
-          <div class="main2_feature">
-            <img class="main2_feature_img" alt="Feature Image" src="media/key.png">
-            <a class="main2_feature_headline">Fitur 4</a>
-            <a class="main2_feature_text">Key Gacha Gratis</a>
-          </div>
-          <div class="main2_feature">
-            <img class="main2_feature_img" alt="Feature Image" src="media/rp.png">
-            <a class="main2_feature_headline">Fitur 5</a>
-            <a class="main2_feature_text">ClaimLand</a>
-          </div>
-        </div>
-      </div>
-      <div id="discord"></div>
-      <div class="main4">
-        <a class="headline">Join Discord</a>
-        <div class="main4_dc_div">
-          <iframe class="main4_dc_widget" src="https://discord.com/widget?id=1385566449367519252&theme=dark" width="350" height="500" title="discord" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
-          <div class="main4_dc_description_div">
-            <a class="main4_dc_description_title">Ayo Berteman!</a>
-            <a class="main4_dc_description"> ・Bertemu player lain <br> ・Bertanya <br> ・Update Terbaru <br> ・saran  <br><br> &amp; dan lainya </a>
-            <a href="https://discord.bakwanjagung.my.id" class="main4_dc_button_a">
-              <div class="main4_dc_button">Join</div>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div id="about"></div>
-      <div class="main5">
-        <a class="headline">Who we are</a>
-        <div class="main5_admin_div">
-          <div class="main5_admins_div main5_admins_dev_type1">
-            <img class="main5_admins_img" alt="admin member img" src="media/raja.webp">
-            <div class="main5_admins_description_div">
-              <a class="main5_admins_description_rank main5_admins_description_rank_admin">[Staff] 1</a>
-              <a class="main5_admins_description_title" href="https://wa.me/6285835339743">RajaAditya</a>
-              <a class="main5_admins_description"><br></a>
-            </div>
-          </div>
-          <div class="main5_admins_div main5_admins_dev_type1">
-            <img class="main5_admins_img" alt="admin member img" src="media/jikri.png">
-            <div class="main5_admins_description_div">
-              <a class="main5_admins_description_rank main5_admins_description_rank_admin">[Staff] 2</a>
-              <a class="main5_admins_description_title">Dzikry18</a>
-              <a class="main5_admins_description"><br></a>
-            </div>
-          </div>
-        </div>
-        <div class="main5_admin_div">
-          <div class="main5_admins_div main5_admins_dev_type1">
-            <img class="main5_admins_img" alt="admin member img" src="media/FIZ.png">
-            <div class="main5_admins_description_div">
-              <a class="main5_admins_description_rank main5_admins_description_rank_admin">[Staff] 3</a>
-              <a class="main5_admins_description_title">FIZ</a>
-              <a class="main5_admins_description"><br></a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="join"></div>
-      <div class="main3">
-        <a class="headline">Ip Server</a>
-        <div class="main3_join_div_div">
-          <div class="main3_join_div">
-            <a class="main3_join_title">Java</a>
-            <div class="main3_join_content_div">
-              <div class="main3_join_categories">
-                <a>IP:</a>
-                <a></a>
-              </div>
-              <div class="main3_join_values">
-                <a>bakwanjagung.my.id</a>
-              </div>
-            </div>
-          </div>
-          <div class="main3_join_div">
-            <a class="main3_join_title">Bedrock</a>
-            <div class="main3_join_content_div">
-              <div class="main3_join_categories">
-                <a>IP:</a>
-                <a>Port:</a>
-              </div>
-              <div class="main3_join_values">
-                <a>bakwanjagung.my.id</a>
-                <a>19132</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </body>
-</html>
+        }
+
+        // Animate elements on scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.animate__animated');
+            elements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100) {
+                    if (el.classList.contains('
