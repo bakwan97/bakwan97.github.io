@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bakwan Jagung</title>
+    <title>Bakwan Jagung Minecraft Server</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" type="image/png" href="media/favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -194,7 +194,7 @@
                     <div class="w-12 h-12 bg-orange-900/20 rounded-lg flex items-center justify-center mb-4">
                         <i class="fas fa-rocket text-orange-400 text-xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-2">Innovative Gameplay</h3>
+                    <h3 class="text-xl font-bold mb-2">Futuristic Gameplay</h3>
                     <p class="text-gray-300">Advanced tech trees, space exploration, and custom machinery</p>
                 </div>
                 
@@ -246,10 +246,10 @@
                 <h2 class="text-3xl md:text-4xl font-bold mb-4 gradient-text">OUR OTHER WEBSITES</h2>
                 <div class="w-20 h-1 bg-orange-500 mx-auto"></div>
             </div>
-            <div class="grid md:grid-cols-2 gap-8">
+            <div class="grid md:grid-cols-3 gap-8">
                 <div class="bg-gray-800/50 rounded-xl p-6 border border-gray-700 card-hover">
                     <div class="w-full h-48 bg-orange-900/20 rounded-lg flex items-center justify-center mb-4">
-                        <i class="fas fa-globe text-orange-400 text-4xl"></i>
+                        <i class="fas fa-shopping-cart text-orange-400 text-4xl"></i> <!-- Ikon troli belanja -->
                     </div>
                     <h3 class="text-xl font-bold mb-2">Store</h3>
                     <p class="text-gray-300 mb-4">Purchase Rank/Permission</p>
@@ -259,11 +259,21 @@
                 </div>
                 <div class="bg-gray-800/50 rounded-xl p-6 border border-gray-700 card-hover">
                     <div class="w-full h-48 bg-orange-900/20 rounded-lg flex items-center justify-center mb-4">
-                        <i class="fas fa-globe text-orange-400 text-4xl"></i>
+                        <i class="fas fa-star text-orange-400 text-4xl"></i> <!-- Ikon bintang untuk vote -->
                     </div>
                     <h3 class="text-xl font-bold mb-2">Vote</h3>
-                    <p class="text-gray-300 mb-4">Dont forget to vote server</p>
+                    <p class="text-gray-300 mb-4">Don't forget to vote server</p>
                     <a href="vote/" class="minecraft-button px-6 py-2 rounded-lg text-white font-bold text-sm inline-block">
+                        VISIT SITE
+                    </a>
+                </div>
+                <div class="bg-gray-800/50 rounded-xl p-6 border border-gray-700 card-hover"> <!-- Katalog baru untuk Web Rules -->
+                    <div class="w-full h-48 bg-orange-900/20 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-gavel text-orange-400 text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Rules</h3>
+                    <p class="text-gray-300 mb-4">Read our server rules and guidelines</p>
+                    <a href="rules/" class="minecraft-button px-6 py-2 rounded-lg text-white font-bold text-sm inline-block">
                         VISIT SITE
                     </a>
                 </div>
@@ -338,4 +348,14 @@
             elements.forEach(el => {
                 const rect = el.getBoundingClientRect();
                 if (rect.top < window.innerHeight - 100) {
-                    if (el.classList.contains('
+                    if (el.classList.contains('animate__fadeIn')) {
+                        el.classList.add('animate__fadeIn');
+                    }
+                }
+            });
+        }
+
+        window.addEventListener('scroll', animateOnScroll);
+    </script>
+</body>
+</html>
