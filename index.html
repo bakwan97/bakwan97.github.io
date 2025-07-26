@@ -124,6 +124,15 @@
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
         }
+
+        @media (max-width: 640px) {
+            .minecraft-button {
+                min-width: 100px; /* Ensure button has a minimum width */
+            }
+            input[type="text"] {
+                min-width: 0; /* Allow input to shrink */
+            }
+        }
     </style>
 </head>
 <body>
