@@ -124,12 +124,6 @@
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
         }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
     </style>
 </head>
 <body>
@@ -138,7 +132,6 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center h-16 justify-between">
                 <div class="flex items-center">
-                    <!-- Left-aligned text -->
                     <div class="mr-4">
                         <span class="text-orange-400 text-2xl orbitron">BAKWAN JAGUNG</span>
                         <div class="server-status relative inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-900 text-green-100">
@@ -147,7 +140,6 @@
                     </div>
                 </div>
                 
-                <!-- Right-aligned logo -->
                 <div class="flex items-center ml-auto">
                     <div class="logo-container animate__animated animate__fadeIn animate__slower">
                         <img src="media/favicon.png" alt="Bakwan Jagung Server Logo" class="h-16 w-16 rounded-full">
@@ -173,7 +165,7 @@
                     Join our vibrant community in this unique Economy themed Minecraft universe with futuristic gameplay and exclusive features!
                 </p>
                 <div class="flex gap-4 justify-center">
-                    <a href="#join" onclick="smoothScroll('join')" class="minecraft-button px-8 py-3 rounded-lg text-white font-bold text-lg">
+                    <a href="javascript:void(0);" onclick="smoothScrollToJoin()" class="minecraft-button px-8 py-3 rounded-lg text-white font-bold text-lg">
                         JOIN NOW
                     </a>
                 </div>
@@ -249,7 +241,7 @@
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="bg-gray-800/50 rounded-xl p-6 border border-gray-700 card-hover">
                     <div class="w-full h-48 bg-orange-900/20 rounded-lg flex items-center justify-center mb-4">
-                        <i class="fas fa-shopping-cart text-orange-400 text-4xl"></i> <!-- Ikon troli belanja -->
+                        <i class="fas fa-shopping-cart text-orange-400 text-4xl"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-2">Store</h3>
                     <p class="text-gray-300 mb-4">Purchase Rank/Permission</p>
@@ -259,7 +251,7 @@
                 </div>
                 <div class="bg-gray-800/50 rounded-xl p-6 border border-gray-700 card-hover">
                     <div class="w-full h-48 bg-orange-900/20 rounded-lg flex items-center justify-center mb-4">
-                        <i class="fas fa-star text-orange-400 text-4xl"></i> <!-- Ikon bintang untuk vote -->
+                        <i class="fas fa-star text-orange-400 text-4xl"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-2">Vote</h3>
                     <p class="text-gray-300 mb-4">Don't forget to vote server</p>
@@ -267,7 +259,7 @@
                         VISIT SITE
                     </a>
                 </div>
-                <div class="bg-gray-800/50 rounded-xl p-6 border border-gray-700 card-hover"> <!-- Katalog baru untuk Web Rules -->
+                <div class="bg-gray-800/50 rounded-xl p-6 border border-gray-700 card-hover">
                     <div class="w-full h-48 bg-orange-900/20 rounded-lg flex items-center justify-center mb-4">
                         <i class="fas fa-gavel text-orange-400 text-4xl"></i>
                     </div>
@@ -292,12 +284,18 @@
             <div class="bg-gray-800/70 rounded-xl p-6 border border-orange-500/30">
                 <h3 class="text-orange-400 font-bold mb-3">Java Edition</h3>
                 <div class="flex mb-4">
-                    <input type="text" value="bakwanjagung.my.id" readonly class="bg-gray-900 text-white px-4 py-2 rounded-l-lg flex-grow">
+                    <input type="text" id="java-ip" value="bakwanjagung.my.id" readonly class="bg-gray-900 text-white px-4 py-2 rounded-l-lg flex-grow">
+                    <button onclick="copyToClipboard('java-ip')" class="minecraft-button px-4 py-2 rounded-r-lg text-white font-bold text-sm">
+                        COPY
+                    </button>
                 </div>
 
                 <h3 class="text-orange-400 font-bold mb-3">Bedrock Edition</h3>
                 <div class="flex">
-                    <input type="text" value="bakwanjagung.my.id (19132)" readonly class="bg-gray-900 text-white px-4 py-2 rounded-l-lg flex-grow">
+                    <input type="text" id="bedrock-ip" value="bakwanjagung.my.id (19132)" readonly class="bg-gray-900 text-white px-4 py-2 rounded-l-lg flex-grow">
+                    <button onclick="copyToClipboard('bedrock-ip')" class="minecraft-button px-4 py-2 rounded-r-lg text-white font-bold text-sm">
+                        COPY
+                    </button>
                 </div>
                 <p class="text-gray-400 text-sm mt-2"><i class="fas fa-info-circle text-orange-400 mr-1"></i> Versi: 1.20.1-NEWEST</p>
             </div>
@@ -312,50 +310,24 @@
     </footer>
 
     <script>
-        // Simple copy function
-        function copyToClipboard(text) {
-            navigator.clipboard.writeText(text);
-            const alertMsg = text.includes(':19132') ? 
-                'Copied Bedrock Address: ' + text + '\n(Include the port when connecting)' : 
-                'Copied: ' + text;
-            alert(alertMsg);
-        }
+        function copyToClipboard(elementId) {
+            const inputElement = document.getElementById(elementId);
+            inputElement.select();
+            inputElement.setSelectionRange(0, 99999); // For mobile devices
 
-        // Smooth scroll function
-        function smoothScroll(targetId) {
-            const target = document.getElementById(targetId);
-            if (target) {
-                // Remove all animation classes first
-                document.querySelectorAll('section').forEach(section => {
-                    section.classList.remove('animate__fadeIn');
+            navigator.clipboard.writeText(inputElement.value)
+                .then(() => {
+                    alert('IP address copied to clipboard: ' + inputElement.value);
+                })
+                .catch(err => {
+                    console.error('Failed to copy: ', err);
                 });
-                
-                // Add smooth appearance to target section
-                target.style.opacity = '0';
-                target.style.transition = 'opacity 0.5s ease';
-                target.style.opacity = '1';
-                
-                window.scrollTo({
-                    top: target.offsetTop - 100,
-                    behavior: 'smooth'
-                });
-            }
         }
 
-        // Animate elements on scroll
-        function animateOnScroll() {
-            const elements = document.querySelectorAll('.animate__animated');
-            elements.forEach(el => {
-                const rect = el.getBoundingClientRect();
-                if (rect.top < window.innerHeight - 100) {
-                    if (el.classList.contains('animate__fadeIn')) {
-                        el.classList.add('animate__fadeIn');
-                    }
-                }
-            });
+        function smoothScrollToJoin() {
+            const joinSection = document.getElementById('join');
+            joinSection.scrollIntoView({ behavior: 'smooth' });
         }
-
-        window.addEventListener('scroll', animateOnScroll);
     </script>
 </body>
 </html>
