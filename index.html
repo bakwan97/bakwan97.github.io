@@ -132,9 +132,6 @@
             input[type="text"] {
                 min-width: 0; /* Allow input to shrink */
             }
-            .copy-button {
-                font-size: 0.75rem; /* Adjust the size as needed */
-            }
         }
     </style>
 </head>
@@ -297,7 +294,7 @@
                 <h3 class="text-orange-400 font-bold mb-3">Java Edition</h3>
                 <div class="flex mb-4">
                     <input type="text" id="java-ip" value="bakwanjagung.my.id" readonly class="bg-gray-900 text-white px-4 py-2 rounded-l-lg flex-grow">
-                    <button onclick="copyToClipboard('java-ip')" class="minecraft-button copy-button px-2 py-2 rounded-r-lg text-white font-bold text-sm">
+                    <button onclick="copyToClipboard('java-ip')" class="minecraft-button px-2 py-2 rounded-r-lg text-white font-bold text-sm">
                         COPY
                     </button>
                 </div>
@@ -305,7 +302,7 @@
                 <h3 class="text-orange-400 font-bold mb-3">Bedrock Edition</h3>
                 <div class="flex">
                     <input type="text" id="bedrock-ip" value="bakwanjagung.my.id (19132)" readonly class="bg-gray-900 text-white px-4 py-2 rounded-l-lg flex-grow">
-                    <button onclick="copyToClipboard('bedrock-ip')" class="minecraft-button copy-button px-2 py-2 rounded-r-lg text-white font-bold text-sm">
+                    <button onclick="copyToClipboard('bedrock-ip')" class="minecraft-button px-2 py-2 rounded-r-lg text-white font-bold text-sm">
                         COPY
                     </button>
                 </div>
@@ -324,7 +321,7 @@
                 </div>
                 <div class="flex space-x-4">
                     <a href="https://discord.bakwanjagung.my.id" class="text-purple-500 hover:text-orange-400 text-2xl"><i class="fab fa-discord"></i></a>
-                    <a href="https://community.bakwanjagung.my.id" class="text-green-400 hover:text-orange-400 text-2xl"><i class="fab fa-whatsapp"></i></a>
+					<a href="https://community.bakwanjagung.my.id" class="text-green-400 hover:text-orange-400 text-2xl"><i class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
             <div class="mt-6 text-center text-gray-500 text-sm">
@@ -348,4 +345,10 @@
                 });
         }
 
-        function smoothScrollTo
+        function smoothScrollToJoin() {
+            const joinSection = document.getElementById('join');
+            joinSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
