@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bakwan Jagung - Vote</title>
-    <meta name="description" content="Offcial website vote for Bakwan Jagung Minecraft server.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" type="image/png" href="media/favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -53,6 +52,28 @@
         .floating {
             animation: float 6s ease-in-out infinite;
         }
+        
+        /* Leaderboard styles */
+        #topVotersTable tbody tr:nth-child(odd) {
+            background-color: rgba(55, 65, 81, 0.5);
+        }
+        
+        #topVotersTable tbody tr:nth-child(even) {
+            background-color: rgba(31, 41, 55, 0.5);
+        }
+        
+        #topVotersTable tbody tr:hover {
+            background-color: rgba(249, 115, 22, 0.1);
+        }
+        
+        .last-updated {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-white min-h-screen font-sans">
@@ -62,7 +83,7 @@
         <div class="container mx-auto px-4 py-24 relative z-10">
             <div class="text-center">
                 <div class="inline-block mb-8 floating">
-                    <img src="media/favicon.png" alt="Bakwan Jagung Minecraft Server Logo - Futuristic diamond-shaped orange logo with jagged edges and glowing effects" class="w-48 h-48 rounded-xl glow object-cover border-4 border-l-orange-400 border-r-orange-600 border-t-orange-500 border-b-orange-300" />
+                    <img src="media/favicon.png" alt="Bakwan Jagung Minecraft Server Logo" class="w-48 h-48 rounded-xl glow object-cover border-4 border-l-orange-400 border-r-orange-600 border-t-orange-500 border-b-orange-300" />
                 </div>
                 <h1 class="text-5xl md:text-6xl font-bold mb-4 text-orange-400">BAKWAN JAGUNG</h1>
                 <p class="text-xl md:text-2xl text-orange-200 mb-8">Vote for our Minecraft Server and help us grow!</p>
@@ -163,82 +184,208 @@
     </div>
 
     <!-- Leaderboard -->
-<div class="container mx-auto px-4 py-16">
-    <h2 class="text-3xl font-bold text-center mb-8 text-orange-400">TOP VOTERS</h2>
-    
-    <div class="max-w-2xl mx-auto">
-        <div class="server-card rounded-xl overflow-hidden">
-            <table class="w-full" id="topVotersTable">
-                <thead>
-                    <tr class="bg-orange-600 text-white">
-                        <th class="py-3 px-4 text-left">Rank</th>
-                        <th class="py-3 px-4 text-left">Player</th>
-                        <th class="py-3 px-4 text-right">Votes</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td colspan="3" class="py-3 px-4 text-center">Loading...</td></tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
+    <div class="container mx-auto px-4 py-16">
+        <h2 class="text-3xl font-bold text-center mb-8 text-orange-400">TOP VOTERS</h2>
+        
+        <div class="max-w-2xl mx-auto">
+            <div class="server-card rounded-xl overflow-hidden">
+                <table class="w-full" id="topVotersTable">
+                    <thead>
+                        <tr class="bg-orange-600 text-white">
+                            <th class="py-3 px-4 text-left">Rank</th>
+                            <th class="py-3 px-4 text-left">Player</th>
+                            <th class="py-3 px-4 text-right">Votes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="3" class="py-3 px-4 text-center">Loading leaderboard...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
             <div class="server-card text-center mt-6 p-4 max-w-md mx-auto">
-                <p class="text-orange-300"><i class="fas fa-info-circle mr-1"></i> Top voter stats will be reset at the beginning of each month</p>
+                <p class="text-orange-300"><i class="fas fa-sync-alt mr-2"></i> <span id="lastUpdated">Updating every minute...</span></p>
+                <p class="text-orange-300 mt-2"><i class="fas fa-calendar-alt mr-2"></i> <span id="resetInfo">Votes reset every 6 months</span></p>
             </div>
         </div>
     </div>
 
     <!-- Footer -->
     <footer class="bg-gray-800 border-t border-gray-700 py-8">
-            <div class="mt-6 text-center text-white-600 text-l">
+        <div class="container mx-auto px-4 text-center">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="#" class="text-orange-400 hover:text-orange-300">
+                    <i class="fab fa-discord text-2xl"></i>
+                </a>
+                <a href="#" class="text-orange-400 hover:text-orange-300">
+                    <i class="fab fa-twitter text-2xl"></i>
+                </a>
+                <a href="#" class="text-orange-400 hover:text-orange-300">
+                    <i class="fab fa-instagram text-2xl"></i>
+                </a>
+            </div>
+            <div class="mt-6 text-center text-gray-400 text-sm">
                 © 2025 Bakwan Jagung Minecraft Server. All rights reserved.
             </div>
         </div>
     </footer>
-	
-	<script>
-	async function fetchVotes(apiKey, serverId) {
-		const res = await fetch(`https://minecraft-mp.com/api/?object=servers&element=voters&key=${apiKey}&month=current&format=json&server=${serverId}`);
-		const data = await res.json();
-		return data.voters || [];
-	}
 
-	async function loadTopVoters() {
-		const javaVotes = await fetchVotes("mDfbuuUBovVA4NtZDGFoDsChLt2E0b37P5", "346310");
-		const pocketVotes = await fetchVotes("WzmOFhEvR4IxaduH5jYN5A12jvTn1cKTZ", "131398");
-	
-		let combined = {};
-		
-		[...javaVotes, ...pocketVotes].forEach(voter => {
-			if (!combined[voter.nickname]) {
-				combined[voter.nickname] = 0;
-			}
-			combined[voter.nickname] += parseInt(voter.votes);
-		});
+    <script>
+        // API Keys
+        const JAVA_API_KEY = 'mDfbuuUBovVA4NtZDGFoDsChLt2E0b37P5';
+        const MCPE_API_KEY = 'WzmOFhEvR4IxaduH5jYN5A12jvTn1cKTZ';
+        
+        // Function to check if today is the reset day (every 6 months)
+        function isResetDay() {
+            const today = new Date();
+            const month = today.getMonth(); // 0-11
+            // Reset on January 1st and July 1st (every 6 months)
+            return (month === 0 || month === 6) && today.getDate() === 1;
+        }
+        
+        // Function to get next reset date
+        function getNextResetDate() {
+            const now = new Date();
+            const currentMonth = now.getMonth();
+            let nextResetMonth;
+            
+            if (currentMonth < 6) {
+                // Next reset is July 1st of current year
+                nextResetMonth = 6; // July (0-based)
+            } else {
+                // Next reset is January 1st of next year
+                nextResetMonth = 0; // January (0-based)
+            }
+            
+            // If we're already past the reset month this half-year, go to next half-year
+            if ((currentMonth === 0 || currentMonth === 6) && now.getDate() > 1) {
+                if (currentMonth === 0) {
+                    nextResetMonth = 6; // July of current year
+                } else {
+                    nextResetMonth = 0; // January of next year
+                }
+            }
+            
+            // Determine the year
+            const year = (nextResetMonth === 0 && currentMonth >= 6) ? now.getFullYear() + 1 : now.getFullYear();
+            
+            return new Date(year, nextResetMonth, 1);
+        }
+        
+        // Function to update reset info display
+        function updateResetInfo() {
+            const nextReset = getNextResetDate();
+            const options = { day: 'numeric', month: 'long', year: 'numeric' };
+            document.getElementById('resetInfo').innerHTML = 
+                `Votes reset every 6 months. Next reset: ${nextReset.toLocaleDateString('en-US', options)}`;
+        }
+        
+        // Function to update leaderboard
+        async function updateLeaderboard() {
+            try {
+                // Show loading state
+                const tbody = document.querySelector('#topVotersTable tbody');
+                tbody.innerHTML = '<tr><td colspan="3" class="py-3 px-4 text-center">Loading data...</td></tr>';
+                
+                // Update reset info
+                updateResetInfo();
+                
+                // Check if today is reset day (for display purposes)
+                if (isResetDay()) {
+                    document.getElementById('resetInfo').innerHTML = 
+                        "<span class='text-green-400'>Today is reset day! Votes have been reset.</span>";
+                }
+                
+                // Fetch data from both APIs
+                const [javaRes, mcpeRes] = await Promise.all([
+                    fetch(`https://minecraft-mp.com/api/?object=servers&element=voters&key=${JAVA_API_KEY}`),
+                    fetch(`https://minecraftpocket-servers.com/api/?object=servers&element=voters&key=${MCPE_API_KEY}`)
+                ]);
 
-		let sorted = Object.entries(combined)
-			.map(([name, votes]) => ({ name, votes }))
-			.sort((a, b) => b.votes - a.votes)
-			.slice(0, 5);
+                if (!javaRes.ok || !mcpeRes.ok) {
+                    throw new Error('Failed to fetch data from one or both APIs');
+                }
 
-		const tbody = document.querySelector("#topVotersTable tbody");
-		tbody.innerHTML = "";
+                const javaData = await javaRes.json();
+                const mcpeData = await mcpeRes.json();
 
-		sorted.forEach((voter, index) => {
-			tbody.innerHTML += `
-				<tr class="border-b border-gray-700 hover:bg-gray-700">
-					<td class="py-3 px-4">${index + 1}</td>
-					<td class="py-3 px-4">${voter.name}</td>
-					<td class="py-3 px-4 text-right">${voter.votes}</td>
-				</tr>
-			`;
-		});
-	}
+                // Combine voters from both sources
+                const voterMap = {};
 
-	loadTopVoters();
-	setInterval(loadTopVoters, 60000); // update setiap 60 detik
-	</script>
+                // Process Java voters
+                if (javaData.voters && Array.isArray(javaData.voters)) {
+                    javaData.voters.forEach(voter => {
+                        const username = voter.nickname;
+                        const votes = parseInt(voter.votes) || 0;
+                        
+                        if (voterMap[username]) {
+                            voterMap[username].votes += votes;
+                        } else {
+                            voterMap[username] = {
+                                name: username,
+                                votes: votes
+                            };
+                        }
+                    });
+                }
+
+                // Process MCPE voters
+                if (mcpeData.voters && Array.isArray(mcpeData.voters)) {
+                    mcpeData.voters.forEach(voter => {
+                        const username = voter.nickname;
+                        const votes = parseInt(voter.votes) || 0;
+                        
+                        if (voterMap[username]) {
+                            voterMap[username].votes += votes;
+                        } else {
+                            voterMap[username] = {
+                                name: username,
+                                votes: votes
+                            };
+                        }
+                    });
+                }
+
+                // Convert to array and sort by votes
+                const votersArray = Object.values(voterMap);
+                votersArray.sort((a, b) => b.votes - a.votes);
+
+                // Get top 5
+                const top5 = votersArray.slice(0, 5);
+
+                // Update the table
+                if (top5.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="3" class="py-3 px-4 text-center">No voter data available</td></tr>';
+                    return;
+                }
+
+                tbody.innerHTML = top5.map((voter, index) => `
+                    <tr class="border-b border-gray-700">
+                        <td class="py-3 px-4">${index + 1}</td>
+                        <td class="py-3 px-4 font-medium">${voter.name}</td>
+                        <td class="py-3 px-4 text-right">${voter.votes}</td>
+                    </tr>
+                `).join('');
+
+                // Update last updated time
+                const now = new Date();
+                document.getElementById('lastUpdated').innerHTML = `Last updated: ${now.toLocaleTimeString()}`;
+                
+            } catch (error) {
+                console.error('Error updating leaderboard:', error);
+                const tbody = document.querySelector('#topVotersTable tbody');
+                tbody.innerHTML = '<tr><td colspan="3" class="py-3 px-4 text-center text-orange-400">Failed to load data. Try refreshing the page.</td></tr>';
+            }
+        }
+
+        // Initial load
+        document.addEventListener('DOMContentLoaded', function() {
+            updateLeaderboard();
+        });
+
+        // Update every minute (60000 milliseconds)
+        setInterval(updateLeaderboard, 60000);
+    </script>
 </body>
 </html>
-
