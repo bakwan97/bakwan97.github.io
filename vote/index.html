@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bakwan Jagung - Vote</title>
+    <meta name="description" content="Offcial website vote for Bakwan Jagung Minecraft server.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" type="image/png" href="media/favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -162,50 +163,28 @@
     </div>
 
     <!-- Leaderboard -->
-    <div class="container mx-auto px-4 py-16">
-        <h2 class="text-3xl font-bold text-center mb-8 text-orange-400">TOP VOTERS</h2>
-        
-        <div class="max-w-2xl mx-auto">
-            <div class="server-card rounded-xl overflow-hidden">
-                <table class="w-full">
-                    <thead>
-                        <tr class="bg-orange-600 text-white">
-                            <th class="py-3 px-4 text-left">Rank</th>
-                            <th class="py-3 px-4 text-left">Player</th>
-                            <th class="py-3 px-4 text-right">Votes</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="border-b border-gray-700 hover:bg-gray-700">
-                            <td class="py-3 px-4">1</td>
-                            <td class="py-3 px-4">-</td>
-                            <td class="py-3 px-4 text-right">-</td>
-                        </tr>
-                        <tr class="border-b border-gray-700 hover:bg-gray-700">
-                            <td class="py-3 px-4">2</td>
-                            <td class="py-3 px-4">-</td>
-                            <td class="py-3 px-4 text-right">-</td>
-                        </tr>
-                        <tr class="border-b border-gray-700 hover:bg-gray-700">
-                            <td class="py-3 px-4">3</td>
-                            <td class="py-3 px-4">-</td>
-                            <td class="py-3 px-4 text-right">-</td>
-                        </tr>
-                        <tr class="border-b border-gray-700 hover:bg-gray-700">
-                            <td class="py-3 px-4">4</td>
-                            <td class="py-3 px-4">-</td>
-                            <td class="py-3 px-4 text-right">-</td>
-                        </tr>
-                        <tr class="hover:bg-gray-700">
-                            <td class="py-3 px-4">5</td>
-                            <td class="py-3 px-4">-</td>
-                            <td class="py-3 px-4 text-right">-</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+<div class="container mx-auto px-4 py-16">
+    <h2 class="text-3xl font-bold text-center mb-8 text-orange-400">TOP VOTERS</h2>
+    
+    <div class="max-w-2xl mx-auto">
+        <div class="server-card rounded-xl overflow-hidden">
+            <table class="w-full" id="topVotersTable">
+                <thead>
+                    <tr class="bg-orange-600 text-white">
+                        <th class="py-3 px-4 text-left">Rank</th>
+                        <th class="py-3 px-4 text-left">Player</th>
+                        <th class="py-3 px-4 text-right">Votes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td colspan="3" class="py-3 px-4 text-center">Loading...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
             <div class="server-card text-center mt-6 p-4 max-w-md mx-auto">
-                <p class="text-orange-300"><i class="fas fa-info-circle mr-1"></i> Top voter stats will be reset at the end of each season</p>
+                <p class="text-orange-300"><i class="fas fa-info-circle mr-1"></i> Top voter stats will be reset at the beginning of each month</p>
             </div>
         </div>
     </div>
@@ -217,6 +196,49 @@
             </div>
         </div>
     </footer>
+	
+	<script>
+	async function fetchVotes(apiKey, serverId) {
+		const res = await fetch(`https://minecraft-mp.com/api/?object=servers&element=voters&key=${apiKey}&month=current&format=json&server=${serverId}`);
+		const data = await res.json();
+		return data.voters || [];
+	}
+
+	async function loadTopVoters() {
+		const javaVotes = await fetchVotes("mDfbuuUBovVA4NtZDGFoDsChLt2E0b37P5", "346310");
+		const pocketVotes = await fetchVotes("WzmOFhEvR4IxaduH5jYN5A12jvTn1cKTZ", "131398");
+	
+		let combined = {};
+		
+		[...javaVotes, ...pocketVotes].forEach(voter => {
+			if (!combined[voter.nickname]) {
+				combined[voter.nickname] = 0;
+			}
+			combined[voter.nickname] += parseInt(voter.votes);
+		});
+
+		let sorted = Object.entries(combined)
+			.map(([name, votes]) => ({ name, votes }))
+			.sort((a, b) => b.votes - a.votes)
+			.slice(0, 5);
+
+		const tbody = document.querySelector("#topVotersTable tbody");
+		tbody.innerHTML = "";
+
+		sorted.forEach((voter, index) => {
+			tbody.innerHTML += `
+				<tr class="border-b border-gray-700 hover:bg-gray-700">
+					<td class="py-3 px-4">${index + 1}</td>
+					<td class="py-3 px-4">${voter.name}</td>
+					<td class="py-3 px-4 text-right">${voter.votes}</td>
+				</tr>
+			`;
+		});
+	}
+
+	loadTopVoters();
+	setInterval(loadTopVoters, 60000); // update setiap 60 detik
+	</script>
 </body>
 </html>
 
