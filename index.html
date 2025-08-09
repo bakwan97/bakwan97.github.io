@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bakwan Jagung | Indonesia Minecraft Server</title>
+    <title>Bakwan Jagung Minecraft Server</title>
     <meta name="description" content="Offcial website for Bakwan Jagung Minecraft server.">
     <meta name="keywords" content="Bakwan Jagung Minecraft Server, Server Minecraft Bakwan Jagung,bakwanjagung.my.id server minecraft, Bakwanjagung survival smp indonesia,Server Minecraft Indonesia Bakwanjagung">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -331,7 +331,7 @@
                                 <i class="fas fa-server text-orange-500 mt-1 mr-3"></i>
                                 <div>
                                     <p class="text-gray-400">Server IP:</p>
-                                    <p class="text-white font-mono">bakwanjagung.my.id<br>Port: 19132 (if bedrock)</br></p>
+                                    <p class="text-white font-mono">bakwanjagung.my.id<br>Port: 19132</br></p>
                                 </div>
                             </div>
                             <div class="flex items-start">
@@ -346,9 +346,10 @@
                                 <div>
                                     <p class="text-gray-400">Status:</p>
                                     <div class="mt-1 flex items-center">
-                                        <div class="w-2 h-2 rounded-full bg-green-500 mr-2 animate-pulse"></div>
-                                        <span class="text-white">Online</span>
-                                        <span class="ml-2 text-gray-400 text-xs">24/7 Uptime</span>
+										<div id="connect" class="flex items-center space-x-4 text-white transition-colors duration-500">
+										<span id="server-status">Loading...</span>
+										<span id="player-count" class="text-sm text-gray-300">Loading...</span>
+										</div>
                                     </div>
                                 </div>
                             </div>
@@ -429,6 +430,43 @@
 			activeLink.classList.add('active-link');
 			activeLink.classList.remove('text-gray-300'); // Change color to orange
 		}
+		
+    const API_KEY = "mDfbuuUBovVA4NtZDGFoDsChLt2E0b37P5";
+    const SERVER_ID = "346310";
+
+    const statusElement = document.getElementById("server-status");
+    const playerCountElement = document.getElementById("player-count");
+
+    function updateStatus() {
+        fetch(`https://minecraft-mp.com/api/?object=servers&element=detail&key=${API_KEY}&id=${SERVER_ID}`)
+            .then(res => res.json())
+            .then(data => {
+                if (data.is_online) {
+                    statusElement.textContent = "Online";
+                    statusElement.classList.remove("text-red-500");
+                    statusElement.classList.add("text-green-500");
+
+                    playerCountElement.textContent = `: ${data.players} / ${data.maxplayers}`;
+                } else {
+                    statusElement.textContent = "Offline";
+                    statusElement.classList.remove("text-green-500");
+                    statusElement.classList.add("text-red-500");
+
+                    playerCountElement.textContent = "Players: 0/0";
+                }
+            })
+            .catch(err => {
+                console.error("Gagal mengambil data server:", err);
+                statusElement.textContent = "Error";
+                statusElement.classList.remove("text-green-500");
+                statusElement.classList.add("text-red-500");
+
+                playerCountElement.textContent = "Players: -";
+            });
+    }
+
+    updateStatus();
+    setInterval(updateStatus, 30000);
 	</script>
 </body>
 </html>
