@@ -146,6 +146,23 @@
         .feature-icon {
             filter: drop-shadow(0 0 8px rgba(255,140,0,0.7));
         }
+		
+		    /* Tambahkan transition untuk mobile menu */
+		#mobile-menu {
+			transition: all 0.3s ease;
+		}
+    
+			/* Style untuk mobile menu items */
+		#mobile-menu a {
+			padding: 8px 0;
+			border-bottom: 1px solid rgba(255, 140, 0, 0.1);
+		}
+    
+		/* Efek hover untuk mobile menu */
+		#mobile-menu a:hover {
+			color: #ff8c00;
+			padding-left: 8px;
+		}
     </style>
 </head>
 <body class="font-body">
@@ -157,13 +174,31 @@
                 <img src="media/favicon.png" alt="Bakwan Jagung Logo" class="h-12 w-12">
                 <h1 class="text-2xl font-heading font-bold bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">BAKWAN JAGUNG</h1>
             </div>
+            
+            <!-- Desktop Navigation (hidden on mobile) -->
             <nav class="hidden md:flex space-x-8">
-                <a href="https://web.bakwanjagung.my.id" class="nav-item text-white hover:text-primary transition">Home</a>
+                <a href="https://web.bakwanjagung.my.id/" class="nav-item text-white hover:text-primary transition">Home</a>
                 <a href="#ranks" class="nav-item text-white hover:text-primary transition">Ranks</a>
                 <a href="#permissions" class="nav-item text-white hover:text-primary transition">Permissions</a>
                 <a href="#faq" class="nav-item text-white hover:text-primary transition">FAQ</a>
             </nav>
-            <a href="https://web.bakwanjagung.my.id/#connect" class="btn-primary px-6 py-2 rounded-full font-bold text-white hover:text-secondary-dark">JOIN SERVER</a>
+            
+            <!-- Mobile menu button (hidden on desktop) -->
+            <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+        
+        <!-- Mobile Navigation (hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden py-4">
+            <div class="flex flex-col space-y-4">
+                <a href="https://web.bakwanjagung.my.id/" class="nav-item text-white hover:text-primary transition">Home</a>
+                <a href="#ranks" class="nav-item text-white hover:text-primary transition">Ranks</a>
+                <a href="#permissions" class="nav-item text-white hover:text-primary transition">Permissions</a>
+                <a href="#faq" class="nav-item text-white hover:text-primary transition">FAQ</a>
+            </div>
         </div>
     </div>
 </header>
@@ -879,7 +914,21 @@
             });
         }
     });
+	    // Mobile menu toggle
+    document.getElementById('mobile-menu-button').addEventListener('click', function() {
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenu.classList.toggle('hidden');
+        
+        // Smooth scroll untuk mobile menu
+        document.querySelectorAll('#mobile-menu a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                mobileMenu.classList.add('hidden');
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    });
     </script>
 </body>
 </html>
-
