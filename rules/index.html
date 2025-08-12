@@ -4,36 +4,156 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bakwan Jagung - Rules</title>
-    <meta name="description" content="Offcial website Rules for Bakwan Jagung Minecraft server.">
+    <meta name="description" content="Official website Rules for Bakwan Jagung Minecraft server.">
     <meta name="keywords" content="Bakwan Jagung Minecraft Server Rules,Rules Server Minecraft Bakwan Jagung,bakwanjagung.my.id server minecraft, Bakwanjagung survival smp indonesia,Server Minecraft Indonesia Bakwanjagung">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://web.bakwanjagung.my.id/rules/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://web.bakwanjagung.my.id/rules/">
+    <meta property="og:title" content="Bakwan Jagung Minecraft Server Rules">
+    <meta property="og:description" content="Official rules for Bakwan Jagung Minecraft server.">
+    <meta property="og:image" content="https://web.bakwanjagung.my.id/media/server-banner.jpg">
+    <meta property="og:site_name" content="Bakwan Jagung">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://web.bakwanjagung.my.id/rules/">
+    <meta property="twitter:title" content="Bakwan Jagung Minecraft Server Rules">
+    <meta property="twitter:description" content="Official rules for Bakwan Jagung Minecraft server.">
+    <meta property="twitter:image" content="https://web.bakwanjagung.my.id/media/server-banner.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="../media/favicon.png" type="image/png">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="icon" type="image/png" href="media/favicon.png">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            light: '#ffb347',
+                            DEFAULT: '#ff8c00',
+                            dark: '#ff7b00',
+                        },
+                        secondary: {
+                            light: '#333333',
+                            DEFAULT: '#222222',
+                            dark: '#111111',
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['Orbitron', 'sans-serif'],
+                        body: ['Rajdhani', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
-            --primary: #ff6d00;
-            --primary-dark: #e65100;
-            --secondary: #212121;
-        }
-        
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #121212;
-            color: #e0e0e0;
+            background: linear-gradient(135deg, #111 0%, #222 100%);
+            color: #fff;
+            min-height: 100vh;
             overflow-x: hidden;
         }
         
-        .glow {
-            text-shadow: 0 0 10px rgba(255, 109, 0, 0.7);
-        }
-        
-        .glow-box {
-            box-shadow: 0 0 15px rgba(255, 109, 0, 0.5);
-        }
-        
-        .rule-card {
+        .card {
+            background: linear-gradient(145deg, rgba(40,40,40,0.8) 0%, rgba(30,30,30,0.9) 100%);
+            border-top: 2px solid rgba(255,140,0,0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             transition: all 0.3s ease;
-            border-left: 4px solid var(--primary);
+        }
+        
+        .card:hover {
+            box-shadow: 0 15px 35px rgba(255,140,0,0.2);
+            transform: translateY(-5px);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(to right, #ff8c00 0%, #ffb347 100%);
+            box-shadow: 0 4px 15px rgba(255,140,0,0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            box-shadow: 0 6px 20px rgba(255,140,0,0.6);
+        }
+        
+        .nav-item {
+            position: relative;
+        }
+        
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(to right, #ff8c00, #ffb347);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-item:hover::after {
+            width: 100%;
+        }
+        
+        .glow-effect {
+            animation: glow 2s infinite alternate;
+        }
+        
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 10px rgba(255,140,0,0.5);
+            }
+            to {
+                box-shadow: 0 0 20px rgba(255,140,0,0.8), 0 0 30px rgba(255,140,0,0.3);
+            }
+        }
+        
+        .hero-overlay {
+            background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.3)),
+                        url('../media/server-banner.jpg') no-repeat center center/cover;
+        }
+        
+        .feature-icon {
+            filter: drop-shadow(0 0 8px rgba(255,140,0,0.7));
+        }
+        
+        .active-link {
+            color: #ff8c00 !important;
+        }
+        
+        .accordion-item {
+            border: 1px solid rgba(255,140,0,0.5);
+            border-radius: 0.5rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .accordion-btn {
+            border: none;
+        }
+
+        .accordion-content {
+            border-top: 1px solid rgba(255,140,0,0.5);
+        }
+
+        .accordion-item[aria-expanded="true"] {
+            border-color: #ff8c00;
+        }
+        
+        .active {
+            background-color: #ff8c00 !important;
+            color: white;
         }
         
         .punishment-title {
@@ -42,21 +162,8 @@
         }
         
         .ban-box {
-            border-left: 4px solid var(--primary);
+            border-left: 4px solid #ff8c00;
             padding-left: 12px;
-        }
-        
-        .rule-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(255, 109, 0, 0.2);
-        }
-        
-        .tab-active {
-            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
-        }
-        
-        .hexagon {
-            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
         }
         
         @keyframes float {
@@ -67,333 +174,272 @@
         .floating {
             animation: float 6s ease-in-out infinite;
         }
-		.accordion-item {
-			border: 1px solid rgba(255, 109, 0, 0.5); /* Add a border */
-			border-radius: 0.5rem; /* Optional: round the corners */
-			transition: border-color 0.3s ease; /* Smooth transition for border color */
-		}
-
-		.accordion-btn {
-			border: none; /* Remove border from button */
-		}
-
-		.accordion-content {
-			border-top: 1px solid rgba(255, 109, 0, 0.5); /* Optional: add a border on top of the content */
-		}
-
-		/* Change border color when expanded */
-		.accordion-item[aria-expanded="true"] {
-			border-color: var(--primary); /* Change border color when expanded */
-		}
-		.active {
-			background-color: var(--primary) !important; /* Use the primary color for active state */
-			color: white; /* Ensure text is white for better contrast */
-		}
-
+        
+        .hexagon {
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        }
     </style>
 </head>
-<body>
-    <!-- Navigation -->
-    <nav class="bg-gray-900 bg-opacity-80 backdrop-blur-md fixed w-full z-50 border-b border-orange-900">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <div class="flex items-center">
-                    <div class="flex-shrink-0 flex items-center">
-                        <div class="circle bg-gray-900 bg-opacity-80 backdrop-blur-md w-10 h-10 flex items-center justify-center">
-                        <img src="media/favicon.png" alt="Bakwan Jagung Logo"
-                            <i class="fas fa-cubes text-white"></i>
-                        </div>
-                        <span class="ml-3 text-white text-xl font-bold glow">Bakwan <span class="text-orange-500">Jagung</span></span>
-                    </div>
-                </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-4">
-                        <a href="https://web.bakwanjagung.my.id/" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700">Home</a>
-                        <a href="#rules" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700">Rules</a>
-                        <a href="#faq" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700">FAQ</a>
-                        <a href="#contact" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700">Contact</a>
-                    </div>
-                </div>
-                <div class="md:hidden">
-                    <button id="mobile-menu-button" class="text-gray-300 hover:text-white focus:outline-none">
-                        <i class="fas fa-bars h-6 w-6"></i>
-                    </button>
-                </div>
+<body class="font-body">
+<!-- Header Section -->
+<header class="border-b border-orange-900/30 sticky top-0 z-50 bg-secondary-dark/90 backdrop-blur-md">
+    <div class="container mx-auto px-6 py-4">
+        <div class="flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <img src="media/favicon.png" alt="Bakwan Jagung Logo" class="h-12 w-12">
+                <span class="text-2xl font-heading font-bold bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">BAKWAN JAGUNG</span>
             </div>
-        </div>
-        
-        <!-- Mobile menu -->
-        <div id="mobile-menu" class="md:hidden hidden">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="https://web.bakwanjagung.my.id/" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Home</a>
-                <a href="#rules" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Rules</a>
-                <a href="#faq" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">FAQ</a>
-                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Contact</a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="home">
-    <div class="relative pt-24 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-900 to-black">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 mb-10 md:mb-0">
-                    <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-6">
-                        <span class="block">Server Rules</span>
-                        <span class="block text-orange-500 glow">Bakwan Jagung</span>
-                    </h1>
-                    <p class="text-lg text-gray-300 mb-8">
-                        Complete guide to maintain a fair and enjoyable gaming experience for all players on our Minecraft server. Follow the rules to avoid penalties.
-                    </p>
-                    <div class="flex space-x-4">
-                        <a href="#rules" class="px-6 py-3 bg-orange-600 text-white font-medium rounded-md hover:bg-orange-700 transition duration-300 flex items-center">
-                            <i class="fas fa-scroll mr-2"></i> View Rules
-                        </a>
-                        <a href="https://discord.bakwanjagung.my.id/" class="px-6 py-3 border border-orange-600 text-orange-400 font-medium rounded-md hover:bg-orange-900 hover:bg-opacity-30 transition duration-300 flex items-center">
-                            <i class="fab fa-discord mr-2"></i> Join Discord
-                        </a>
-                    </div>
-                </div>
-                <div class="md:w-1/2 flex justify-center">
-                    <div class="relative w-full max-w-md">
-                        <img src="media/favicon.png" alt="Bakwan Jagung Logo" class="rounded-lg w-full floating">
-                        <div class="absolute -bottom-5 -right-5 bg-orange-600 w-20 h-20 rounded-full flex items-center justify-center glow-box">
-                            <i class="fas fa-shield-alt text-white text-2xl"></i>
-                        </div>
-                    </div>
-                </div>
+            <div class="flex items-center space-x-6">
+                <!-- Desktop Home Button - Right Aligned with House Icon -->
+                <a href="https://web.bakwanjagung.my.id/" class="hidden md:flex items-center text-white hover:text-primary transition">
+                    <i class="fas fa-home text-xl mr-1"></i>
+                    <span></span>
+                </a>
+                
+                <!-- Mobile Home Button - Icon Only -->
+                <a href="https://web.bakwanjagung.my.id/" class="md:hidden text-white hover:text-primary transition">
+                    <i class="fas fa-home text-2xl"></i>
+                </a>
             </div>
         </div>
     </div>
+</header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-overlay min-h-[60vh] flex items-center">
+        <div class="container mx-auto px-6 py-24 relative z-10">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-4xl md:text-6xl font-heading font-bold mb-6 bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">
+                    SERVER RULES
+                </h2>
+                <p class="text-xl md:text-2xl text-gray-300 mb-8">
+                    Complete guide to maintain a fair and enjoyable gaming experience for all players
+                </p>
+                
+                <div class="flex flex-col sm:flex-row justify-center gap-4 mb-4">
+                    <a href="#rules" class="btn-primary px-8 py-3 rounded-full font-bold text-white hover:text-secondary-dark text-center">
+                        VIEW RULES
+                    </a>
+                    <a href="#faq" class="px-8 py-3 rounded-full font-bold border-2 border-primary text-primary hover:bg-primary/10 text-center">
+                        VIEW FAQ
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Rules Section -->
-    <section id="rules" class="py-16 px-4 sm:px-6 lg:px-8 bg-gray-900">
-        <div class="max-w-7xl mx-auto">
+    <section id="rules" class="py-16 bg-gradient-to-b from-secondary-dark to-secondary">
+        <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-3xl font-extrabold text-white sm:text-4xl">
-                    <span class="block">Server Rules</span>
-                    <span class="block text-orange-500 text-2xl mt-2">Please read carefully</span>
-                </h2>
+                <h2 class="text-3xl md:text-5xl font-heading font-bold mb-4 bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">SERVER RULES</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary to-primary-light mx-auto"></div>
+                <p class="max-w-2xl mx-auto mt-6 text-gray-400">Please read carefully and follow these rules to avoid penalties</p>
             </div>
             
-            <div class="mb-8 flex justify-center">
-                <div class="inline-flex rounded-md shadow-sm">
-                    <button id="main-rules-tab" data-tab="main-rules" class="tab-active px-4 py-2 text-sm font-medium rounded-l-lg border border-orange-600">
-                        Main Rules
-                    </button>
-                </div>
-            </div>
-            
-            <!-- Rules Content -->
-            <div id="main-rules-content" class="rules-content">
-                <!-- Catalog and Notes Side-by-Side -->
-                <div class="grid md:grid-cols-2 gap-6 mb-8">
-                    <div class="rule-card bg-gray-800 p-6 rounded-lg flex flex-col">
-                        <div class="flex items-center mb-4">
-                            <div class="bg-orange-500 p-2 rounded-full mr-4">
-                                <i class="fas fa-gavel text-white"></i>
-                            </div>
-                            <h3 class="punishment-title text-orange-500">Punishment Catalog</h3>
+            <!-- Catalog and Notes Side-by-Side -->
+            <div class="grid md:grid-cols-2 gap-6 mb-8">
+                <div class="card p-6 rounded-xl flex flex-col">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-primary/20 p-3 rounded-full mr-4">
+                            <i class="fas fa-gavel text-primary feature-icon"></i>
                         </div>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-                            <div class="bg-gray-700 p-4 rounded-lg ban-box w-full">
-                                <h4 class="font-bold text-white mb-2 flex items-center">
-                                    <i class="fas fa-comment-dots mr-2 text-orange-500"></i>
-                                    Warn
-                                </h4>
-                                <p class="text-gray-300">Verbal warning (via chat or DM)</p>
-                            </div>
-                            <div class="bg-gray-700 p-4 rounded-lg border-l-4 border-orange-500">
-                                <h4 class="font-bold text-white mb-2 flex items-center">
-                                    <i class="fas fa-comment-slash mr-2 text-orange-500"></i>
-                                    Mute
-                                </h4>
-                                <p class="text-gray-300">Player cannot chat</p>
-                            </div>
-                            <div class="bg-gray-700 p-2 rounded-lg border-l-4 border-orange-500">
-                                <h4 class="font-bold text-white mb-2 flex items-center">
-                                    <i class="fas fa-ban mr-2 text-orange-500"></i>
-                                    Ban
-                                </h4>
-                                <p class="text-gray-300">Temporary or permanent server ban</p>
-                            </div>
+                        <h3 class="punishment-title text-primary">Punishment Catalog</h3>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                        <div class="bg-secondary p-4 rounded-lg ban-box w-full">
+                            <h4 class="font-bold text-white mb-2 flex items-center">
+                                <i class="fas fa-comment-dots mr-2 text-primary"></i>
+                                Warn
+                            </h4>
+                            <p class="text-gray-300">Verbal warning (via chat or DM)</p>
+                        </div>
+                        <div class="bg-secondary p-4 rounded-lg ban-box">
+                            <h4 class="font-bold text-white mb-2 flex items-center">
+                                <i class="fas fa-comment-slash mr-2 text-primary"></i>
+                                Mute
+                            </h4>
+                            <p class="text-gray-300">Player cannot chat</p>
+                        </div>
+                        <div class="bg-secondary p-4 rounded-lg ban-box">
+                            <h4 class="font-bold text-white mb-2 flex items-center">
+                                <i class="fas fa-ban mr-2 text-primary"></i>
+                                Ban
+                            </h4>
+                            <p class="text-gray-300">Temporary or permanent server ban</p>
                         </div>
                     </div>
+                </div>
 
-                    <div class="rule-card bg-gray-800 p-6 rounded-lg w-[95%] mx-auto">
-                        <div class="flex items-center mb-4">
-                            <div class="bg-orange-500 p-2 rounded-full mr-4">
-                                <i class="fas fa-exclamation-triangle text-white"></i>
-                            </div>
-                            <h3 class="punishment-title text-orange-500">Important Notes</h3>
+                <div class="card p-6 rounded-xl">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-primary/20 p-3 rounded-full mr-4">
+                            <i class="fas fa-exclamation-triangle text-primary feature-icon"></i>
                         </div>
-                        <div class="space-y-4">
-                            <div class="flex items-start">
-                                <div class="flex-shrink-0 mt-1 text-orange-500">
-                                    <i class="fas fa-arrow-up"></i>
-                                </div>
-                                <div class="ml-3">
-                                    <p class="text-gray-300">Punishments may escalate faster for severe or repeated offenses</p>
-                                </div>
+                        <h3 class="punishment-title text-primary">Important Notes</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1 text-primary">
+                                <i class="fas fa-arrow-up"></i>
                             </div>
-                            <div class="flex items-start">
-                                <div class="flex-shrink-0 mt-1 text-orange-500">
-                                    <i class="fas fa-user-slash"></i>
-                                </div>
-                                <div class="ml-3">
-                                    <p class="text-gray-300">Ban evasion = Immediate Permanent Ban</p>
-                                </div>
+                            <div class="ml-3">
+                                <p class="text-gray-300">Punishments may escalate faster for severe or repeated offenses</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1 text-primary">
+                                <i class="fas fa-user-slash"></i>
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-gray-300">Ban evasion = Immediate Permanent Ban</p>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
+            <!-- Rules List -->
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="card p-6 rounded-lg">
+                    <h3 class="text-xl font-heading font-bold text-white">1️⃣ No Griefing</h3>
+                    <p class="text-gray-300">Breaking, burning, or altering someone else's build without permission.</p>
+                    <ul class="list-disc ml-5 text-gray-300 mt-2 space-y-1">
+                        <li>1st Offense: 12h Ban</li>
+                        <li>2nd Offense: 7d Ban</li>
+                        <li>3rd Offense: Permanent Ban</li>
+                    </ul>
                 </div>
 
-                <!-- Rules List -->
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div class="rule-card bg-gray-800 p-6 rounded-lg">
-                        <h3 class="text-xl font-bold text-white">1️⃣ No Griefing</h3>
-                        <p class="text-gray-300">Breaking, burning, or altering someone else's build without permission.</p>
-                        <ul class="list-disc ml-5 text-gray-300">
-                            <li>1st Offense: 12h Ban</li>
-                            <li>2nd Offense: 7d Ban</li>
-                            <li>3rd Offense: Permanent Ban</li>
-                        </ul>
-                    </div>
+                <div class="card p-6 rounded-lg">
+                    <h3 class="text-xl font-heading font-bold text-white">2️⃣ No Stealing</h3>
+                    <p class="text-gray-300">Taking items from other players' chests, farms, or storage.</p>
+                    <ul class="list-disc ml-5 text-gray-300 mt-2 space-y-1">
+                        <li>1st Offense: Warn + Item Return</li>
+                        <li>2nd Offense: 3d Ban</li>
+                        <li>3rd Offense: 7d–Permanent Ban</li>
+                    </ul>
+                </div>
 
-                    <div class="rule-card bg-gray-800 p-6 rounded-lg">
-                        <h3 class="text-xl font-bold text-white">2️⃣ No Stealing</h3>
-                        <p class="text-gray-300">Taking items from other players' chests, farms, or storage.</p>
-                        <ul class="list-disc ml-5 text-gray-300">
-                            <li>1st Offense: Warn + Item Return</li>
-                            <li>2nd Offense: 3d Ban</li>
-                            <li>3rd Offense: 7d–Permanent Ban</li>
-                        </ul>
-                    </div>
+                <div class="card p-6 rounded-lg">
+                    <h3 class="text-xl font-heading font-bold text-white">3️⃣ No Hacking or Cheating</h3>
+                    <p class="text-gray-300">No X-ray, fly hacks, kill aura, auto-clickers, or unfair mods.</p>
+                    <ul class="list-disc ml-5 text-gray-300 mt-2 space-y-1">
+                        <li>1st Offense: 12h Ban</li>
+                        <li>2nd Offense: 7d Ban</li>
+                        <li>3rd Offense: Permanent Ban</li>
+                    </ul>
+                </div>
 
-                    <div class="rule-card bg-gray-800 p-6 rounded-lg">
-                        <h3 class="text-xl font-bold text-white">3️⃣ No Hacking or Cheating</h3>
-                        <p class="text-gray-300">No X-ray, fly hacks, kill aura, auto-clickers, or unfair mods.</p>
-                        <ul class="list-disc ml-5 text-gray-300">
-                            <li>1st Offense: 12h Ban</li>
-                            <li>2nd Offense: 7d Ban</li>
-                            <li>3rd Offense: Permanent Ban</li>
-                        </ul>
-                    </div>
+                <div class="card p-6 rounded-lg">
+                    <h3 class="text-xl font-heading font-bold text-white">4️⃣ Respect All Players</h3>
+                    <p class="text-gray-300">No harassment, bullying, hate speech, or targeted abuse.</p>
+                    <ul class="list-disc ml-5 text-gray-300 mt-2 space-y-1">
+                        <li>1st Offense: Warn or 1h Mute</li>
+                        <li>2nd Offense: 1d Ban</li>
+                        <li>3rd Offense: Permanent Ban</li>
+                    </ul>
+                </div>
 
-                    <div class="rule-card bg-gray-800 p-6 rounded-lg">
-                        <h3 class="text-xl font-bold text-white">4️⃣ Respect All Players</h3>
-                        <p class="text-gray-300">No harassment, bullying, hate speech, or targeted abuse.</p>
-                        <ul class="list-disc ml-5 text-gray-300">
-                            <li>1st Offense: Warn or 1h Mute</li>
-                            <li>2nd Offense: 1d Ban</li>
-                            <li>3rd Offense: Permanent Ban</li>
-                        </ul>
-                    </div>
+                <div class="card p-6 rounded-lg">
+                    <h3 class="text-xl font-heading font-bold text-white">5️⃣ No Spam or Advertising</h3>
+                    <p class="text-gray-300">No message spam, server ads, or links to other communities.</p>
+                    <ul class="list-disc ml-5 text-gray-300 mt-2 space-y-1">
+                        <li>1st Offense: Warn or 30m Mute</li>
+                        <li>2nd Offense: 1d Ban</li>
+                        <li>3rd Offense: Permanent Ban</li>
+                    </ul>
+                </div>
 
-                    <div class="rule-card bg-gray-800 p-6 rounded-lg">
-                        <h3 class="text-xl font-bold text-white">5️⃣ No Spam or Advertising</h3>
-                        <p class="text-gray-300">No message spam, server ads, or links to other communities.</p>
-                        <ul class="list-disc ml-5 text-gray-300">
-                            <li>1st Offense: Warn or 30m Mute</li>
-                            <li>2nd Offense: 1d Ban</li>
-                            <li>3rd Offense: Permanent Ban</li>
-                        </ul>
-                    </div>
+                <div class="card p-6 rounded-lg">
+                    <h3 class="text-xl font-heading font-bold text-white">6️⃣ Keep Language/Usernames Appropriate</h3>
+                    <p class="text-gray-300">No offensive names, NSFW content, or excessive profanity.</p>
+                    <ul class="list-disc ml-5 text-gray-300 mt-2 space-y-1">
+                        <li>1st Offense: Warn or 1h Mute</li>
+                        <li>2nd Offense: 1d Mute or Kick</li>
+                        <li>3rd Offense: 3d Ban</li>
+                    </ul>
+                </div>
 
-                    <div class="rule-card bg-gray-800 p-6 rounded-lg">
-                        <h3 class="text-xl font-bold text-white">6️⃣ Keep Language/Usernames Appropriate</h3>
-                        <p class="text-gray-300">No offensive names, NSFW content, or excessive profanity.</p>
-                        <ul class="list-disc ml-5 text-gray-300">
-                            <li>1st Offense: Warn or 1h Mute</li>
-                            <li>2nd Offense: 1d Mute or Kick</li>
-                            <li>3rd Offense: 3d Ban</li>
-                        </ul>
-                    </div>
-
-                    <div class="rule-card bg-gray-800 p-6 rounded-lg">
-                        <h3 class="text-xl font-bold text-white">7️⃣ No Bug Exploits / Duping</h3>
-                        <p class="text-gray-300">Abusing glitches or duplication bugs is not allowed.</p>
-                        <ul class="list-disc ml-5 text-gray-300">
-                            <li>1st Offense: 3d Ban + Rollback</li>
-                            <li>2nd Offense: 7d Ban</li>
-                            <li>3rd Offense: Permanent Ban</li>
-                        </ul>
-                    </div>
+                <div class="card p-6 rounded-lg">
+                    <h3 class="text-xl font-heading font-bold text-white">7️⃣ No Bug Exploits / Duping</h3>
+                    <p class="text-gray-300">Abusing glitches or duplication bugs is not allowed.</p>
+                    <ul class="list-disc ml-5 text-gray-300 mt-2 space-y-1">
+                        <li>1st Offense: 3d Ban + Rollback</li>
+                        <li>2nd Offense: 7d Ban</li>
+                        <li>3rd Offense: Permanent Ban</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- FAQ Section -->
-    <section id="faq" class="py-16 px-4 sm:px-6 lg:px-8 bg-gray-800">
-        <div class="max-w-7xl mx-auto">
+    <section id="faq" class="py-16 bg-secondary-dark">
+        <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-3xl font-extrabold text-white sm:text-4xl">
-                    <span class="block">Frequently Asked Questions</span>
-                    <span class="block text-orange-500 text-2xl mt-2">Find answers to common questions</span>
-                </h2>
+                <h2 class="text-3xl md:text-5xl font-heading font-bold mb-4 bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">FREQUENTLY ASKED QUESTIONS</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary to-primary-light mx-auto"></div>
+                <p class="max-w-2xl mx-auto mt-6 text-gray-400">Find answers to common questions about our rules</p>
             </div>
             
             <div class="max-w-3xl mx-auto">
-                <div class="accordion-item bg-gray-900 rounded-lg mb-4 overflow-hidden">
-                    <button class="accordion-btn flex justify-between items-center w-full px-6 py-4 text-left text-white font-medium bg-gray-800 hover:bg-gray-700 focus:outline-none">
-                        <span>How do I report a player who breaks the rules?</span>
-                        <i class="fas fa-chevron-down transition-transform"></i>
+                <div class="accordion-item mb-4 overflow-hidden">
+                    <button class="accordion-btn flex justify-between items-center w-full px-6 py-4 text-left font-medium bg-secondary hover:bg-secondary-light focus:outline-none">
+                        <span class="text-white">How do I report a player who breaks the rules?</span>
+                        <i class="fas fa-chevron-down transition-transform text-primary"></i>
                     </button>
-                    <div class="accordion-content hidden px-6 py-4 bg-gray-900">
+                    <div class="accordion-content hidden px-6 py-4 bg-secondary">
                         <p class="text-gray-300">
                             You can report a player by:
                             <ol class="list-decimal ml-5 text-gray-300 space-y-2 mt-2">
-                                <li>Using the command <code class="bg-gray-800 px-2 py-1 rounded">/report [username] [reason]</code></li>
-                                <li>Taking a screenshot/video as evidence and uploading it in the <span class="text-orange-500">#ticket</span> channel on our Discord</li>
+                                <li>Using the command <code class="bg-secondary-dark px-2 py-1 rounded">/report [username] [reason]</code></li>
+                                <li>Taking a screenshot/video as evidence and uploading it in the <span class="text-primary">#ticket</span> channel on our Discord</li>
                                 <li>Tagging online staff for important reports</li>
                             </ol>
                         </p>
                     </div>
                 </div>
                 
-                <div class="accordion-item bg-gray-900 rounded-lg mb-4 overflow-hidden">
-                    <button class="accordion-btn flex justify-between items-center w-full px-6 py-4 text-left text-white font-medium bg-gray-800 hover:bg-gray-700 focus:outline-none">
-                        <span>What happens if I accidentally break the rules?</span>
-                        <i class="fas fa-chevron-down transition-transform"></i>
+                <div class="accordion-item mb-4 overflow-hidden">
+                    <button class="accordion-btn flex justify-between items-center w-full px-6 py-4 text-left font-medium bg-secondary hover:bg-secondary-light focus:outline-none">
+                        <span class="text-white">What happens if I accidentally break the rules?</span>
+                        <i class="fas fa-chevron-down transition-transform text-primary"></i>
                     </button>
-                    <div class="accordion-content hidden px-6 py-4 bg-gray-900">
+                    <div class="accordion-content hidden px-6 py-4 bg-secondary">
                         <p class="text-gray-300">
                             For minor first-time offenses, a warning is usually given. If it was truly unintentional and you are cooperative, staff will help explain the rules in more detail. However, for major offenses like hacking, there is no tolerance even if it was unintentional.
                         </p>
                     </div>
                 </div>
                 
-                <div class="accordion-item bg-gray-900 rounded-lg mb-4 overflow-hidden">
-                    <button class="accordion-btn flex justify-between items-center w-full px-6 py-4 text-left text-white font-medium bg-gray-800 hover:bg-gray-700 focus:outline-none">
-                        <span>How long are ban/mute punishments usually given?</span>
-                        <i class="fas fa-chevron-down transition-transform"></i>
+                <div class="accordion-item mb-4 overflow-hidden">
+                    <button class="accordion-btn flex justify-between items-center w-full px-6 py-4 text-left font-medium bg-secondary hover:bg-secondary-light focus:outline-none">
+                        <span class="text-white">How long are ban/mute punishments usually given?</span>
+                        <i class="fas fa-chevron-down transition-transform text-primary"></i>
                     </button>
-                    <div class="accordion-content hidden px-6 py-4 bg-gray-900">
+                    <div class="accordion-content hidden px-6 py-4 bg-secondary">
                         <p class="text-gray-300">
                             The duration of punishments varies depending on the severity of the offense:
                             <ul class="list-disc ml-5 text-gray-300 space-y-2 mt-2">
-                                <li><span class="text-orange-500">Mute</span>: 1 hour to 7 days</li>
-                                <li><span class="text-orange-500">Temporary Ban</span>: 1 day to 6 month</li>
-                                <li><span class="text-orange-500">Permanent Ban</span>: For severe offenses such as hacking, severe griefing, or extreme toxic behavior</li>
+                                <li><span class="text-primary">Mute</span>: 1 hour to 7 days</li>
+                                <li><span class="text-primary">Temporary Ban</span>: 1 day to 6 month</li>
+                                <li><span class="text-primary">Permanent Ban</span>: For severe offenses such as hacking, severe griefing, or extreme toxic behavior</li>
                             </ul>
                         </p>
                     </div>
                 </div>
                 
-                <div class="accordion-item bg-gray-900 rounded-lg mb-4 overflow-hidden">
-                    <button class="accordion-btn flex justify-between items-center w-full px-6 py-4 text-left text-white font-medium bg-gray-800 hover:bg-gray-700 focus:outline-none">
-                        <span>How can I find out about the latest rule updates?</span>
-                        <i class="fas fa-chevron-down transition-transform"></i>
+                <div class="accordion-item mb-4 overflow-hidden">
+                    <button class="accordion-btn flex justify-between items-center w-full px-6 py-4 text-left font-medium bg-secondary hover:bg-secondary-light focus:outline-none">
+                        <span class="text-white">How can I find out about the latest rule updates?</span>
+                        <i class="fas fa-chevron-down transition-transform text-primary"></i>
                     </button>
-                    <div class="accordion-content hidden px-6 py-4 bg-gray-900">
+                    <div class="accordion-content hidden px-6 py-4 bg-secondary">
                         <p class="text-gray-300">
                             All rule updates will be announced through:
                             <ul class="list-disc ml-5 text-gray-300 space-y-2 mt-2">
-                                <li>In the <span class="text-orange-500">#peraturan</span> channel on the Discord server</li>
+                                <li>In the <span class="text-primary">#peraturan</span> channel on the Discord server</li>
                                 <li>This website page which will always be updated</li>
                             </ul>
                             It is recommended to check the rules at least once a week.
@@ -405,38 +451,37 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-16 px-4 sm:px-6 lg:px-8 bg-gray-900">
-        <div class="max-w-7xl mx-auto">
+    <section id="contact" class="py-16 bg-gradient-to-b from-secondary-dark to-secondary">
+        <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-3xl font-extrabold text-white sm:text-4xl">
-                    <span class="block">Need Help?</span>
-                    <span class="block text-orange-500 text-2xl mt-2">Contact our staff through the following channels</span>
-                </h2>
+                <h2 class="text-3xl md:text-5xl font-heading font-bold mb-4 bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">NEED HELP?</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary to-primary-light mx-auto"></div>
+                <p class="max-w-2xl mx-auto mt-6 text-gray-400">Contact our staff through the following channels</p>
             </div>
             
             <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <div class="bg-gray-800 p-8 rounded-lg text-center glow-box">
-                    <div class="bg-orange-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fas fa-headset text-white text-2xl"></i>
+                <div class="card p-8 rounded-lg text-center">
+                    <div class="bg-primary/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-headset text-primary text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-2">In-Game Support</h3>
+                    <h3 class="text-xl font-heading font-bold text-white mb-2">In-Game Support</h3>
                     <p class="text-gray-300 mb-4">
-                        Use the command <span class="text-orange-500">/helpop</span> in-game for direct assistance from online staff.
+                        Use the command <span class="text-primary">/helpop</span> in-game for direct assistance from online staff.
                     </p>
-                    <a href="https://web.bakwanjagung.my.id/#connect" class="text-orange-500 hover:text-orange-400 flex items-center justify-center">
+                    <a href="https://web.bakwanjagung.my.id/#connect" class="text-primary hover:text-primary-light flex items-center justify-center">
                         <i class="fas fa-gamepad mr-2"></i> Join the Server
                     </a>
                 </div>
                 
-                <div class="bg-gray-800 p-8 rounded-lg text-center glow-box">
-                    <div class="bg-orange-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fab fa-discord text-white text-2xl"></i>
+                <div class="card p-8 rounded-lg text-center">
+                    <div class="bg-primary/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fab fa-discord text-primary text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-2">Discord Server</h3>
+                    <h3 class="text-xl font-heading font-bold text-white mb-2">Discord Server</h3>
                     <p class="text-gray-300 mb-4">
                         Join our Discord for faster assistance and to interact with the community.
                     </p>
-                    <a href="https://discord.bakwanjagung.my.id/" class="text-orange-500 hover:text-orange-400 flex items-center justify-center">
+                    <a href="https://discord.bakwanjagung.my.id/" class="text-primary hover:text-primary-light flex items-center justify-center">
                         <i class="fab fa-discord mr-2"></i> Join Now
                     </a>
                 </div>
@@ -445,37 +490,26 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-black py-8 px-4 sm:px-6 lg:px-8 text-center border-t border-gray-800">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex justify-center mb-6">
-                <div class="hexagon bg-orange-500 w-12 h-12 flex items-center justify-center mx-2 glow-box">
-                    <a href="https://web.bakwanjagung.my.id/#connect">
-                    <i class="fas fa-server text-white"></i>
+    <footer class="bg-black/70 py-8 border-t border-orange-900/30">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-3 mb-4 md:mb-0">
+                        <img src="media/favicon.png" alt="Bakwan Jagung Logo" class="h-10 w-10">
+                    <span class="text-xl font-heading font-bold bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">BAKWAN JAGUNG</span>
                 </div>
-                <div class="hexagon bg-orange-500 w-12 h-12 flex items-center justify-center mx-2 glow-box">
-                    <a href="https://discord.bakwanjagung.my.id/">
-                    <i class="fab fa-discord text-white"></i>
+                <div class="text-gray-500 text-sm text-center md:text-right">
+                    <p>© 2025 Bakwan Jagung Minecraft Server. All rights reserved.</p>
                 </div>
             </div>
-            <p class="text-gray-400 mb-4">
-                © 2025 Bakwan Jagung Network. All rights reserved.
-            </p>
         </div>
     </footer>
 
     <!-- Back to Top Button -->
-    <button id="back-to-top" class="fixed bottom-6 right-6 bg-orange-600 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:bg-orange-700 transition duration-300 hidden">
+    <button id="back-to-top" class="fixed bottom-6 right-6 bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:bg-primary-dark transition duration-300 hidden">
         <i class="fas fa-arrow-up"></i>
     </button>
 
     <script>
-        // Mobile Menu Toggle
-        document.getElementById('mobile-menu-button').addEventListener('click', function() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        });
-
-        // Rules Tab - Removed switching logic since we only have one tab now
 
         // Accordion Functionality
         document.querySelectorAll('.accordion-btn').forEach(button => {
@@ -486,7 +520,7 @@
                 
                 // Toggle states
                 button.setAttribute('aria-expanded', !isExpanded);
-                button.classList.toggle('bg-gray-700');
+                button.classList.toggle('bg-secondary-light');
                 content.classList.toggle('hidden');
                 
                 // Toggle icon rotation
@@ -501,28 +535,21 @@
             });
         });
 
-        // Wait for DOM to be fully loaded
-        document.addEventListener('DOMContentLoaded', function() {
-            // Back to Top Button
+        // Back to Top Button
+        window.addEventListener('scroll', () => {
             const backToTopButton = document.getElementById('back-to-top');
-            if (backToTopButton) {
-                window.addEventListener('scroll', () => {
-                    backToTopButton.classList.toggle('hidden', window.pageYOffset < 300);
-                });
-                
-                backToTopButton.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth'
-                    });
-                });
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('hidden');
+            } else {
+                backToTopButton.classList.add('hidden');
             }
-
-            // Initialize accordions with ARIA attributes
-            document.querySelectorAll('.accordion-btn').forEach(button => {
-                button.setAttribute('aria-expanded', 'false');
-                button.setAttribute('aria-controls', button.nextElementSibling.id);
+        });
+        
+        document.getElementById('back-to-top').addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
             });
         });
 
@@ -536,62 +563,25 @@
                 const targetElement = document.querySelector(targetId);
                 if (!targetElement) return;
 
-                // Close mobile menu if open
-                const mobileMenu = document.getElementById('mobile-menu');
-                if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-                    mobileMenu.classList.add('hidden');
-                }
 
                 // Smooth scroll with offset for fixed header
-                const headerHeight = document.querySelector('nav').offsetHeight;
+                const headerHeight = document.querySelector('header').offsetHeight;
                 const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
                 
                 window.scrollTo({
                     top: targetPosition,
                     behavior: 'smooth'
                 });
-				// Navigation Button Click Event
-				document.querySelectorAll('nav a').forEach(link => {
-					link.addEventListener('click', function(e) {
-						// Prevent default anchor click behavior
-						e.preventDefault();
-
-						// Remove active class from all links
-						document.querySelectorAll('nav a').forEach(btn => btn.classList.remove('active'));
-        
-						// Add active class to the clicked link
-						this.classList.add('active');
-
-						// Smooth scroll to the target section
-						const targetId = this.getAttribute('href');
-						if (targetId === '#') return;
-
-						const targetElement = document.querySelector(targetId);
-						if (!targetElement) return;
-			
-						// Close mobile menu if open
-						const mobileMenu = document.getElementById('mobile-menu');
-							if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-							mobileMenu.classList.add('hidden');
-						}
-
-						// Smooth scroll with offset for fixed header
-						const headerHeight = document.querySelector('nav').offsetHeight;
-						const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-
-						window.scrollTo({
-							top: targetPosition,
-							behavior: 'smooth'
-						});
-
-						// Update URL without jumping
-						history.pushState(null, null, targetId);
-					});
-				});
-
+                
+                // Update URL without jumping
+                history.pushState(null, null, targetId);
             });
+        });
+
+        // Initialize accordions with ARIA attributes
+        document.querySelectorAll('.accordion-btn').forEach(button => {
+            button.setAttribute('aria-expanded', 'false');
         });
     </script>
 </body>
 </html>
-
