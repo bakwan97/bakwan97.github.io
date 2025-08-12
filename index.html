@@ -4,227 +4,205 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bakwan Jagung Minecraft Server</title>
-    <meta name="description" content="Offcial website for Bakwan Jagung Minecraft server.">
-    <meta name="keywords" content="Bakwan Jagung Minecraft Server, Server Minecraft Bakwan Jagung,bakwanjagung.my.id server minecraft, Bakwanjagung survival smp indonesia,Server Minecraft Indonesia Bakwanjagung">
+    <meta name="description" content="Official website for Bakwan Jagung Minecraft server.">
+    <meta name="keywords" content="Bakwan Jagung Minecraft Server, Server Minecraft Bakwan Jagung, bakwanjagung.my.id server minecraft, Bakwanjagung survival smp indonesia, Server Minecraft Indonesia Bakwanjagung">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://web.bakwanjagung.my.id/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://web.bakwanjagung.my.id/">
+    <meta property="og:title" content="Bakwan Jagung Minecraft Server">
+    <meta property="og:description" content="Official website for Bakwan Jagung Minecraft server.">
+    <meta property="og:image" content="https://web.bakwanjagung.my.id/media/favicon.png">
+    <meta property="og:site_name" content="Bakwan Jagung">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://web.bakwanjagung.my.id/">
+    <meta property="twitter:title" content="Bakwan Jagung Minecraft Server">
+    <meta property="twitter:description" content="Official website for Bakwan Jagung Minecraft server.">
+    <meta property="twitter:image" content="https://web.bakwanjagung.my.id/media/favicon.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="media/favicon.png" type="image/png">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="icon" type="image/png" href="media/favicon.png">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            light: '#ffb347',
+                            DEFAULT: '#ff8c00',
+                            dark: '#ff7b00',
+                        },
+                        secondary: {
+                            light: '#333333',
+                            DEFAULT: '#222222',
+                            dark: '#111111',
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['Orbitron', 'sans-serif'],
+                        body: ['Rajdhani', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Poppins:wght@300;400;500;600;700&display=swap');
-        
-        :root {
-            --primary: #FF6B00;
-            --primary-dark: #E65A00;
-            --secondary: #FF9E00;
-            --dark: #1A1A1A;
-            --light: #F5F5F5;
-        }
-        
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--dark);
-            color: var(--light);
+            background: linear-gradient(135deg, #111 0%, #222 100%);
+            color: #fff;
+            min-height: 100vh;
             overflow-x: hidden;
         }
         
-        .title-font {
-            font-family: 'Orbitron', sans-serif;
-        }
-        
-        .gradient-bg {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-        }
-        
         .card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: linear-gradient(145deg, rgba(40,40,40,0.8) 0%, rgba(30,30,30,0.9) 100%);
+            border-top: 2px solid rgba(255,140,0,0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             transition: all 0.3s ease;
         }
         
         .card:hover {
+            box-shadow: 0 15px 35px rgba(255,140,0,0.2);
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(255, 107, 0, 0.3);
-            border-color: var(--primary);
         }
         
-        .glow {
-            text-shadow: 0 0 5px var(--primary), 0 0 10px var(--primary), 0 0 20px var(--primary);
+        .btn-primary {
+            background: linear-gradient(to right, #ff8c00 0%, #ffb347 100%);
+            box-shadow: 0 4px 15px rgba(255,140,0,0.4);
+            transition: all 0.3s ease;
         }
         
-        .logo-container {
-            width: 50px;
-            height: 50px;
+        .btn-primary:hover {
+            box-shadow: 0 6px 20px rgba(255,140,0,0.6);
+        }
+        
+        .nav-item {
+            position: relative;
+        }
+        
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(to right, #ff8c00, #ffb347);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-item:hover::after {
+            width: 100%;
+        }
+        
+        .glow-effect {
+            animation: glow 2s infinite alternate;
+        }
+        
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 10px rgba(255,140,0,0.5);
+            }
+            to {
+                box-shadow: 0 0 20px rgba(255,140,0,0.8), 0 0 30px rgba(255,140,0,0.3);
+            }
         }
         
         .hero-overlay {
-            position: relative;
-            background: 
-                linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.3)),
-                url('https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/e6b3ec1c-539a-469a-a5dd-9abc6417a031.png') no-repeat center 30%/cover;
-            overflow: hidden;
-        }
-        .hero-overlay::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 100%;
-            background: inherit;
-            filter: blur(8px);
-            -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.9) 100%);
-            mask-image: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.9) 100%);
-            z-index: 1;
-            mix-blend-mode: multiply;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.3)),
+                        url('media/server-banner.jpg') no-repeat center center/cover;
         }
         
-        .gallery-img {
-            height: 300px;
-            object-fit: cover;
-            transition: transform 0.3s ease;
+        .feature-icon {
+            filter: drop-shadow(0 0 8px rgba(255,140,0,0.7));
         }
-        
-        .gallery-img:hover {
-            transform: scale(1.03);
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-        .animate-pulse {
-            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
-		.active-link {
-			color: var(--primary);
-		}
     </style>
 </head>
-<body>
-    <!-- Navigation Bar -->
-    <nav class="bg-black bg-opacity-80 backdrop-filter backdrop-blur-lg fixed w-full z-50 border-b border-orange-500 border-opacity-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center">
-                    <div class="flex items-center space-x-2">
-                        <div class="logo-container rounded-full overflow-hidden">
-                            <img src="media/favicon.png" alt="Bakwan Jagung Server Logo" class="w-full h-full object-cover"/>
-                        </div>
-                        <span class="title-font text-xl text-white">Bakwan<span class="text-orange-500">Jagung</span></span>
-                    </div>
+<body class="font-body">
+    <!-- Header Section -->
+    <header class="border-b border-orange-900/30 sticky top-0 z-50 bg-secondary-dark/90 backdrop-blur-md">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <img src="media/favicon.png" alt="Bakwan Jagung Logo" class="h-12 w-12">
+                    <h1 class="text-2xl font-heading font-bold bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">BAKWAN JAGUNG</h1>
                 </div>
-                
-                <!-- Desktop Navigation -->
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="#home" class="text-gray-300 hover:text-orange-300 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">Home</a>
-                        <a href="#gallery" class="text-gray-300 hover:text-orange-300 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">Gallery</a>
-                        <a href="#features" class="text-gray-300 hover:text-orange-300 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">Features</a>
-                        <a href="#resources" class="text-gray-300 hover:text-orange-300 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">Website</a>
-                        <a href="#connect" class="text-gray-300 hover:text-orange-300 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">Connect</a>
-                    </div>
-                </div>
-
-                <!-- Mobile menu button -->
-                <div class="mr-2 flex md:hidden">
-                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none">
-                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#features" class="nav-item text-white hover:text-primary transition">Features</a>
+                    <a href="#gallery" class="nav-item text-white hover:text-primary transition">Gallery</a>
+					<a href="#website" class="nav-item text-white hover:text-primary transition">Website</a>
+                    <a href="#connect" class="nav-item text-white hover:text-primary transition">Connect</a>
+                </nav>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-white">
+                        <i class="fas fa-bars text-2xl"></i>
                     </button>
                 </div>
             </div>
-            
-            </div>
-
-        <!-- Mobile menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-black bg-opacity-90">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-orange-300">Home</a>
-                <a href="#gallery" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-orange-300">Gallery</a>
-                <a href="#features" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-orange-300">Features</a>
-                <a href="#resources" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-orange-300">Website</a>
-                <a href="#connect" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-orange-300">Connect</a>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-secondary-dark/95 py-4 px-6">
+            <div class="flex flex-col space-y-4">
+                <a href="#features" class="text-white hover:text-primary transition">Features</a>
+                <a href="#gallery" class="text-white hover:text-primary transition">Gallery</a>
+				<a href="#website" class="text-white hover:text-primary transition">Website</a>
+                <a href="#connect" class="text-white hover:text-primary transition">Connect</a>
             </div>
         </div>
-    </nav>
+    </header>
 
     <!-- Hero Section -->
-    <section id="home" class="relative pt-32 pb-24 px-4 sm:px-6 lg:px-8 min-h-screen flex items-center hero-overlay">
-        <div class="max-w-7xl mx-auto text-center relative z-10">
-            <h1 class="title-font text-4xl md:text-6xl font-bold text-white mb-6 glow">
-                Welcome to <span class="text-orange-500">Bakwan Jagung</span>
-            </h1>
-            <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
-                The most exciting Minecraft survival server with unique features and an amazing community!
-            </p>
-            
-            <div class="flex flex-col sm:flex-row justify-center gap-4 mb-4">
-                <a href="#connect" class="px-8 py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-bold rounded-lg shadow-lg hover:from-orange-600 hover:to-orange-700 transition-all duration-300 transform hover:scale-105">
-                    Join Now
-                </a>
-                <a href="#resources" class="px-8 py-3 border border-orange-500 text-orange-400 font-bold rounded-lg hover:bg-orange-500 hover:bg-opacity-10 transition-all duration-300">
-                    Server Resources
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Gallery Section -->
-    <section id="gallery" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="title-font text-3xl md:text-4xl font-bold text-white mb-4">
-                    Server <span class="text-orange-500">Gallery</span>
+    <section id="home" class="hero-overlay min-h-screen flex items-center">
+        <div class="container mx-auto px-6 py-24 relative z-10">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-4xl md:text-6xl font-heading font-bold mb-6 bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">
+                    WELCOME TO BAKWAN JAGUNG
                 </h2>
-                <p class="text-gray-400 max-w-3xl mx-auto">
-                    Explore the world of Bakwan Jagung through these highlights
+                <p class="text-xl md:text-2xl text-gray-300 mb-8">
+                    The most exciting Minecraft survival server with unique features and an amazing community!
                 </p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Photo 1 -->
-                <div class="card overflow-hidden rounded-xl">
-                    <img src="media/arena.png" alt="Bakwan Jagung Arena PVP" class="gallery-img w-full"/>
-                    <div class="p-4">
-                        <h3 class="text-xl font-bold text-white mb-2">ARENA</h3>
-                        <p class="text-gray-300">Bakwan Jagung PVP Arena.</p>
-                    </div>
-                </div>
                 
-                <!-- Photo 2 -->
-                <div class="card overflow-hidden rounded-xl">
-                    <img src="media/crates.png" alt="Bakwan Jagung Crates" class="gallery-img w-full"/>
-                    <div class="p-4">
-                        <h3 class="text-xl font-bold text-white mb-2">Crates</h3>
-                        <p class="text-gray-300">Test your luck by opening the Crates here</p>
-                    </div>
+                <div class="flex flex-col sm:flex-row justify-center gap-4 mb-4">
+                    <a href="#connect" class="btn-primary px-8 py-3 rounded-full font-bold text-white hover:text-secondary-dark text-center">
+                        JOIN NOW
+                    </a>
+                    <a href="#features" class="px-8 py-3 rounded-full font-bold border-2 border-primary text-primary hover:bg-primary/10 text-center">
+                        SERVER FEATURES
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Features Section -->
-    <section id="features" class="py-20 px-4 sm:px-6 lg:px-8 bg-black">
-        <div class="max-w-7xl mx-auto">
+    <section id="features" class="py-16 bg-gradient-to-b from-secondary-dark to-secondary">
+        <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="title-font text-3xl md:text-4xl font-bold text-white mb-4">
-                    Server <span class="text-orange-500">Features</span>
-                </h2>
-                <p class="text-gray-400 max-w-3xl mx-auto">
-                    Bakwan Jagung offers unique features that set us apart
-                </p>
+                <h2 class="text-3xl md:text-5xl font-heading font-bold mb-4 bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">SERVER FEATURES</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary to-primary-light mx-auto"></div>
+                <p class="max-w-2xl mx-auto mt-6 text-gray-400">Bakwan Jagung offers unique features that set us apart</p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="card p-6 rounded-xl">
                     <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-full bg-orange-500 bg-opacity-20 flex items-center justify-center mr-4">
-                            <i class="fas fa-shield-alt text-orange-500 text-xl"></i>
+                        <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mr-4">
+                            <i class="fas fa-shield-alt text-primary feature-icon text-xl"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-white">Advanced Protection</h3>
+                        <h3 class="text-xl font-heading font-bold">Advanced Protection</h3>
                     </div>
                     <p class="text-gray-300">
                         Our systems keep your builds safe with land claiming and anti-grief measures.
@@ -233,10 +211,10 @@
                 
                 <div class="card p-6 rounded-xl">
                     <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-full bg-orange-500 bg-opacity-20 flex items-center justify-center mr-4">
-                            <i class="fas fa-coins text-orange-500 text-xl"></i>
+                        <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mr-4">
+                            <i class="fas fa-coins text-primary feature-icon text-xl"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-white">Economy System</h3>
+                        <h3 class="text-xl font-heading font-bold">Economy System</h3>
                     </div>
                     <p class="text-gray-300">
                         Earn money through various activities and trade with other players.
@@ -245,64 +223,87 @@
                 
                 <div class="card p-6 rounded-xl">
                     <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-full bg-orange-500 bg-opacity-20 flex items-center justify-center mr-4">
-                            <i class="fas fa-gamepad text-orange-500 text-xl"></i>
+                        <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mr-4">
+                            <i class="fas fa-gamepad text-primary feature-icon text-xl"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-white">Custom Enchantments</h3>
+                        <h3 class="text-xl font-heading font-bold">Custom Enchantments</h3>
                     </div>
                     <p class="text-gray-300">
-                        Enjoy our exclusive Enchantment with unique mechanics
+                        Enjoy our exclusive Enchantment with unique mechanics.
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Resources Section -->
-    <section id="resources" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900">
-        <div class="max-w-7xl mx-auto">
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-16 bg-secondary-dark">
+        <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="title-font text-3xl md:text-4xl font-bold text-white mb-4">
-                    Server <span class="text-orange-500">Resources</span>
-                </h2>
-                <p class="text-gray-400 max-w-3xl mx-auto">
-                    Quick access to all important server resources
-                </p>
+                <h2 class="text-3xl md:text-5xl font-heading font-bold mb-4 bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">SERVER GALLERY</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary to-primary-light mx-auto"></div>
+                <p class="max-w-2xl mx-auto mt-6 text-gray-400">Explore the world of Bakwan Jagung through these highlights</p>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Store Link -->
-                <a href="store/" target="_blank" class="card p-6 rounded-xl text-center hover:border-orange-500 transition-all duration-300">
-                    <div class="w-16 h-16 mx-auto bg-orange-500 bg-opacity-20 rounded-full flex items-center justify-center mb-4">
-                        <i class="fas fa-store text-orange-500 text-2xl"></i>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="card overflow-hidden rounded-xl">
+                    <img src="media/arena.png" alt="Bakwan Jagung Arena PVP" class="w-full h-64 object-cover transition-transform duration-300 hover:scale-105"/>
+                    <div class="p-4">
+                        <h3 class="text-xl font-heading font-bold text-white mb-2">ARENA</h3>
+                        <p class="text-gray-300">Bakwan Jagung PVP Arena.</p>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-2">Store</h3>
+                </div>
+                
+                <div class="card overflow-hidden rounded-xl">
+                    <img src="media/crates.png" alt="Bakwan Jagung Crates" class="w-full h-64 object-cover transition-transform duration-300 hover:scale-105"/>
+                    <div class="p-4">
+                        <h3 class="text-xl font-heading font-bold text-white mb-2">Crates</h3>
+                        <p class="text-gray-300">Test your luck by opening the Crates here</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section id="website" class="py-16 bg-gradient-to-b from-secondary-dark to-secondary">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-heading font-bold mb-4 bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">SERVER RESOURCES</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary to-primary-light mx-auto"></div>
+                <p class="max-w-2xl mx-auto mt-6 text-gray-400">Quick access to all important server resources</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <a href="store/" class="card p-6 rounded-xl text-center hover:border-primary transition-all duration-300">
+                    <div class="w-16 h-16 mx-auto bg-primary/20 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-store text-primary feature-icon text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold text-white mb-2">Store</h3>
                     <p class="text-gray-300">Purchase ranks, and more to support the server</p>
-                    <div class="mt-4 text-orange-400 text-sm font-medium">
+                    <div class="mt-4 text-primary text-sm font-medium">
                         Click to visit store <i class="fas fa-external-link-alt ml-1"></i>
                     </div>
                 </a>
                 
-                <!-- Vote Link -->
-                <a href="vote/" target="_blank" class="card p-6 rounded-xl text-center hover:border-orange-500 transition-all duration-300">
-                    <div class="w-16 h-16 mx-auto bg-orange-500 bg-opacity-20 rounded-full flex items-center justify-center mb-4">
-                        <i class="fas fa-thumbs-up text-orange-500 text-2xl"></i>
+                <a href="vote/" class="card p-6 rounded-xl text-center hover:border-primary transition-all duration-300">
+                    <div class="w-16 h-16 mx-auto bg-primary/20 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-thumbs-up text-primary feature-icon text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-2">Vote</h3>
+                    <h3 class="text-xl font-heading font-bold text-white mb-2">Vote</h3>
                     <p class="text-gray-300">Vote for our server to receive awesome rewards</p>
-                    <div class="mt-4 text-orange-400 text-sm font-medium">
+                    <div class="mt-4 text-primary text-sm font-medium">
                         Click to vote <i class="fas fa-external-link-alt ml-1"></i>
                     </div>
                 </a>
                 
-                <!-- Rules Link -->
-                <a href="rules/" target="_blank" class="card p-6 rounded-xl text-center hover:border-orange-500 transition-all duration-300">
-                    <div class="w-16 h-16 mx-auto bg-orange-500 bg-opacity-20 rounded-full flex items-center justify-center mb-4">
-                        <i class="fas fa-book text-orange-500 text-2xl"></i>
+                <a href="rules/" class="card p-6 rounded-xl text-center hover:border-primary transition-all duration-300">
+                    <div class="w-16 h-16 mx-auto bg-primary/20 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-book text-primary feature-icon text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-2">Rules</h3>
-                    <p class="text-gray-300">view our server rules and please agree to them</p>
-                    <div class="mt-4 text-orange-400 text-sm font-medium">
+                    <h3 class="text-xl font-heading font-bold text-white mb-2">Rules</h3>
+                    <p class="text-gray-300">View our server rules and please agree to them</p>
+                    <div class="mt-4 text-primary text-sm font-medium">
                         Click to view rules <i class="fas fa-external-link-alt ml-1"></i>
                     </div>
                 </a>
@@ -311,45 +312,42 @@
     </section>
 
     <!-- Connect Section -->
-    <section id="connect" class="py-20 px-4 sm:px-6 lg:px-8 bg-black">
-        <div class="max-w-7xl mx-auto">
+    <section id="connect" class="py-16 bg-secondary-dark">
+        <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="title-font text-3xl md:text-4xl font-bold text-white mb-4">
-                    How to <span class="text-orange-500">Connect</span>
-                </h2>
-                <p class="text-gray-400 max-w-3xl mx-auto">
-                    Join our server today and become part of the Bakwan Jagung community!
-                </p>
+                <h2 class="text-3xl md:text-5xl font-heading font-bold mb-4 bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">HOW TO CONNECT</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary to-primary-light mx-auto"></div>
+                <p class="max-w-2xl mx-auto mt-6 text-gray-400">Join our server today and become part of the Bakwan Jagung community!</p>
             </div>
             
             <div class="max-w-3xl mx-auto card p-8 rounded-xl">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div>
-                        <h3 class="text-xl font-bold text-white mb-4">Server Information</h3>
+                        <h3 class="text-xl font-heading font-bold text-white mb-4">Server Information</h3>
                         <div class="space-y-4">
                             <div class="flex items-start">
-                                <i class="fas fa-server text-orange-500 mt-1 mr-3"></i>
+                                <i class="fas fa-server text-primary mt-1 mr-3"></i>
                                 <div>
                                     <p class="text-gray-400">Server IP:</p>
-                                    <p class="text-white font-mono">bakwanjagung.my.id<br>Port: 19132</br></p>
+                                    <p class="text-white font-mono">bakwanjagung.my.id <br>Port: 19132</br></p>
                                 </div>
                             </div>
                             <div class="flex items-start">
-                                <i class="fas fa-portrait text-orange-500 mt-1 mr-3"></i>
+                                <i class="fas fa-portrait text-primary mt-1 mr-3"></i>
                                 <div>
                                     <p class="text-gray-400">Version:</p>
                                     <p class="text-white">1.20.1 - Newest</p>
                                 </div>
                             </div>
                             <div class="flex items-start">
-                                <i class="fas fa-circle text-orange-500 mt-1 mr-3 text-xs"></i>
+                                <i class="fas fa-circle text-primary mt-1 mr-3 text-xs"></i>
                                 <div>
                                     <p class="text-gray-400">Status:</p>
                                     <div class="mt-1 flex items-center">
-										<div id="connect" class="flex items-center space-x-4 text-white transition-colors duration-500">
-										<span id="server-status">Loading...</span>
-										<span id="player-count" class="text-sm text-gray-300">Loading...</span>
-										</div>
+                                        <div id="connect" class="flex items-center space-x-4 text-white transition-colors duration-500">
+                                            <span id="server-status">Loading...</span>
+                                            <span id="player-count" class="text-sm text-gray-300">Loading...</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -357,14 +355,14 @@
                     </div>
                     
                     <div>
-                        <h3 class="text-xl font-bold text-white mb-4">Social Media</h3>
+                        <h3 class="text-xl font-heading font-bold text-white mb-4">Social Media</h3>
                         <div class="space-y-4">
-                            <a href="https://discord.bakwanjagung.my.id/" class="flex items-center text-gray-300 hover:text-orange-400 transition-colors duration-200">
-                                <i class="fab fa-discord text-orange-500 w-6 mr-3 text-center"></i>
+                            <a href="https://discord.bakwanjagung.my.id/" class="flex items-center text-gray-300 hover:text-primary transition-colors duration-200">
+                                <i class="fab fa-discord text-primary w-6 mr-3 text-center"></i>
                                 <span>Join our Discord</span>
                             </a>
-                            <a href="https://community.bakwanjagung.my.id/" class="flex items-center text-gray-300 hover:text-orange-400 transition-colors duration-200">
-                                <i class="fab fa-whatsapp text-orange-500 w-6 mr-3 text-center"></i>
+                            <a href="https://community.bakwanjagung.my.id/" class="flex items-center text-gray-300 hover:text-primary transition-colors duration-200">
+                                <i class="fab fa-whatsapp text-primary w-6 mr-3 text-center"></i>
                                 <span>Join our Whatsapp</span>
                             </a>
                         </div>
@@ -375,98 +373,87 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-black bg-opacity-90 py-8 px-4 sm:px-6 lg:px-8 border-t border-orange-500 border-opacity-20">
-        <div class="max-w-7xl mx-auto text-center">
-            <p class="text-gray-400">
-                &copy; 2025 Bakwan Jagung Minecraft Server. All rights reserved.
-            </p>
+    <footer class="bg-black/70 py-8 border-t border-orange-900/30">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-3 mb-4 md:mb-0">
+                    <img src="media/favicon.png" alt="Bakwan Jagung Logo" class="h-10 w-10">
+                    <h2 class="text-xl font-heading font-bold bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">BAKWAN JAGUNG</h2>
+                </div>
+                <div class="text-gray-500 text-sm text-center md:text-right">
+                    <p>© 2025 Bakwan Jagung Minecraft Server. All rights reserved.</p>
+                </div>
+            </div>
         </div>
     </footer>
 
-	<script>
-		// Mobile menu toggle
-		const mobileMenuButton = document.getElementById('mobile-menu-button');
-		const mobileMenu = document.getElementById('mobile-menu');
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
 
-		mobileMenuButton.addEventListener('click', function() {
-			mobileMenu.classList.toggle('hidden');
-			mobileMenu.classList.toggle('block');
-		});
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Close mobile menu if open
+                const mobileMenu = document.getElementById('mobile-menu');
+                if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Update active link
+                document.querySelectorAll('nav a').forEach(link => {
+                    link.classList.remove('active-link');
+                });
+                this.classList.add('active-link');
+            });
+        });
 
-		// Close mobile menu when clicking on links and set active link
-		document.querySelectorAll('#mobile-menu a, .ml-10 a').forEach(menuLink => {
-			menuLink.addEventListener('click', (e) => {
-				mobileMenu.classList.add('hidden');
-				// Smooth scrolling for anchor links
-				e.preventDefault();
-				const targetId = menuLink.getAttribute('href');
-				document.querySelector(targetId).scrollIntoView({
-					behavior: 'smooth'
-				});
-				setActiveLink(menuLink);
-			});
-		});
-    
-		// Smooth scrolling for anchor links
-		document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-			anchor.addEventListener('click', function(e) {
-				e.preventDefault();
-				const targetId = this.getAttribute('href');
-				document.querySelector(targetId).scrollIntoView({
-                behavior: 'smooth'
-				});
-				setActiveLink(this);
-			});
-		});
+        // Server status check
+        const API_KEY = "mDfbuuUBovVA4NtZDGFoDsChLt2E0b37P5";
+        const SERVER_ID = "346310";
 
-		// Function to set active link
-		function setActiveLink(activeLink) {
-			// Remove active class from all links
-			document.querySelectorAll('a').forEach(link => {
-				link.classList.remove('active-link');
-				link.classList.add('text-gray-300'); // Reset to default color
-			});
-			// Add active class to the clicked link
-			activeLink.classList.add('active-link');
-			activeLink.classList.remove('text-gray-300'); // Change color to orange
-		}
-		
-    const API_KEY = "mDfbuuUBovVA4NtZDGFoDsChLt2E0b37P5";
-    const SERVER_ID = "346310";
+        const statusElement = document.getElementById("server-status");
+        const playerCountElement = document.getElementById("player-count");
 
-    const statusElement = document.getElementById("server-status");
-    const playerCountElement = document.getElementById("player-count");
+        function updateStatus() {
+            fetch(`https://minecraft-mp.com/api/?object=servers&element=detail&key=${API_KEY}&id=${SERVER_ID}`)
+                .then(res => res.json())
+                .then(data => {
+                    if (data.is_online) {
+                        statusElement.textContent = "Online";
+                        statusElement.classList.remove("text-red-500");
+                        statusElement.classList.add("text-green-500");
 
-    function updateStatus() {
-        fetch(`https://minecraft-mp.com/api/?object=servers&element=detail&key=${API_KEY}&id=${SERVER_ID}`)
-            .then(res => res.json())
-            .then(data => {
-                if (data.is_online) {
-                    statusElement.textContent = "Online";
-                    statusElement.classList.remove("text-red-500");
-                    statusElement.classList.add("text-green-500");
+                        playerCountElement.textContent = `: ${data.players} / ${data.maxplayers}`;
+                    } else {
+                        statusElement.textContent = "Offline";
+                        statusElement.classList.remove("text-green-500");
+                        statusElement.classList.add("text-red-500");
 
-                    playerCountElement.textContent = `: ${data.players} / ${data.maxplayers}`;
-                } else {
-                    statusElement.textContent = "Offline";
+                        playerCountElement.textContent = "Players: 0/0";
+                    }
+                })
+                .catch(err => {
+                    console.error("Failed to fetch server data:", err);
+                    statusElement.textContent = "Error";
                     statusElement.classList.remove("text-green-500");
                     statusElement.classList.add("text-red-500");
 
-                    playerCountElement.textContent = "Players: 0/0";
-                }
-            })
-            .catch(err => {
-                console.error("Gagal mengambil data server:", err);
-                statusElement.textContent = "Error";
-                statusElement.classList.remove("text-green-500");
-                statusElement.classList.add("text-red-500");
+                    playerCountElement.textContent = "Players: -";
+                });
+        }
 
-                playerCountElement.textContent = "Players: -";
-            });
-    }
-
-    updateStatus();
-    setInterval(updateStatus, 30000);
-	</script>
+        updateStatus();
+        setInterval(updateStatus, 30000);
+    </script>
 </body>
 </html>
