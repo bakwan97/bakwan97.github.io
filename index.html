@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id"> <!-- Changed to Indonesian language code -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bakwan Jagung Minecraft Server</title>
-    <meta name="description" content="Official website for Bakwan Jagung Minecraft server.">
-    <meta name="keywords" content="Bakwan Jagung Minecraft Server, Server Minecraft Bakwan Jagung, bakwanjagung.my.id server minecraft, Bakwanjagung survival smp indonesia, Server Minecraft Indonesia Bakwanjagung">
+    <title>Bakwan Jagung | Minecraft Server</title> <!-- More descriptive title -->
+    <meta name="description" content="Bakwan Jagung adalah server Minecraft Survival Mix Indonesia dengan fitur unik seperti economy system, custom enchantments, dan proteksi bangunan. Bergabunglah sekarang!"> <!-- Improved description -->
+    <meta name="keywords" content="Bakwan Jagung, Server Minecraft Indonesia, Bakwan Jagung Server, Server Minecraft 1.20.1, Minecraft PE Server, Multiplayer Minecraft Indonesia">
+    <meta name="author" content="Bakwan Jagung Team">
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://web.bakwanjagung.my.id/">
@@ -13,20 +14,44 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://web.bakwanjagung.my.id/">
-    <meta property="og:title" content="Bakwan Jagung Minecraft Server">
-    <meta property="og:description" content="Official website for Bakwan Jagung Minecraft server.">
+    <meta property="og:title" content="Bakwan Jagung Minecraft Server | Server Minecraft Survival Indonesia">
+    <meta property="og:description" content="Server Minecraft Survival Mix Indonesia dengan fitur unik dan komunitas yang ramah. Bergabung sekarang dengan IP: bakwanjagung.my.id">
     <meta property="og:image" content="https://web.bakwanjagung.my.id/media/favicon.png">
-    <meta property="og:site_name" content="Bakwan Jagung">
+    <meta property="og:site_name" content="Bakwan Jagung Minecraft Server">
+    <meta property="og:locale" content="id_ID"> <!-- Indonesian locale -->
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://web.bakwanjagung.my.id/">
-    <meta property="twitter:title" content="Bakwan Jagung Minecraft Server">
-    <meta property="twitter:description" content="Official website for Bakwan Jagung Minecraft server.">
+    <meta property="twitter:title" content="Bakwan Jagung Minecraft Server | Server Minecraft Survival Indonesia">
+    <meta property="twitter:description" content="Server Minecraft Survival Mix Indonesia dengan fitur unik dan komunitas yang ramah. Bergabung sekarang dengan IP: bakwanjagung.my.id">
     <meta property="twitter:image" content="https://web.bakwanjagung.my.id/media/favicon.png">
     
     <!-- Favicon -->
     <link rel="icon" href="media/favicon.png" type="image/png">
+    
+    <!-- Structured Data / Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "GameServer",
+      "name": "Bakwan Jagung Minecraft Server",
+      "description": "Server Minecraft Survival Mix Indonesia dengan fitur unik dan komunitas yang ramah",
+      "url": "https://web.bakwanjagung.my.id/",
+      "gamePlatform": "Minecraft",
+      "operatingSystem": "Multiplatform",
+      "playersOnline": {
+        "@type": "QuantitativeValue",
+        "value": "Loading..."
+      },
+      "serverStatus": "Online",
+      "gameServerVersion": "1.20.1"
+    }
+    </script>
+    
+    <!-- Preload important resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@400;600&display=swap" as="style">
+    <link rel="preload" href="media/server-banner.jpg" as="image">
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
@@ -130,23 +155,23 @@
         }
     </style>
 </head>
-<body class="font-body">
+<body class="font-body" itemscope itemtype="https://schema.org/WebPage">
     <!-- Header Section -->
     <header class="border-b border-orange-900/30 sticky top-0 z-50 bg-secondary-dark/90 backdrop-blur-md">
         <div class="container mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
                 <div class="flex items-center space-x-3">
-                    <img src="media/favicon.png" alt="Bakwan Jagung Logo" class="h-12 w-12">
+                    <img src="media/favicon.png" alt="Logo Bakwan Jagung Minecraft Server" class="h-12 w-12" itemprop="logo">
                     <h1 class="text-2xl font-heading font-bold bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">BAKWAN JAGUNG</h1>
                 </div>
-                <nav class="hidden md:flex space-x-8">
+                <nav class="hidden md:flex space-x-8" aria-label="Main navigation">
                     <a href="#features" class="nav-item text-white hover:text-primary transition">Features</a>
                     <a href="#gallery" class="nav-item text-white hover:text-primary transition">Gallery</a>
-					<a href="#website" class="nav-item text-white hover:text-primary transition">Website</a>
+                    <a href="#website" class="nav-item text-white hover:text-primary transition">Website</a>
                     <a href="#connect" class="nav-item text-white hover:text-primary transition">Connect</a>
                 </nav>
                 <div class="md:hidden">
-                    <button id="mobile-menu-button" class="text-white">
+                    <button id="mobile-menu-button" class="text-white" aria-label="Toggle mobile menu">
                         <i class="fas fa-bars text-2xl"></i>
                     </button>
                 </div>
@@ -154,18 +179,18 @@
         </div>
         
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-secondary-dark/95 py-4 px-6">
+        <div id="mobile-menu" class="hidden md:hidden bg-secondary-dark/95 py-4 px-6" aria-hidden="true">
             <div class="flex flex-col space-y-4">
                 <a href="#features" class="text-white hover:text-primary transition">Features</a>
                 <a href="#gallery" class="text-white hover:text-primary transition">Gallery</a>
-				<a href="#website" class="text-white hover:text-primary transition">Website</a>
+                <a href="#website" class="text-white hover:text-primary transition">Website</a>
                 <a href="#connect" class="text-white hover:text-primary transition">Connect</a>
             </div>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section id="home" class="hero-overlay min-h-screen flex items-center">
+    <section id="home" class="hero-overlay min-h-screen flex items-center" itemscope itemtype="https://schema.org/Game">
         <div class="container mx-auto px-6 py-24 relative z-10">
             <div class="max-w-3xl mx-auto text-center">
                 <h2 class="text-4xl md:text-6xl font-heading font-bold mb-6 bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">
@@ -176,10 +201,10 @@
                 </p>
                 
                 <div class="flex flex-col sm:flex-row justify-center gap-4 mb-4">
-                    <a href="#connect" class="btn-primary px-8 py-3 rounded-full font-bold text-white hover:text-secondary-dark text-center">
+                    <a href="#connect" class="btn-primary px-8 py-3 rounded-full font-bold text-white hover:text-secondary-dark text-center" aria-label="Join Bakwan Jagung Minecraft Server">
                         JOIN NOW
                     </a>
-                    <a href="#features" class="px-8 py-3 rounded-full font-bold border-2 border-primary text-primary hover:bg-primary/10 text-center">
+                    <a href="#features" class="px-8 py-3 rounded-full font-bold border-2 border-primary text-primary hover:bg-primary/10 text-center" aria-label="View server features">
                         SERVER FEATURES
                     </a>
                 </div>
@@ -197,7 +222,7 @@
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="card p-6 rounded-xl">
+                <div class="card p-6 rounded-xl" itemscope itemtype="https://schema.org/GameServer">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mr-4">
                             <i class="fas fa-shield-alt text-primary feature-icon text-xl"></i>
@@ -209,7 +234,7 @@
                     </p>
                 </div>
                 
-                <div class="card p-6 rounded-xl">
+                <div class="card p-6 rounded-xl" itemscope itemtype="https://schema.org/GameServer">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mr-4">
                             <i class="fas fa-coins text-primary feature-icon text-xl"></i>
@@ -221,7 +246,7 @@
                     </p>
                 </div>
                 
-                <div class="card p-6 rounded-xl">
+                <div class="card p-6 rounded-xl" itemscope itemtype="https://schema.org/GameServer">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mr-4">
                             <i class="fas fa-gamepad text-primary feature-icon text-xl"></i>
@@ -247,7 +272,7 @@
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="card overflow-hidden rounded-xl">
-                    <img src="media/arena.png" alt="Bakwan Jagung Arena PVP" class="w-full h-64 object-cover transition-transform duration-300 hover:scale-105"/>
+                    <img src="media/arena.png" alt="Arena PVP di Server Minecraft Bakwan Jagung" class="w-full h-64 object-cover transition-transform duration-300 hover:scale-105" loading="lazy"/>
                     <div class="p-4">
                         <h3 class="text-xl font-heading font-bold text-white mb-2">ARENA</h3>
                         <p class="text-gray-300">Bakwan Jagung PVP Arena.</p>
@@ -255,7 +280,7 @@
                 </div>
                 
                 <div class="card overflow-hidden rounded-xl">
-                    <img src="media/crates.png" alt="Bakwan Jagung Crates" class="w-full h-64 object-cover transition-transform duration-300 hover:scale-105"/>
+                    <img src="media/crates.png" alt="Sistem Crates di Server Minecraft Bakwan Jagung" class="w-full h-64 object-cover transition-transform duration-300 hover:scale-105" loading="lazy"/>
                     <div class="p-4">
                         <h3 class="text-xl font-heading font-bold text-white mb-2">Crates</h3>
                         <p class="text-gray-300">Test your luck by opening the Crates here</p>
@@ -275,7 +300,7 @@
             </div>
             
             <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                <a href="store/" class="card p-6 rounded-xl text-center hover:border-primary transition-all duration-300">
+                <a href="store/" class="card p-6 rounded-xl text-center hover:border-primary transition-all duration-300" aria-label="Visit Bakwan Jagung Store">
                     <div class="w-16 h-16 mx-auto bg-primary/20 rounded-full flex items-center justify-center mb-4">
                         <i class="fas fa-store text-primary feature-icon text-2xl"></i>
                     </div>
@@ -286,7 +311,7 @@
                     </div>
                 </a>
                 
-                <a href="vote/" class="card p-6 rounded-xl text-center hover:border-primary transition-all duration-300">
+                <a href="vote/" class="card p-6 rounded-xl text-center hover:border-primary transition-all duration-300" aria-label="Vote for Bakwan Jagung Server">
                     <div class="w-16 h-16 mx-auto bg-primary/20 rounded-full flex items-center justify-center mb-4">
                         <i class="fas fa-thumbs-up text-primary feature-icon text-2xl"></i>
                     </div>
@@ -297,7 +322,7 @@
                     </div>
                 </a>
                 
-                <a href="rules/" class="card p-6 rounded-xl text-center hover:border-primary transition-all duration-300">
+                <a href="rules/" class="card p-6 rounded-xl text-center hover:border-primary transition-all duration-300" aria-label="View Server Rules">
                     <div class="w-16 h-16 mx-auto bg-primary/20 rounded-full flex items-center justify-center mb-4">
                         <i class="fas fa-book text-primary feature-icon text-2xl"></i>
                     </div>
@@ -344,9 +369,9 @@
                                 <div>
                                     <p class="text-gray-400">Status:</p>
                                     <div class="mt-1 flex items-center">
-                                        <div id="connect" class="flex items-center space-x-4 text-white transition-colors duration-500">
-                                            <span id="server-status">Loading...</span>
-                                            <span id="player-count" class="text-sm text-gray-300">Loading...</span>
+                                        <div class="flex items-center space-x-4 text-white transition-colors duration-500">
+                                            <span id="server-status" itemprop="serverStatus">Loading...</span>
+                                            <span id="player-count" class="text-sm text-gray-300" itemprop="playersOnline">Loading...</span>
                                         </div>
                                     </div>
                                 </div>
@@ -357,11 +382,11 @@
                     <div>
                         <h3 class="text-xl font-heading font-bold text-white mb-4">Social Media</h3>
                         <div class="space-y-4">
-                            <a href="https://discord.bakwanjagung.my.id/" class="flex items-center text-gray-300 hover:text-primary transition-colors duration-200">
+                            <a href="https://discord.bakwanjagung.my.id/" class="flex items-center text-gray-300 hover:text-primary transition-colors duration-200" rel="noopener noreferrer" aria-label="Join Bakwan Jagung Discord">
                                 <i class="fab fa-discord text-primary w-6 mr-3 text-center"></i>
                                 <span>Join our Discord</span>
                             </a>
-                            <a href="https://community.bakwanjagung.my.id/" class="flex items-center text-gray-300 hover:text-primary transition-colors duration-200">
+                            <a href="https://community.bakwanjagung.my.id/" class="flex items-center text-gray-300 hover:text-primary transition-colors duration-200" rel="noopener noreferrer" aria-label="Join Bakwan Jagung WhatsApp Group">
                                 <i class="fab fa-whatsapp text-primary w-6 mr-3 text-center"></i>
                                 <span>Join our Whatsapp</span>
                             </a>
@@ -377,7 +402,7 @@
         <div class="container mx-auto px-6">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="flex items-center space-x-3 mb-4 md:mb-0">
-                    <img src="media/favicon.png" alt="Bakwan Jagung Logo" class="h-10 w-10">
+                    <img src="media/favicon.png" alt="Logo Bakwan Jagung Minecraft Server" class="h-10 w-10">
                     <h2 class="text-xl font-heading font-bold bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">BAKWAN JAGUNG</h2>
                 </div>
                 <div class="text-gray-500 text-sm text-center md:text-right">
@@ -392,6 +417,7 @@
         document.getElementById('mobile-menu-button').addEventListener('click', function() {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
+            menu.setAttribute('aria-hidden', menu.classList.contains('hidden'));
         });
 
         // Smooth scrolling for anchor links
@@ -403,17 +429,15 @@
                 const mobileMenu = document.getElementById('mobile-menu');
                 if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
                     mobileMenu.classList.add('hidden');
+                    mobileMenu.setAttribute('aria-hidden', 'true');
                 }
                 
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
                 
-                // Update active link
-                document.querySelectorAll('nav a').forEach(link => {
-                    link.classList.remove('active-link');
-                });
-                this.classList.add('active-link');
+                // Update URL without page reload
+                history.pushState(null, null, this.getAttribute('href'));
             });
         });
 
@@ -434,12 +458,20 @@
                         statusElement.classList.add("text-green-500");
 
                         playerCountElement.textContent = `: ${data.players} / ${data.maxplayers}`;
+                        
+                        // Update schema data
+                        document.querySelector('[itemprop="serverStatus"]').textContent = "Online";
+                        document.querySelector('[itemprop="playersOnline"]').textContent = `${data.players} / ${data.maxplayers}`;
                     } else {
                         statusElement.textContent = "Offline";
                         statusElement.classList.remove("text-green-500");
                         statusElement.classList.add("text-red-500");
 
                         playerCountElement.textContent = "Players: 0/0";
+                        
+                        // Update schema data
+                        document.querySelector('[itemprop="serverStatus"]').textContent = "Offline";
+                        document.querySelector('[itemprop="playersOnline"]').textContent = "0/0";
                     }
                 })
                 .catch(err => {
@@ -452,8 +484,11 @@
                 });
         }
 
-        updateStatus();
-        setInterval(updateStatus, 30000);
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            updateStatus();
+            setInterval(updateStatus, 30000);
+        });
     </script>
 </body>
 </html>
