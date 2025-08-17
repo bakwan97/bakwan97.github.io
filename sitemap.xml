@@ -1,36 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-  <!-- Halaman Beranda -->
+  <!-- Halaman Utama -->
   <url>
     <loc>https://web.bakwanjagung.my.id/</loc>
-    <lastmod>2025-08-05</lastmod>
-    <priority>1.00</priority>
+    <lastmod>2024-08-17</lastmod>
     <changefreq>daily</changefreq>
+    <priority>1.0</priority>
   </url>
-
-  <!-- Halaman Store -->
-  <url>
-    <loc>https://web.bakwanjagung.my.id/store/</loc>
-    <lastmod>2025-08-05</lastmod>
-    <priority>0.90</priority>
-    <changefreq>weekly</changefreq>
-  </url>
-
+  
   <!-- Halaman Vote -->
   <url>
     <loc>https://web.bakwanjagung.my.id/vote/</loc>
-    <lastmod>2025-08-05</lastmod>
-    <priority>0.80</priority>
+    <lastmod>2024-08-17</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
-
+  
+  <!-- Halaman Store -->
+  <url>
+    <loc>https://web.bakwanjagung.my.id/store/</loc>
+    <lastmod>2024-08-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
   <!-- Halaman Rules -->
   <url>
     <loc>https://web.bakwanjagung.my.id/rules/</loc>
-    <lastmod>2025-08-05</lastmod>
-    <priority>0.70</priority>
+    <lastmod>2024-08-17</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
-
 </urlset>
