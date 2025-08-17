@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="id"> <!-- Changed to Indonesian language code -->
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bakwan Jagung | Minecraft Server</title> <!-- More descriptive title -->
-    <meta name="description" content="Bakwan Jagung adalah server Minecraft Survival Mix Indonesia dengan fitur unik seperti economy system, custom enchantments, dan proteksi bangunan. Bergabunglah sekarang!"> <!-- Improved description -->
+    <title>Bakwan Jagung | Minecraft Server</title>
+    <meta name="description" content="Bakwan Jagung adalah server Minecraft Survival Mix Indonesia dengan fitur unik seperti economy system, custom enchantments, dan proteksi bangunan. Bergabunglah sekarang!">
     <meta name="keywords" content="Bakwan Jagung, Server Minecraft Indonesia, Bakwan Jagung Server, Server Minecraft 1.20.1, Minecraft PE Server, Multiplayer Minecraft Indonesia">
     <meta name="author" content="Bakwan Jagung Team">
     
@@ -15,16 +15,16 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://web.bakwanjagung.my.id/">
     <meta property="og:title" content="Bakwan Jagung | Minecraft Server">
-    <meta property="og:description" content="Server Minecraft Survival Mix Indonesia dengan fitur unik dan komunitas yang ramah. Bergabung sekarang dengan IP: bakwanjagung.my.id">
+    <meta property="og:description" content="Server Minecraft Survival Mix Indonesia dengan fitur unik dan komunitas yang ramah. Bergabung sekarang dengan IP : bakwanjagung.my.id">
     <meta property="og:image" content="https://web.bakwanjagung.my.id/media/favicon.png">
     <meta property="og:site_name" content="Bakwan Jagung Minecraft Server">
-    <meta property="og:locale" content="id_ID"> <!-- Indonesian locale -->
+    <meta property="og:locale" content="id_ID">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://web.bakwanjagung.my.id/">
     <meta property="twitter:title" content="Bakwan Jagung | Minecraft Server">
-    <meta property="twitter:description" content="Server Minecraft Survival Mix Indonesia dengan fitur unik dan komunitas yang ramah. Bergabung sekarang dengan IP: bakwanjagung.my.id">
+    <meta property="twitter:description" content="Server Minecraft Survival Mix Indonesia dengan fitur unik dan komunitas yang ramah. Bergabung sekarang dengan IP : bakwanjagung.my.id">
     <meta property="twitter:image" content="https://web.bakwanjagung.my.id/media/favicon.png">
     
     <!-- Favicon -->
@@ -152,6 +152,74 @@
         
         .feature-icon {
             filter: drop-shadow(0 0 8px rgba(255,140,0,0.7));
+        }
+        
+        /* New styles for improved server info section */
+        .info-card {
+            background: rgba(30, 30, 30, 0.7);
+            border-left: 4px solid #ff8c00;
+            transition: all 0.3s ease;
+        }
+        
+        .info-card:hover {
+            background: rgba(40, 40, 40, 0.8);
+            transform: translateX(5px);
+        }
+        
+        .social-card {
+            background: rgba(30, 30, 30, 0.7);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 140, 0, 0.2);
+        }
+        
+        .social-card:hover {
+            background: rgba(40, 40, 40, 0.8);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 140, 0, 0.1);
+        }
+        
+        .copy-btn {
+            background: rgba(255, 140, 0, 0.1);
+            transition: all 0.2s ease;
+        }
+        
+        .copy-btn:hover {
+            background: rgba(255, 140, 0, 0.2);
+        }
+        
+        .copy-btn:active {
+            transform: scale(0.95);
+        }
+        
+        .status-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
+        }
+        
+        .status-online {
+            background: #10B981;
+            box-shadow: 0 0 10px #10B981;
+        }
+        
+        .status-offline {
+            background: #EF4444;
+            box-shadow: 0 0 10px #EF4444;
+        }
+        
+        .status-loading {
+            background: #F59E0B;
+            box-shadow: 0 0 10px #F59E0B;
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
         }
     </style>
 </head>
@@ -336,66 +404,107 @@
         </div>
     </section>
 
-    <!-- Connect Section -->
-    <section id="connect" class="py-16 bg-secondary-dark">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-5xl font-heading font-bold mb-4 bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">HOW TO CONNECT</h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-primary to-primary-light mx-auto"></div>
-                <p class="max-w-2xl mx-auto mt-6 text-gray-400">Join our server today and become part of the Bakwan Jagung community!</p>
-            </div>
-            
-            <div class="max-w-3xl mx-auto card p-8 rounded-xl">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div>
-                        <h3 class="text-xl font-heading font-bold text-white mb-4">Server Information</h3>
-                        <div class="space-y-4">
-                            <div class="flex items-start">
-                                <i class="fas fa-server text-primary mt-1 mr-3"></i>
-                                <div>
-                                    <p class="text-gray-400">Server IP:</p>
-                                    <p class="text-white font-mono">bakwanjagung.my.id <br>Port: 19132</br></p>
-                                </div>
-                            </div>
-                            <div class="flex items-start">
-                                <i class="fas fa-portrait text-primary mt-1 mr-3"></i>
-                                <div>
-                                    <p class="text-gray-400">Version:</p>
-                                    <p class="text-white">1.20.1 - Newest</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start">
-                                <i class="fas fa-circle text-primary mt-1 mr-3 text-xs"></i>
-                                <div>
-                                    <p class="text-gray-400">Status:</p>
-                                    <div class="mt-1 flex items-center">
-                                        <div class="flex items-center space-x-4 text-white transition-colors duration-500">
-                                            <span id="server-status" itemprop="serverStatus">Loading...</span>
-                                            <span id="player-count" class="text-sm text-gray-300" itemprop="playersOnline">Loading...</span>
-                                        </div>
-                                    </div>
-                                </div>
+<!-- Connect Section -->
+<section id="connect" class="py-16 bg-secondary-dark">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-5xl font-heading font-bold mb-4 bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">HOW TO CONNECT</h2>
+            <div class="w-20 h-1 bg-gradient-to-r from-primary to-primary-light mx-auto"></div>
+            <p class="max-w-2xl mx-auto mt-6 text-gray-400">Join our server today and become part of the Bakwan Jagung community!</p>
+        </div>
+        
+        <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Server Information Card -->
+            <div class="card p-6 rounded-xl">
+                <h3 class="text-xl font-heading font-bold text-white mb-6 flex items-center">
+                    <i class="fas fa-server text-primary mr-3"></i>
+                    <span>Server Information</span>
+                </h3>
+                
+                <div class="space-y-5">
+                    <!-- Server IP -->
+                    <div class="info-card p-4 rounded">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <p class="text-gray-400 text-sm mb-1">Server Address</p>
+                                <p class="text-white font-mono text-lg">bakwanjagung.my.id</p>
+                                <p class="text-gray-400 text-sm mt-1">Port: 19132</p>
                             </div>
                         </div>
                     </div>
                     
-                    <div>
-                        <h3 class="text-xl font-heading font-bold text-white mb-4">Social Media</h3>
-                        <div class="space-y-4">
-                            <a href="https://discord.bakwanjagung.my.id/" class="flex items-center text-gray-300 hover:text-primary transition-colors duration-200" rel="noopener noreferrer" aria-label="Join Bakwan Jagung Discord">
-                                <i class="fab fa-discord text-primary w-6 mr-3 text-center"></i>
-                                <span>Join our Discord</span>
-                            </a>
-                            <a href="https://community.bakwanjagung.my.id/" class="flex items-center text-gray-300 hover:text-primary transition-colors duration-200" rel="noopener noreferrer" aria-label="Join Bakwan Jagung WhatsApp Group">
-                                <i class="fab fa-whatsapp text-primary w-6 mr-3 text-center"></i>
-                                <span>Join our Whatsapp</span>
-                            </a>
+                    <!-- Version -->
+                    <div class="info-card p-4 rounded">
+                        <p class="text-gray-400 text-sm mb-1">Supported Version</p>
+                        <div class="flex items-center">
+                            <i class="fas fa-code-branch text-primary mr-2"></i>
+                            <p class="text-white">1.20.1 (Latest Version)</p>
                         </div>
                     </div>
+                    
+                    <!-- Status -->
+                    <div class="info-card p-4 rounded">
+                        <p class="text-gray-400 text-sm mb-1">Server Status</p>
+                        <div class="flex items-center">
+                            <span id="status-indicator" class="status-indicator status-loading"></span>
+                            <span id="server-status" class="text-white mr-3" itemprop="serverStatus">Checking...</span>
+                            <span id="player-count" class="text-sm text-gray-300 ml-auto" itemprop="playersOnline"></span>
+                        </div>
+                    </div>
+                    
+                    <!-- Copy IP Button -->
+                    <button id="copy-ip-btn" onclick="copyServerIP()" 
+                            class="w-full mt-4 btn-primary px-6 py-3 rounded-lg font-bold text-white flex items-center justify-center">
+                        <i class="fas fa-copy mr-2"></i> <span id="copy-ip-text">Copy Server IP</span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Social Media Card -->
+            <div class="card p-6 rounded-xl">
+                <h3 class="text-xl font-heading font-bold text-white mb-6 flex items-center">
+                    <i class="fas fa-users text-primary mr-3"></i>
+                    <span>Join Our Community</span>
+                </h3>
+                
+                <div class="grid grid-cols-1 gap-4">
+                    <!-- Discord -->
+                    <a href="https://discord.bakwanjagung.my.id/" 
+                       class="social-card p-4 flex items-center hover:text-primary transition-colors duration-200"
+                       rel="noopener noreferrer" aria-label="Join Bakwan Jagung Discord">
+                        <div class="w-12 h-12 rounded-full bg-indigo-900/30 flex items-center justify-center mr-4">
+                            <i class="fab fa-discord text-indigo-400 text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white">Discord Server</h4>
+                            <p class="text-sm text-gray-400">Join our active Discord community</p>
+                        </div>
+                        <i class="fas fa-chevron-right ml-auto text-gray-500"></i>
+                    </a>
+                    
+                    <!-- WhatsApp -->
+                    <a href="https://community.bakwanjagung.my.id/" 
+                       class="social-card p-4 flex items-center hover:text-primary transition-colors duration-200"
+                       rel="noopener noreferrer" aria-label="Join Bakwan Jagung WhatsApp Group">
+                        <div class="w-12 h-12 rounded-full bg-emerald-900/30 flex items-center justify-center mr-4">
+                            <i class="fab fa-whatsapp text-emerald-400 text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white">WhatsApp Group</h4>
+                            <p class="text-sm text-gray-400">Connect with players via WhatsApp</p>
+                        </div>
+                        <i class="fas fa-chevron-right ml-auto text-gray-500"></i>
+                    </a>
+                    
+                
+                <div class="mt-6 pt-6 border-t border-gray-800">
+                    <h4 class="font-heading font-bold text-white mb-3">Need Help?</h4>
+                    <p class="text-gray-400 text-sm mb-4">Contact our staff through Discord or WhatsApp for assistance.</p>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Footer -->
     <footer class="bg-black/70 py-8 border-t border-orange-900/30">
@@ -447,41 +556,89 @@
 
         const statusElement = document.getElementById("server-status");
         const playerCountElement = document.getElementById("player-count");
+        const statusIndicator = document.getElementById("status-indicator");
 
         function updateStatus() {
+            statusIndicator.className = "status-indicator status-loading";
+            statusElement.textContent = "Checking...";
+            
             fetch(`https://minecraft-mp.com/api/?object=servers&element=detail&key=${API_KEY}&id=${SERVER_ID}`)
                 .then(res => res.json())
                 .then(data => {
                     if (data.is_online) {
+                        statusIndicator.className = "status-indicator status-online";
                         statusElement.textContent = "Online";
                         statusElement.classList.remove("text-red-500");
                         statusElement.classList.add("text-green-500");
 
-                        playerCountElement.textContent = `: ${data.players} / ${data.maxplayers}`;
+                        playerCountElement.textContent = `${data.players} / ${data.maxplayers} players online`;
                         
                         // Update schema data
                         document.querySelector('[itemprop="serverStatus"]').textContent = "Online";
                         document.querySelector('[itemprop="playersOnline"]').textContent = `${data.players} / ${data.maxplayers}`;
                     } else {
+                        statusIndicator.className = "status-indicator status-offline";
                         statusElement.textContent = "Offline";
                         statusElement.classList.remove("text-green-500");
                         statusElement.classList.add("text-red-500");
 
-                        playerCountElement.textContent = "Players: 0/0";
+                        playerCountElement.textContent = "0 / 0 players online";
                         
                         // Update schema data
                         document.querySelector('[itemprop="serverStatus"]').textContent = "Offline";
-                        document.querySelector('[itemprop="playersOnline"]').textContent = "0/0";
+                        document.querySelector('[itemprop="playersOnline"]').textContent = "0 / 0";
                     }
                 })
                 .catch(err => {
                     console.error("Failed to fetch server data:", err);
+                    statusIndicator.className = "status-indicator status-offline";
                     statusElement.textContent = "Error";
                     statusElement.classList.remove("text-green-500");
                     statusElement.classList.add("text-red-500");
 
-                    playerCountElement.textContent = "Players: -";
+                    playerCountElement.textContent = "Failed to load";
                 });
+        }
+
+        // Function to copy server IP
+        function copyServerIP() {
+            const ip = "bakwanjagung.my.id";
+            const copyBtn = document.getElementById('copy-ip-btn');
+            const copyText = document.getElementById('copy-ip-text');
+            
+            navigator.clipboard.writeText(ip).then(() => {
+                // Change button text and icon
+                copyText.textContent = 'Copied!';
+                copyBtn.innerHTML = '<i class="fas fa-check mr-2"></i> <span id="copy-ip-text">Copied!</span>';
+                
+                // Change button style temporarily
+                copyBtn.classList.remove('btn-primary');
+                copyBtn.classList.add('bg-green-500', 'hover:bg-green-600');
+                
+                // Reset button after 2 seconds
+                setTimeout(() => {
+                    copyText.textContent = 'Copy Server IP';
+                    copyBtn.innerHTML = '<i class="fas fa-copy mr-2"></i> <span id="copy-ip-text">Copy Server IP</span>';
+                    copyBtn.classList.add('btn-primary');
+                    copyBtn.classList.remove('bg-green-500', 'hover:bg-green-600');
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy IP: ', err);
+                copyText.textContent = 'Error!';
+                copyBtn.innerHTML = '<i class="fas fa-times mr-2"></i> <span id="copy-ip-text">Error!</span>';
+                
+                // Change button style temporarily
+                copyBtn.classList.remove('btn-primary');
+                copyBtn.classList.add('bg-red-500', 'hover:bg-red-600');
+                
+                // Reset button after 2 seconds
+                setTimeout(() => {
+                    copyText.textContent = 'Copy Server IP';
+                    copyBtn.innerHTML = '<i class="fas fa-copy mr-2"></i> <span id="copy-ip-text">Copy Server IP</span>';
+                    copyBtn.classList.add('btn-primary');
+                    copyBtn.classList.remove('bg-red-500', 'hover:bg-red-600');
+                }, 2000);
+            });
         }
 
         // Initialize
