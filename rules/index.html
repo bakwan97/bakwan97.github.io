@@ -141,14 +141,27 @@
 
         .accordion-btn {
             border: none;
+            width: 100%;
+            text-align: left;
         }
 
         .accordion-content {
             border-top: 1px solid rgba(255,140,0,0.5);
+            overflow: hidden;
+            transition: max-height 0.5s ease, opacity 0.5s ease;
+            max-height: 0;
+            opacity: 0;
         }
 
         .accordion-item[aria-expanded="true"] {
             border-color: #ff8c00;
+        }
+
+        .accordion-item[aria-expanded="true"] .accordion-content {
+            max-height: 500px; /* Nilai cukup besar untuk menampung konten */
+            opacity: 1;
+            padding: 1.5rem;
+            display: block;
         }
         
         .active {
@@ -177,6 +190,37 @@
         
         .hexagon {
             clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        }
+
+        /* Animasi untuk FAQ */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .faq-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .faq-section.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .accordion-btn i {
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-item[aria-expanded="true"] .accordion-btn i {
+            transform: rotate(180deg);
         }
     </style>
 </head>
@@ -384,66 +428,74 @@
             </div>
             
             <div class="max-w-3xl mx-auto">
-                <div class="accordion-item mb-4 overflow-hidden">
-                    <button class="accordion-btn flex justify-between items-center w-full px-6 py-4 text-left font-medium bg-secondary hover:bg-secondary-light focus:outline-none">
+                <div class="accordion-item mb-4 overflow-hidden rounded-lg">
+                    <button class="accordion-btn flex justify-between items-center w-full px-6 py-4 text-left font-medium bg-secondary hover:bg-secondary-light focus:outline-none rounded-t-lg">
                         <span class="text-white">How do I report a player who breaks the rules?</span>
                         <i class="fas fa-chevron-down transition-transform text-primary"></i>
                     </button>
-                    <div class="accordion-content hidden px-6 py-4 bg-secondary">
-                        <p class="text-gray-300">
-                            You can report a player by:
-                            <ol class="list-decimal ml-5 text-gray-300 space-y-2 mt-2">
-                                <li>Using the command <code class="bg-secondary-dark px-2 py-1 rounded">/report [username] [reason]</code></li>
-                                <li>Taking a screenshot/video as evidence and uploading it in the <span class="text-primary">#ticket</span> channel on our Discord</li>
-                                <li>Tagging online staff for important reports</li>
-                            </ol>
-                        </p>
+                    <div class="accordion-content bg-secondary rounded-b-lg px-6">
+                        <div class="pb-4">
+                            <p class="text-gray-300">
+                                You can report a player by:
+                                <ol class="list-decimal ml-5 text-gray-300 space-y-2 mt-2">
+                                    <li>Using the command <code class="bg-secondary-dark px-2 py-1 rounded">/report [username] [reason]</code></li>
+                                    <li>Taking a screenshot/video as evidence and uploading it in the <span class="text-primary">#ticket</span> channel on our Discord</li>
+                                    <li>Tagging online staff for important reports</li>
+                                </ol>
+                            </p>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="accordion-item mb-4 overflow-hidden">
-                    <button class="accordion-btn flex justify-between items-center w-full px-6 py-4 text-left font-medium bg-secondary hover:bg-secondary-light focus:outline-none">
+                <div class="accordion-item mb-4 overflow-hidden rounded-lg">
+                    <button class="accordion-btn flex justify-between items-center w-full px-6 py-4 text-left font-medium bg-secondary hover:bg-secondary-light focus:outline-none rounded-t-lg">
                         <span class="text-white">What happens if I accidentally break the rules?</span>
                         <i class="fas fa-chevron-down transition-transform text-primary"></i>
                     </button>
-                    <div class="accordion-content hidden px-6 py-4 bg-secondary">
-                        <p class="text-gray-300">
-                            For minor first-time offenses, a warning is usually given. If it was truly unintentional and you are cooperative, staff will help explain the rules in more detail. However, for major offenses like hacking, there is no tolerance even if it was unintentional.
-                        </p>
+                    <div class="accordion-content bg-secondary rounded-b-lg px-6">
+                        <div class="pb-4">
+                            <p class="text-gray-300">
+                                For minor first-time offenses, a warning is usually given. If it was truly unintentional and you are cooperative, staff will help explain the rules in more detail. However, for major offenses like hacking, there is no tolerance even if it was unintentional.
+                            </p>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="accordion-item mb-4 overflow-hidden">
-                    <button class="accordion-btn flex justify-between items-center w-full px-6 py-4 text-left font-medium bg-secondary hover:bg-secondary-light focus:outline-none">
+                <div class="accordion-item mb-4 overflow-hidden rounded-lg">
+                    <button class="accordion-btn flex justify-between items-center w-full px-6 py-4 text-left font-medium bg-secondary hover:bg-secondary-light focus:outline-none rounded-t-lg">
                         <span class="text-white">How long are ban/mute punishments usually given?</span>
                         <i class="fas fa-chevron-down transition-transform text-primary"></i>
                     </button>
-                    <div class="accordion-content hidden px-6 py-4 bg-secondary">
-                        <p class="text-gray-300">
-                            The duration of punishments varies depending on the severity of the offense:
-                            <ul class="list-disc ml-5 text-gray-300 space-y-2 mt-2">
-                                <li><span class="text-primary">Mute</span>: 1 hour to 7 days</li>
-                                <li><span class="text-primary">Temporary Ban</span>: 1 day to 6 month</li>
-                                <li><span class="text-primary">Permanent Ban</span>: For severe offenses such as hacking, severe griefing, or extreme toxic behavior</li>
-                            </ul>
-                        </p>
+                    <div class="accordion-content bg-secondary rounded-b-lg px-6">
+                        <div class="pb-4">
+                            <p class="text-gray-300">
+                                The duration of punishments varies depending on the severity of the offense:
+                                <ul class="list-disc ml-5 text-gray-300 space-y-2 mt-2">
+                                    <li><span class="text-primary">Mute</span>: 1 hour to 7 days</li>
+                                    <li><span class="text-primary">Temporary Ban</span>: 1 day to 6 month</li>
+                                    <li><span class="text-primary">Permanent Ban</span>: For severe offenses such as hacking, severe griefing, or extreme toxic behavior</li>
+                                </ul>
+                            </p>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="accordion-item mb-4 overflow-hidden">
-                    <button class="accordion-btn flex justify-between items-center w-full px-6 py-4 text-left font-medium bg-secondary hover:bg-secondary-light focus:outline-none">
+                <div class="accordion-item mb-4 overflow-hidden rounded-lg">
+                    <button class="accordion-btn flex justify-between items-center w-full px-6 py-4 text-left font-medium bg-secondary hover:bg-secondary-light focus:outline-none rounded-t-lg">
                         <span class="text-white">How can I find out about the latest rule updates?</span>
                         <i class="fas fa-chevron-down transition-transform text-primary"></i>
                     </button>
-                    <div class="accordion-content hidden px-6 py-4 bg-secondary">
-                        <p class="text-gray-300">
-                            All rule updates will be announced through:
-                            <ul class="list-disc ml-5 text-gray-300 space-y-2 mt-2">
-                                <li>In the <span class="text-primary">#peraturan</span> channel on the Discord server</li>
-                                <li>This website page which will always be updated</li>
-                            </ul>
-                            It is recommended to check the rules at least once a week.
-                        </p>
+                    <div class="accordion-content bg-secondary rounded-b-lg px-6">
+                        <div class="pb-4">
+                            <p class="text-gray-300">
+                                All rule updates will be announced through:
+                                <ul class="list-disc ml-5 text-gray-300 space-y-2 mt-2">
+                                    <li>In the <span class="text-primary">#peraturan</span> channel on the Discord server</li>
+                                    <li>This website page which will always be updated</li>
+                                </ul>
+                                It is recommended to check the rules at least once a week.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -510,29 +562,69 @@
     </button>
 
     <script>
+        // Animasi saat masuk ke bagian FAQ
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqSection = document.getElementById('faq');
+            
+            // Fungsi untuk memeriksa apakah elemen terlihat di viewport
+            function isInViewport(element) {
+                const rect = element.getBoundingClientRect();
+                return (
+                    rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
+                    rect.bottom >= 0
+                );
+            }
+            
+            // Fungsi untuk menambahkan animasi saat FAQ masuk viewport
+            function handleScroll() {
+                if (isInViewport(faqSection)) {
+                    faqSection.classList.add('animated');
+                    window.removeEventListener('scroll', handleScroll);
+                }
+            }
+            
+            // Tambahkan event listener untuk scroll
+            window.addEventListener('scroll', handleScroll);
+            
+            // Jalankan sekali saat load untuk mengecek apakah FAQ sudah terlihat
+            handleScroll();
+        });
 
-        // Accordion Functionality
+        // Accordion Functionality dengan animasi yang lebih halus
         document.querySelectorAll('.accordion-btn').forEach(button => {
             button.addEventListener('click', () => {
-                const isExpanded = button.getAttribute('aria-expanded') === 'true';
+                const accordionItem = button.closest('.accordion-item');
+                const isExpanded = accordionItem.getAttribute('aria-expanded') === 'true';
                 const content = button.nextElementSibling;
                 const icon = button.querySelector('i');
                 
-                // Toggle states
-                button.setAttribute('aria-expanded', !isExpanded);
-                button.classList.toggle('bg-secondary-light');
-                content.classList.toggle('hidden');
+                // Tutup semua accordion yang terbuka
+                document.querySelectorAll('.accordion-item[aria-expanded="true"]').forEach(item => {
+                    if (item !== accordionItem) {
+                        item.setAttribute('aria-expanded', 'false');
+                        item.querySelector('.accordion-content').style.maxHeight = '0';
+                        item.querySelector('.accordion-content').style.opacity = '0';
+                        item.querySelector('i').style.transform = 'rotate(0deg)';
+                    }
+                });
                 
-                // Toggle icon rotation
-                icon.style.transform = isExpanded ? 'rotate(0deg)' : 'rotate(180deg)';
-                
-                // Smooth height transition
-                if (!isExpanded) {
-                    content.style.maxHeight = content.scrollHeight + 'px';
+                // Toggle state accordion yang diklik
+                if (isExpanded) {
+                    accordionItem.setAttribute('aria-expanded', 'false');
+                    content.style.maxHeight = '0';
+                    content.style.opacity = '0';
+                    icon.style.transform = 'rotate(0deg)';
                 } else {
-                    content.style.maxHeight = null;
+                    accordionItem.setAttribute('aria-expanded', 'true');
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                    content.style.opacity = '1';
+                    icon.style.transform = 'rotate(180deg)';
                 }
             });
+            
+            // Inisialisasi state accordion
+            const accordionItem = button.closest('.accordion-item');
+            accordionItem.setAttribute('aria-expanded', 'false');
         });
 
         // Back to Top Button
@@ -563,7 +655,6 @@
                 const targetElement = document.querySelector(targetId);
                 if (!targetElement) return;
 
-
                 // Smooth scroll with offset for fixed header
                 const headerHeight = document.querySelector('header').offsetHeight;
                 const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
@@ -575,12 +666,13 @@
                 
                 // Update URL without jumping
                 history.pushState(null, null, targetId);
+                
+                // Jika target adalah FAQ, trigger animasi
+                if (targetId === '#faq') {
+                    const faqSection = document.getElementById('faq');
+                    faqSection.classList.add('animated');
+                }
             });
-        });
-
-        // Initialize accordions with ARIA attributes
-        document.querySelectorAll('.accordion-btn').forEach(button => {
-            button.setAttribute('aria-expanded', 'false');
         });
     </script>
 </body>
