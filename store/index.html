@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bakwan Jagung - Store</title>
     <meta name="description" content="Official store website from Bakwan Jagung Minecraft Server. Purchase premium ranks, permissions and special items to enhance your gameplay experience.">
-    <meta name="keywords" content="Bakwan Jagung, Minecraft store, Minecraft ranks, Minecraft server store, Minecraft VIP">
+    <meta name="keywords" content="Bakwan Jagung, Minecraft store, Minecraft ranks, Minecraft server store">
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://web.bakwanjagung.my.id/store/">
@@ -57,192 +57,105 @@
             }
         }
     </script>
-</head>
-    <style>
-        body {
-            background: linear-gradient(135deg, #111 0%, #222 100%);
-            color: #fff;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-        
-        .card {
-            background: linear-gradient(145deg, rgba(40,40,40,0.8) 0%, rgba(30,30,30,0.9) 100%);
-            border-top: 2px solid rgba(255,140,0,0.3);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            transition: all 0.3s ease;
-        }
-        
-        .card:hover {
-            box-shadow: 0 15px 35px rgba(255,140,0,0.2);
-            transform: translateY(-5px);
-        }
-        
-        .btn-primary {
-            background: linear-gradient(to right, #ff8c00 0%, #ffb347 100%);
-            box-shadow: 0 4px 15px rgba(255,140,0,0.4);
-            transition: all 0.3s ease;
-        }
-        
-        .btn-primary:hover {
-            box-shadow: 0 6px 20px rgba(255,140,0,0.6);
-        }
-        
-        .rank-badge {
-            width: 80px;
-            height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            border-radius: 50%;
-            box-shadow: 0 0 20px rgba(255,140,0,0.5);
-            margin: -40px auto 20px;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .glow-effect {
-            animation: glow 2s infinite alternate;
-        }
-        
-        @keyframes glow {
-            from {
-                box-shadow: 0 0 10px rgba(255,140,0,0.5);
-            }
-            to {
-                box-shadow: 0 0 20px rgba(255,140,0,0.8), 0 0 30px rgba(255,140,0,0.3);
-            }
-        }
-        
-        .nav-item {
-            position: relative;
-        }
-        
-        .nav-item::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(to right, #ff8c00, #ffb347);
-            transition: width 0.3s ease;
-        }
-        
-        .nav-item:hover::after {
-            width: 100%;
-        }
-        
-        .see-features-btn {
-            background: none;
-            border: none;
-            font-family: 'Rajdhani', sans-serif;
-            font-weight: 600;
-            cursor: pointer;
-            outline: none;
-        }
-
-        .feature-icon {
-            filter: drop-shadow(0 0 8px rgba(255,140,0,0.7));
-        }
-        
-        /* Tambahkan transition untuk mobile menu */
-        #mobile-menu {
-            transition: all 0.3s ease;
-        }
     
-        /* Style untuk mobile menu items */
-        #mobile-menu a {
-            padding: 8px 0;
-            border-bottom: 1px solid rgba(255, 140, 0, 0.1);
-        }
-    
-        /* Efek hover untuk mobile menu */
-        #mobile-menu a:hover {
-            color: #ff8c00;
-            padding-left: 8px;
-        }
-
-        /* Animasi untuk FAQ */
-        .faq-item {
-            transition: all 0.3s ease;
-        }
-
-        .faq-button {
-            transition: all 0.3s ease;
-        }
-
-        .faq-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease, opacity 0.3s ease;
-            opacity: 0;
-        }
-
-        .faq-content.show {
-            max-height: 500px; /* Sesuaikan dengan konten terpanjang */
-            opacity: 1;
-        }
-
-        .faq-icon {
-            transition: transform 0.3s ease;
-        }
-
-        .faq-icon.rotate {
-            transform: rotate(180deg);
-        }
-
-        /* Animasi ketika mengklik FAQ */
-        @keyframes faqClick {
-            0% { transform: scale(1); }
-            50% { transform: scale(0.98); }
-            100% { transform: scale(1); }
-        }
-
-        .faq-click-animation {
-            animation: faqClick 0.3s ease;
-        }
-    </style>
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body class="font-body">
-<!-- Header Section -->
-<header class="border-b border-orange-900/30">
-    <div class="container mx-auto px-6 py-4">
-        <div class="flex justify-between items-center">
-            <div class="flex items-center space-x-3">
-                <img src="media/favicon.png" alt="Bakwan Jagung Logo" class="h-12 w-12">
-                <h1 class="text-2xl font-heading font-bold bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">BAKWAN JAGUNG</h1>
+    <!-- Login Modal -->
+    <div id="loginModal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50">
+        <div class="bg-secondary rounded-xl p-8 max-w-md w-full mx-4 border border-primary/30">
+            <div class="text-center mb-6">
+                <img src="media/favicon.png" alt="Bakwan Jagung Logo" class="h-16 w-16 mx-auto mb-4">
+                <h2 class="text-2xl font-heading font-bold bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent mb-2">Welcome Back!</h2>
+                <p class="text-gray-400">Enter your Minecraft username to access the store</p>
             </div>
             
-            <!-- Desktop Navigation (hidden on mobile) -->
-            <nav class="hidden md:flex space-x-8">
-                <a href="https://web.bakwanjagung.my.id/" class="nav-item text-white hover:text-primary transition">Home</a>
-                <a href="#ranks" class="nav-item text-white hover:text-primary transition">Ranks</a>
-                <a href="#permissions" class="nav-item text-white hover:text-primary transition">Permissions</a>
-                <a href="#faq" class="nav-item text-white hover:text-primary transition">FAQ</a>
-            </nav>
+            <form id="loginForm">
+                <div class="mb-4">
+                    <label for="username" class="block text-sm font-medium text-gray-300 mb-2">Minecraft Username</label>
+                    <input type="text" id="username" name="username" required 
+                           class="w-full px-4 py-3 bg-secondary-dark border border-gray-600 rounded-lg focus:border-primary focus:outline-none transition text-white"
+                           placeholder="Enter your username"
+                           autocomplete="username">
+                    <div id="usernameError" class="text-red-400 text-sm mt-2 hidden"></div>
+                </div>
+                
+                <button type="submit" id="loginButton" 
+                        class="w-full btn-primary py-3 rounded-lg font-bold flex items-center justify-center">
+                    <span id="loginButtonText">LOGIN</span>
+                    <svg id="loginSpinner" class="animate-spin -mr-1 ml-3 h-5 w-5 text-white hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                </button>
+                
+                <div id="loginStatus" class="text-center mt-4 text-sm hidden"></div>
+            </form>
             
-            <!-- Mobile menu button (hidden on desktop) -->
-            <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                </svg>
-            </button>
-        </div>
-        
-        <!-- Mobile Navigation (hidden by default) -->
-        <div id="mobile-menu" class="hidden md:hidden py-4">
-            <div class="flex flex-col space-y-4">
-                <a href="https://web.bakwanjagung.my.id/" class="nav-item text-white hover:text-primary transition">Home</a>
-                <a href="#ranks" class="nav-item text-white hover:text-primary transition">Ranks</a>
-                <a href="#permissions" class="nav-item text-white hover:text-primary transition">Permissions</a>
-                <a href="#faq" class="nav-item text-white hover:text-primary transition">FAQ</a>
+            <div class="mt-6 text-center">
+                <p class="text-gray-500 text-sm">
+                    Don't have an account? Join our server at<br>
+                    <span class="text-primary font-bold">bakwanjagung.my.id</span>
+                </p>
             </div>
         </div>
     </div>
-</header>
 
+    <!-- User Info Bar -->
+    <div id="userInfoBar" class="hidden fixed top-0 left-0 right-0 bg-black bg-opacity-90 border-b border-primary/30 z-40">
+        <div class="container mx-auto px-6 py-2">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-4">
+                    <span class="text-sm text-gray-400">Welcome back,</span>
+                    <span class="font-bold text-primary" id="displayUsername">Username</span>
+                    <span class="text-sm text-gray-400">|</span>
+                    <span class="text-sm">Rank: <span class="font-bold text-primary" id="displayRank">RANK</span></span>
+                </div>
+                <button onclick="logout()" class="text-sm text-gray-400 hover:text-primary transition">
+                    Logout
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Section -->
+    <header class="border-b border-orange-900/30" style="margin-top: 0;">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <img src="media/favicon.png" alt="Bakwan Jagung Logo" class="h-12 w-12">
+                    <h1 class="text-2xl font-heading font-bold bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">BAKWAN JAGUNG</h1>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="https://web.bakwanjagung.my.id/" class="nav-item text-white hover:text-primary transition">Home</a>
+                    <a href="#ranks" class="nav-item text-white hover:text-primary transition">Ranks</a>
+                    <a href="#permissions" class="nav-item text-white hover:text-primary transition">Permissions</a>
+                    <a href="#faq" class="nav-item text-white hover:text-primary transition">FAQ</a>
+                </nav>
+                
+                <!-- Mobile menu button -->
+                <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Mobile Navigation -->
+            <div id="mobile-menu" class="hidden md:hidden py-4">
+                <div class="flex flex-col space-y-4">
+                    <a href="https://web.bakwanjagung.my.id/" class="nav-item text-white hover:text-primary transition">Home</a>
+                    <a href="#ranks" class="nav-item text-white hover:text-primary transition">Ranks</a>
+                    <a href="#permissions" class="nav-item text-white hover:text-primary transition">Permissions</a>
+                    <a href="#faq" class="nav-item text-white hover:text-primary transition">FAQ</a>
+                </div>
+            </div>
+        </div>
+    </header>
 
     <!-- Hero Section -->
     <section class="bg-gradient-to-b from-secondary-dark to-secondary py-28">
@@ -270,10 +183,10 @@
             <!-- Top Row - 3 Ranks -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
                 <!-- Rank 1 - BETA -->
-                <div class="card rounded-xl p-6 relative overflow-hidden">
+                <div class="card rounded-xl p-6 relative overflow-hidden" data-rank="beta" data-price="40000">
                     <h3 class="text-2xl font-heading font-bold text-center mt-6 mb-4">BETA</h3>
                     <div class="text-center mb-6">
-                        <span class="text-3xl font-bold text-primary">RP 40.000</span>
+                        <span class="text-3xl font-bold text-primary rank-price">RP 40.000</span>
                         <span class="text-gray-400">/one-time</span>
                     </div>
                     <div class="text-center mb-4">
@@ -287,7 +200,6 @@
                                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                             </svg>
                             <span>/Fly</span>
-                        </li>
                         <li class="flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary mr-2" viewBox="0 0 20 20" fill="currentColor">
                                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
@@ -319,14 +231,14 @@
                             <span>5 Sethome Location</span>
                         </li>
                     </ul>
-                    <button class="w-full btn-primary py-3 rounded-lg font-bold mt-4">BUY NOW</button>
+                    <button class="w-full btn-primary py-3 rounded-lg font-bold mt-4 buy-button">BUY NOW</button>
                 </div>
                 
                 <!-- Rank 2 - ALPHA -->
-                <div class="card rounded-xl p-6 relative overflow-hidden">
+                <div class="card rounded-xl p-6 relative overflow-hidden" data-rank="alpha" data-price="80000">
                     <h3 class="text-2xl font-heading font-bold text-center mt-6 mb-4">ALPHA</h3>
                     <div class="text-center mb-6">
-                        <span class="text-3xl font-bold text-primary">RP 80.000</span>
+                        <span class="text-3xl font-bold text-primary rank-price">RP 80.000</span>
                         <span class="text-gray-400">/one-time</span>
                     </div>
                     <div class="text-center mb-4">
@@ -378,14 +290,14 @@
                             <span>7 Sethome Location</span>
                         </li>
                     </ul>
-                    <button class="w-full btn-primary py-3 rounded-lg font-bold mt-4">BUY NOW</button>
+                    <button class="w-full btn-primary py-3 rounded-lg font-bold mt-4 buy-button">BUY NOW</button>
                 </div>
                 
                 <!-- Rank 3 - EPSILON -->
-                <div class="card rounded-xl p-6 relative overflow-hidden">
+                <div class="card rounded-xl p-6 relative overflow-hidden" data-rank="epsilon" data-price="120000">
                     <h3 class="text-2xl font-heading font-bold text-center mt-6 mb-4">EPSILON</h3>
                     <div class="text-center mb-6">
-                        <span class="text-3xl font-bold text-primary">RP 120.000</span>
+                        <span class="text-3xl font-bold text-primary rank-price">RP 120.000</span>
                         <span class="text-gray-400">/one-time</span>
                     </div>
                     <div class="text-center mb-4">
@@ -443,17 +355,17 @@
                             <span>15 Sethome Location</span>
                         </li>
                     </ul>
-                    <button class="w-full btn-primary py-3 rounded-lg font-bold mt-4">BUY NOW</button>
+                    <button class="w-full btn-primary py-3 rounded-lg font-bold mt-4 buy-button">BUY NOW</button>
                 </div>
             </div>
             
             <!-- Bottom Row - 2 Ranks -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Rank 4 - OMEGA -->
-                <div class="card rounded-xl p-6 relative overflow-hidden">
+                <div class="card rounded-xl p-6 relative overflow-hidden" data-rank="omega" data-price="240000">
                     <h3 class="text-2xl font-heading font-bold text-center mt-6 mb-4">OMEGA</h3>
                     <div class="text-center mb-6">
-                        <span class="text-3xl font-bold text-primary">RP 240.000</span>
+                        <span class="text-3xl font-bold text-primary rank-price">RP 240.000</span> <!-- TAMBAHKAN CLASS rank-price -->
                         <span class="text-gray-400">/one-time</span>
                     </div>
                     <div class="text-center mb-4">
@@ -511,14 +423,14 @@
                             <span>25 Sethome Location</span>
                         </li>
                     </ul>
-                    <button class="w-full btn-primary py-3 rounded-lg font-bold mt-4">BUY NOW</button>
+                    <button class="w-full btn-primary py-3 rounded-lg font-bold mt-4 buy-button">BUY NOW</button>
                 </div>
 
                 <!-- Rank 5 - CUSTOM -->
-                <div class="card rounded-xl p-6 relative overflow-hidden">
+                <div class="card rounded-xl p-6 relative overflow-hidden" data-rank="defaultcustom" data-price="350000">
                     <h3 class="text-2xl font-heading font-bold text-center mt-6 mb-4">CUSTOM</h3>
                     <div class="text-center mb-6">
-                        <span class="text-3xl font-bold text-primary">RP 350.000</span>
+                        <span class="text-3xl font-bold text-primary rank-price">RP 350.000</span> <!-- TAMBAHKAN CLASS rank-price -->
                         <span class="text-gray-400">/one-time</span>
                     </div>
                     <div class="text-center mb-4">
@@ -582,7 +494,7 @@
                             <span>Custom Prefix (BY REQUEST)</span>
                         </li>
                     </ul>
-                    <button class="w-full btn-primary py-3 rounded-lg font-bold mt-4">BUY NOW</button>
+                    <button class="w-full btn-primary py-3 rounded-lg font-bold mt-4 buy-button">BUY NOW</button>
                 </div>
             </div>
         </div>
@@ -882,126 +794,6 @@
 </footer>
 
     <!-- JavaScript -->
-    <script>
-        // Toggle FAQ item with animation
-        function toggleFAQ(button) {
-            // Add click animation
-            button.classList.add('faq-click-animation');
-            setTimeout(() => {
-                button.classList.remove('faq-click-animation');
-            }, 300);
-
-            const faqItem = button.closest('.faq-item');
-            const content = faqItem.querySelector('.faq-content');
-            const icon = faqItem.querySelector('.faq-icon');
-            
-            // Toggle content visibility with animation
-            content.classList.toggle('show');
-            icon.classList.toggle('rotate');
-            
-            // Toggle card highlight
-            if (content.classList.contains('show')) {
-                faqItem.style.boxShadow = '0 15px 35px rgba(255,140,0,0.2)';
-                faqItem.style.transform = 'translateY(-5px)';
-            } else {
-                faqItem.style.boxShadow = '0 10px 30px rgba(0,0,0,0.3)';
-                faqItem.style.transform = 'translateY(0)';
-            }
-        }
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-        
-        // Add glow effect when hovering over purchase buttons
-        document.querySelectorAll('button.btn-primary').forEach(button => {
-            button.addEventListener('mouseenter', function() {
-                this.classList.add('glow-effect');
-            });
-            
-            button.addEventListener('mouseleave', function() {
-                this.classList.remove('glow-effect');
-            });
-        });
-        
-        // Toggle features visibility
-        function toggleFeatures(button) {
-            const featuresList = button.closest('.card').querySelector('.features-list');
-            featuresList.classList.toggle('hidden');
-            button.textContent = featuresList.classList.contains('hidden') ? '▼ See Features' : '▲ Hide Features';
-        }
-
-        // Handle purchase buttons click
-        document.querySelectorAll('button').forEach(button => {
-            if (button.textContent.trim().toUpperCase() === 'BUY NOW' || 
-                button.textContent.trim().toUpperCase() === 'BUY') {
-                button.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    // Get the product details
-                    const card = this.closest('.card');
-                    const productName = card.querySelector('h3').textContent;
-                    const priceElement = card.querySelector('.text-primary');
-                    const price = priceElement ? priceElement.textContent : 'RP 0';
-                    
-                    // Determine if it's a rank or permission
-                    const isRank = card.closest('#ranks') !== null;
-                    
-                    // Create WhatsApp message
-                    let message = '';
-                    if (isRank) {
-                        message = `Saya ingin membeli Rank ${productName} dengan harga ${price}`;
-                    } else {
-                        message = `Saya ingin membeli Custom permission ${productName} dengan harga ${price}`;
-                    }
-                    
-                    // Encode the message for URL
-                    const encodedMessage = encodeURIComponent(message);
-                    
-                    // Redirect to WhatsApp
-                    window.open(`https://wa.me/6287804812992?text=${encodedMessage}`, '_blank');
-                });
-            }
-        });
-
-        // Mobile menu toggle
-        document.getElementById('mobile-menu-button').addEventListener('click', function() {
-            const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenu.classList.toggle('hidden');
-            
-            // Smooth scroll untuk mobile menu
-            document.querySelectorAll('#mobile-menu a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    mobileMenu.classList.add('hidden');
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                });
-            });
-        });
-
-        // Close FAQ items when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!e.target.closest('.faq-item') && !e.target.closest('.faq-button')) {
-                document.querySelectorAll('.faq-content').forEach(content => {
-                    content.classList.remove('show');
-                });
-                document.querySelectorAll('.faq-icon').forEach(icon => {
-                    icon.classList.remove('rotate');
-                });
-                document.querySelectorAll('.faq-item').forEach(item => {
-                    item.style.boxShadow = '0 10px 30px rgba(0,0,0,0.3)';
-                    item.style.transform = 'translateY(0)';
-                });
-            }
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
