@@ -131,6 +131,14 @@
         .feature-icon {
             filter: drop-shadow(0 0 8px rgba(255,140,0,0.7));
         }
+        
+        .countdown {
+            font-family: 'Orbitron', sans-serif;
+            background: linear-gradient(145deg, rgba(255,140,0,0.1) 0%, rgba(255,180,70,0.2) 100%);
+            border: 1px solid rgba(255,140,0,0.3);
+            padding: 10px 15px;
+            border-radius: 8px;
+        }
     </style>
 </head>
 <body class="font-body">
@@ -176,6 +184,16 @@
                 </div>
                 <h1 class="text-4xl md:text-6xl font-heading font-bold mb-4 bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">VOTE FOR BAKWAN JAGUNG</h1>
                 <p class="text-xl md:text-2xl text-orange-200 mb-8">Help our server grow and get awesome rewards!</p>
+                
+                <!-- Reset Info -->
+                <div class="max-w-2xl mx-auto mb-12">
+                    <div class="card p-6 text-center">
+                        <h3 class="text-xl font-heading font-bold text-primary mb-2">Monthly Top Voter Reset</h3>
+                        <p class="text-orange-200 mb-4">Voter data resets every month on:</p>
+                        <div class="text-2xl font-bold text-white" id="nextResetDate">1 November 2025</div>
+                        <div class="mt-4 text-sm text-gray-400" id="resetStatus">Next reset in: <span id="countdown">29 days 12 hours 35 minutes</span></div>
+                    </div>
+                </div>
                 
                 <!-- Stats Counter -->
                 <div class="flex justify-center gap-8 mb-12">
@@ -298,14 +316,14 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td colspan="3" class="py-3 px-4 text-center">Loading leaderboard...</td>
+                                <td colspan="3" class="py-3 px-4 text-center">Loading leaderboard data...</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
                 <div class="card text-center mt-6 p-4 max-w-md mx-auto">
                     <p class="text-primary"><i class="fas fa-sync-alt mr-2"></i> <span id="lastUpdated">Updating every minute...</span></p>
-                    <p class="text-primary mt-2"><i class="fas fa-calendar-alt mr-2"></i> <span id="resetInfo">Votes reset every 6 months</span></p>
+                    <p class="text-primary mt-2"><i class="fas fa-calendar-alt mr-2"></i> <span id="resetInfo">Votes reset every month on the 1st</span></p>
                 </div>
             </div>
         </div>
@@ -354,49 +372,79 @@
         const JAVA_API_KEY = 'mDfbuuUBovVA4NtZDGFoDsChLt2E0b37P5';
         const MCPE_API_KEY = 'WzmOFhEvR4IxaduH5jYN5A12jvTn1cKTZ';
         
-        // Function to check if today is the reset day (every 6 months)
+        // Month names in English
+        const monthNames = ["January", "February", "March", "April", "May", "June",
+                           "July", "August", "September", "October", "November", "December"];
+        
+        // Function to check if today is the reset day (every 1 month)
         function isResetDay() {
             const today = new Date();
-            const month = today.getMonth(); // 0-11
-            // Reset on January 1st and July 1st (every 6 months)
-            return (month === 0 || month === 6) && today.getDate() === 1;
+            // Reset on the 1st day of every month
+            return today.getDate() === 1;
         }
         
         // Function to get next reset date
         function getNextResetDate() {
             const now = new Date();
-            const currentMonth = now.getMonth();
-            let nextResetMonth;
+            let nextResetMonth = now.getMonth();
+            let nextResetYear = now.getFullYear();
             
-            if (currentMonth < 6) {
-                // Next reset is July 1st of current year
-                nextResetMonth = 6; // July (0-based)
-            } else {
-                // Next reset is January 1st of next year
-                nextResetMonth = 0; // January (0-based)
-            }
-            
-            // If we're already past the reset month this half-year, go to next half-year
-            if ((currentMonth === 0 || currentMonth === 6) && now.getDate() > 1) {
-                if (currentMonth === 0) {
-                    nextResetMonth = 6; // July of current year
-                } else {
-                    nextResetMonth = 0; // January of next year
+            // If today is after the 1st, next reset is 1st of next month
+            if (now.getDate() > 1) {
+                nextResetMonth = now.getMonth() + 1;
+                
+                // If December, go to January next year
+                if (nextResetMonth > 11) {
+                    nextResetMonth = 0;
+                    nextResetYear = now.getFullYear() + 1;
                 }
             }
             
-            // Determine the year
-            const year = (nextResetMonth === 0 && currentMonth >= 6) ? now.getFullYear() + 1 : now.getFullYear();
-            
-            return new Date(year, nextResetMonth, 1);
+            return new Date(nextResetYear, nextResetMonth, 1);
+        }
+        
+        // Function to format date as "1 November 2025"
+        function formatResetDate(date) {
+            return `${date.getDate()} ${monthNames[date.getMonth()]} ${date.getFullYear()}`;
         }
         
         // Function to update reset info display
         function updateResetInfo() {
             const nextReset = getNextResetDate();
-            const options = { day: 'numeric', month: 'long', year: 'numeric' };
+            const formattedDate = formatResetDate(nextReset);
+            
+            // Update the reset date display
+            document.getElementById('nextResetDate').textContent = formattedDate;
             document.getElementById('resetInfo').innerHTML = 
-                `Votes reset every 6 months. Next reset: ${nextReset.toLocaleDateString('en-US', options)}`;
+                `Votes reset every month on: ${formattedDate}`;
+            
+            // Update countdown
+            updateCountdown(nextReset);
+            
+            // Check if today is reset day (for display purposes)
+            if (isResetDay()) {
+                document.getElementById('resetStatus').innerHTML = 
+                    "<span class='text-green-400'>Today is reset day! Votes have been reset.</span>";
+                document.getElementById('countdown').textContent = "Reset in progress";
+            }
+        }
+        
+        // Function to update countdown to next reset
+        function updateCountdown(nextResetDate) {
+            const now = new Date();
+            const timeDiff = nextResetDate - now;
+            
+            if (timeDiff <= 0) {
+                document.getElementById('countdown').textContent = "Reset in progress";
+                return;
+            }
+            
+            const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+            
+            document.getElementById('countdown').textContent = 
+                `${days} days ${hours} hours ${minutes} minutes`;
         }
         
         // Function to update leaderboard
@@ -408,12 +456,6 @@
                 
                 // Update reset info
                 updateResetInfo();
-                
-                // Check if today is reset day (for display purposes)
-                if (isResetDay()) {
-                    document.getElementById('resetInfo').innerHTML = 
-                        "<span class='text-green-400'>Today is reset day! Votes have been reset.</span>";
-                }
                 
                 // Fetch data from both APIs
                 const [javaRes, mcpeRes] = await Promise.all([
@@ -500,9 +542,15 @@
         // Initial load
         document.addEventListener('DOMContentLoaded', function() {
             updateLeaderboard();
+            
+            // Update countdown every minute
+            setInterval(function() {
+                const nextReset = getNextResetDate();
+                updateCountdown(nextReset);
+            }, 60000);
         });
 
-        // Update every minute (60000 milliseconds)
+        // Update leaderboard every minute (60000 milliseconds)
         setInterval(updateLeaderboard, 60000);
     </script>
 </body>
