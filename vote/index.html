@@ -139,6 +139,18 @@
             padding: 10px 15px;
             border-radius: 8px;
         }
+        
+        .leaderboard-row:nth-child(1) {
+            background: linear-gradient(90deg, rgba(255,215,0,0.1) 0%, transparent 100%);
+        }
+        
+        .leaderboard-row:nth-child(2) {
+            background: linear-gradient(90deg, rgba(192,192,192,0.1) 0%, transparent 100%);
+        }
+        
+        .leaderboard-row:nth-child(3) {
+            background: linear-gradient(90deg, rgba(205,127,50,0.1) 0%, transparent 100%);
+        }
     </style>
 </head>
 <body class="font-body">
@@ -182,18 +194,8 @@
                 <div class="inline-block mb-8 floating">
                     <img src="media/favicon.png" alt="Bakwan Jagung Logo" class="w-48 h-48 rounded-xl glow-effect object-cover border-4 border-l-orange-400 border-r-orange-600 border-t-orange-500 border-b-orange-300" />
                 </div>
-                <h1 class="text-4xl md:text-6xl font-heading font-bold mb-4 bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">VOTE FOR BAKWAN JAGUNG</h1>
+                <h1 class="text-4xl md:text-5xl font-heading font-bold mb-4 bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">VOTE FOR BAKWAN JAGUNG</h1>
                 <p class="text-xl md:text-2xl text-orange-200 mb-8">Help our server grow and get awesome rewards!</p>
-                
-                <!-- Reset Info -->
-                <div class="max-w-2xl mx-auto mb-12">
-                    <div class="card p-6 text-center">
-                        <h3 class="text-xl font-heading font-bold text-primary mb-2">Monthly Top Voter Reset</h3>
-                        <p class="text-orange-200 mb-4">Voter data resets every month on:</p>
-                        <div class="text-2xl font-bold text-white" id="nextResetDate">1 November 2025</div>
-                        <div class="mt-4 text-sm text-gray-400" id="resetStatus">Next reset in: <span id="countdown">29 days 12 hours 35 minutes</span></div>
-                    </div>
-                </div>
                 
                 <!-- Stats Counter -->
                 <div class="flex justify-center gap-8 mb-12">
@@ -302,6 +304,7 @@
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-5xl font-heading font-bold mb-4 bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">TOP VOTERS</h2>
                 <div class="w-20 h-1 bg-gradient-to-r from-primary to-primary-light mx-auto"></div>
+                <p class="max-w-2xl mx-auto mt-6 text-gray-400" id="lastUpdated">Last updated: Loading...</p>
             </div>
             
             <div class="max-w-2xl mx-auto">
@@ -321,9 +324,19 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="card text-center mt-6 p-4 max-w-md mx-auto">
-                    <p class="text-primary"><i class="fas fa-sync-alt mr-2"></i> <span id="lastUpdated">Updating every minute...</span></p>
-                    <p class="text-primary mt-2"><i class="fas fa-calendar-alt mr-2"></i> <span id="resetInfo">Votes reset every month on the 1st</span></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reset Info Section (Added at the bottom) -->
+    <section class="py-12 bg-gradient-to-b from-secondary-dark to-secondary">
+        <div class="container mx-auto px-6">
+            <div class="max-w-2xl mx-auto">
+                <div class="card p-6 text-center">
+                    <h3 class="text-xl font-heading font-bold text-primary mb-2">Monthly Top Voter Reset</h3>
+                    <p class="text-xl font-bold text-white">Next reset In : </p>
+                    <div class="text-2xl font-bold text-gray-400" id="nextResetDate"></div>
+                    <div class="mt-4 text-sm font-bold text-gray-400" id="resetStatus"><span id="countdown">- - -</span></div>
                 </div>
             </div>
         </div>
@@ -415,8 +428,6 @@
             
             // Update the reset date display
             document.getElementById('nextResetDate').textContent = formattedDate;
-            document.getElementById('resetInfo').innerHTML = 
-                `Votes reset every month on: ${formattedDate}`;
             
             // Update countdown
             updateCountdown(nextReset);
@@ -458,17 +469,44 @@
                 updateResetInfo();
                 
                 // Fetch data from both APIs
-                const [javaRes, mcpeRes] = await Promise.all([
-                    fetch(`https://minecraft-mp.com/api/?object=servers&element=voters&key=${JAVA_API_KEY}`),
-                    fetch(`https://minecraftpocket-servers.com/api/?object=servers&element=voters&key=${MCPE_API_KEY}`)
-                ]);
+                let javaData = { voters: [] };
+                let mcpeData = { voters: [] };
+                let usingApiData = false;
+                
+                try {
+                    const [javaRes, mcpeRes] = await Promise.all([
+                        fetch(`https://minecraft-mp.com/api/?object=servers&element=voters&key=${JAVA_API_KEY}`),
+                        fetch(`https://minecraftpocket-servers.com/api/?object=servers&element=voters&key=${MCPE_API_KEY}`)
+                    ]);
 
-                if (!javaRes.ok || !mcpeRes.ok) {
-                    throw new Error('Failed to fetch data from one or both APIs');
+                    if (javaRes.ok) {
+                        javaData = await javaRes.json();
+                        usingApiData = true;
+                    } else {
+                        console.warn('Java API failed');
+                    }
+
+                    if (mcpeRes.ok) {
+                        mcpeData = await mcpeRes.json();
+                        usingApiData = true;
+                    } else {
+                        console.warn('MCPE API failed');
+                    }
+                } catch (error) {
+                    console.warn('API fetch error', error);
                 }
-
-                const javaData = await javaRes.json();
-                const mcpeData = await mcpeRes.json();
+                
+                // If both APIs failed or returned no data, show message
+                if ((!javaData.voters || javaData.voters.length === 0) && 
+                    (!mcpeData.voters || mcpeData.voters.length === 0)) {
+                    tbody.innerHTML = '<tr><td colspan="3" class="py-3 px-4 text-center">No voter data available at the moment</td></tr>';
+                    
+                    // Update last updated time
+                    const now = new Date();
+                    document.getElementById('lastUpdated').innerHTML = 
+                        `Last updated: ${now.toLocaleTimeString()} - No data available`;
+                    return;
+                }
 
                 // Combine voters from both sources
                 const voterMap = {};
@@ -521,16 +559,17 @@
                 }
 
                 tbody.innerHTML = top5.map((voter, index) => `
-                    <tr class="border-b border-gray-700">
-                        <td class="py-3 px-4">${index + 1}</td>
+                    <tr class="leaderboard-row border-b border-gray-700">
+                        <td class="py-3 px-4 font-bold">${index + 1}</td>
                         <td class="py-3 px-4 font-medium">${voter.name}</td>
-                        <td class="py-3 px-4 text-right">${voter.votes}</td>
+                        <td class="py-3 px-4 text-right font-bold">${voter.votes}</td>
                     </tr>
                 `).join('');
 
                 // Update last updated time
                 const now = new Date();
-                document.getElementById('lastUpdated').innerHTML = `Last updated: ${now.toLocaleTimeString()}`;
+                document.getElementById('lastUpdated').innerHTML = 
+                    `Last updated: ${now.toLocaleTimeString()}`;
                 
             } catch (error) {
                 console.error('Error updating leaderboard:', error);
@@ -548,10 +587,10 @@
                 const nextReset = getNextResetDate();
                 updateCountdown(nextReset);
             }, 60000);
+            
+            // Update leaderboard every 5 minutes (300000 milliseconds)
+            setInterval(updateLeaderboard, 300000);
         });
-
-        // Update leaderboard every minute (60000 milliseconds)
-        setInterval(updateLeaderboard, 60000);
     </script>
 </body>
 </html>
