@@ -497,7 +497,6 @@
                         </div>
                         <i class="fas fa-chevron-right ml-auto text-gray-500"></i>
                     </a>
-                    
                     <!-- WhatsApp -->
                     <a href="https://community.bakwanjagung.my.id/" 
                        class="social-card p-4 flex items-center hover:text-primary transition-colors duration-200"
@@ -510,8 +509,21 @@
                             <p class="text-sm text-gray-400">Connect with players via WhatsApp</p>
                         </div>
                         <i class="fas fa-chevron-right ml-auto text-gray-500"></i>
-                    </a>
-                    
+                    </a>		
+					
+					<!-- TikTok -->
+					<a href="https://www.tiktok.com/@bakwanjagungmc" 
+						class="social-card p-4 flex items-center hover:text-primary transition-colors duration-200"
+						rel="noopener noreferrer" aria-label="Follow Bakwan Jagung on TikTok">
+						<div class="w-12 h-12 rounded-full bg-gray-900/30 flex items-center justify-center mr-4">
+							<i class="fab fa-tiktok text-gray-100 text-xl"></i>
+						</div>
+						<div>
+							<h4 class="font-bold text-white">TikTok</h4>
+							<p class="text-sm text-gray-400">Follow us on TikTok</p>
+						</div>
+						<i class="fas fa-chevron-right ml-auto text-gray-500"></i>
+					</a>           
                 
                 <div class="mt-6 pt-6 border-t border-gray-800">
                     <h4 class="font-heading font-bold text-white mb-3">Need Help?</h4>
@@ -577,11 +589,13 @@
         function updateStatus() {
             statusIndicator.className = "status-indicator status-loading";
             statusElement.textContent = "Checking...";
+            statusElement.className = "text-white mr-3";
             
             fetch(`https://minecraft-mp.com/api/?object=servers&element=detail&key=${API_KEY}&id=${SERVER_ID}`)
                 .then(res => res.json())
                 .then(data => {
-                    if (data.is_online) {
+                    // Perbaikan utama: Memeriksa properti yang benar dari respons API
+                    if (data && data.status && data.status === "online") {
                         statusIndicator.className = "status-indicator status-online";
                         statusElement.textContent = "Online";
                         statusElement.classList.remove("text-red-500");
