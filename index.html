@@ -8,50 +8,8 @@
     <meta name="keywords" content="Bakwan Jagung, Server Minecraft Indonesia, Bakwan Jagung Server, Server Minecraft 1.20.1, Minecraft PE Server, Multiplayer Minecraft Indonesia">
     <meta name="author" content="Bakwan Jagung Team">
     
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://web.bakwanjagung.my.id/">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://web.bakwanjagung.my.id/">
-    <meta property="og:title" content="Bakwan Jagung | Minecraft Server">
-    <meta property="og:description" content="Server Minecraft Survival Mix Indonesia dengan fitur unik dan komunitas yang ramah. Bergabung sekarang dengan IP : bakwanjagung.my.id">
-    <meta property="og:image" content="https://web.bakwanjagung.my.id/media/favicon.png">
-    <meta property="og:site_name" content="Bakwan Jagung Minecraft Server">
-    <meta property="og:locale" content="id_ID">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://web.bakwanjagung.my.id/">
-    <meta property="twitter:title" content="Bakwan Jagung | Minecraft Server">
-    <meta property="twitter:description" content="Server Minecraft Survival Mix Indonesia dengan fitur unik dan komunitas yang ramah. Bergabung sekarang dengan IP : bakwanjagung.my.id">
-    <meta property="twitter:image" content="https://web.bakwanjagung.my.id/media/favicon.png">
-    
     <!-- Favicon -->
     <link rel="icon" href="media/favicon.png" type="image/png">
-    
-    <!-- Structured Data / Schema.org -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "GameServer",
-      "name": "Bakwan Jagung Minecraft Server",
-      "description": "Server Minecraft Survival Mix Indonesia dengan fitur unik dan komunitas yang ramah",
-      "url": "https://web.bakwanjagung.my.id/",
-      "gamePlatform": "Minecraft",
-      "operatingSystem": "Multiplatform",
-      "playersOnline": {
-        "@type": "QuantitativeValue",
-        "value": "Loading..."
-      },
-      "serverStatus": "Online",
-      "gameServerVersion": "1.20.1"
-    }
-    </script>
-    
-    <!-- Preload important resources -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@400;600&display=swap" as="style">
-    <link rel="preload" href="media/server-banner.jpg" as="image">
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
@@ -237,13 +195,13 @@
         }
     </style>
 </head>
-<body class="font-body" itemscope itemtype="https://schema.org/WebPage">
+<body class="font-body">
     <!-- Header Section -->
     <header class="border-b border-orange-900/30 sticky top-0 z-50 bg-secondary-dark/90 backdrop-blur-md">
         <div class="container mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
                 <div class="flex items-center space-x-3">
-                    <img src="media/favicon.png" alt="Logo Bakwan Jagung Minecraft Server" class="h-12 w-12" itemprop="logo">
+                    <img src="media/favicon.png" alt="Logo Bakwan Jagung Minecraft Server" class="h-12 w-12">
                     <h1 class="text-2xl font-heading font-bold bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">BAKWAN JAGUNG</h1>
                 </div>
                 <nav class="hidden md:flex space-x-8" aria-label="Main navigation">
@@ -274,7 +232,7 @@
     </header>
 
     <!-- Hero Section -->
-    <section id="home" class="hero-overlay min-h-screen flex items-center" itemscope itemtype="https://schema.org/Game">
+    <section id="home" class="hero-overlay min-h-screen flex items-center">
         <div class="container mx-auto px-6 py-24 relative z-10">
             <div class="max-w-3xl mx-auto text-center">
                 <h2 class="text-4xl md:text-6xl font-heading font-bold mb-6 bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">
@@ -306,7 +264,7 @@
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="card p-6 rounded-xl" itemscope itemtype="https://schema.org/GameServer">
+                <div class="card p-6 rounded-xl">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mr-4">
                             <i class="fas fa-shield-alt text-primary feature-icon text-xl"></i>
@@ -318,7 +276,7 @@
                     </p>
                 </div>
                 
-                <div class="card p-6 rounded-xl" itemscope itemtype="https://schema.org/GameServer">
+                <div class="card p-6 rounded-xl">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mr-4">
                             <i class="fas fa-coins text-primary feature-icon text-xl"></i>
@@ -330,7 +288,7 @@
                     </p>
                 </div>
                 
-                <div class="card p-6 rounded-xl" itemscope itemtype="https://schema.org/GameServer">
+                <div class="card p-6 rounded-xl">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mr-4">
                             <i class="fas fa-gamepad text-primary feature-icon text-xl"></i>
@@ -463,8 +421,8 @@
                         <p class="text-gray-400 text-sm mb-1">Server Status</p>
                         <div class="flex items-center">
                             <span id="status-indicator" class="status-indicator status-loading"></span>
-                            <span id="server-status" class="text-white mr-3" itemprop="serverStatus">Checking...</span>
-                            <span id="player-count" class="text-sm text-gray-300 ml-auto" itemprop="playersOnline"></span>
+                            <span id="server-status" class="text-white mr-3">Checking...</span>
+                            <span id="player-count" class="text-sm text-gray-300 ml-auto"></span>
                         </div>
                     </div>
                     
@@ -497,6 +455,7 @@
                         </div>
                         <i class="fas fa-chevron-right ml-auto text-gray-500"></i>
                     </a>
+                    
                     <!-- WhatsApp -->
                     <a href="https://community.bakwanjagung.my.id/" 
                        class="social-card p-4 flex items-center hover:text-primary transition-colors duration-200"
@@ -509,21 +468,22 @@
                             <p class="text-sm text-gray-400">Connect with players via WhatsApp</p>
                         </div>
                         <i class="fas fa-chevron-right ml-auto text-gray-500"></i>
-                    </a>		
-					
-					<!-- TikTok -->
-					<a href="https://www.tiktok.com/@bakwanjagungmc" 
-						class="social-card p-4 flex items-center hover:text-primary transition-colors duration-200"
-						rel="noopener noreferrer" aria-label="Follow Bakwan Jagung on TikTok">
-						<div class="w-12 h-12 rounded-full bg-gray-900/30 flex items-center justify-center mr-4">
-							<i class="fab fa-tiktok text-gray-100 text-xl"></i>
-						</div>
-						<div>
-							<h4 class="font-bold text-white">TikTok</h4>
-							<p class="text-sm text-gray-400">Follow us on TikTok</p>
-						</div>
-						<i class="fas fa-chevron-right ml-auto text-gray-500"></i>
-					</a>           
+                    </a>
+                    
+                    <!-- TikTok -->
+                    <a href="https://www.tiktok.com/@bakwanjagungmc" 
+                       class="social-card p-4 flex items-center hover:text-primary transition-colors duration-200"
+                       rel="noopener noreferrer" aria-label="Follow Bakwan Jagung on TikTok">
+                        <div class="w-12 h-12 rounded-full bg-gray-900/30 flex items-center justify-center mr-4">
+                            <i class="fab fa-tiktok text-gray-100 text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white">TikTok</h4>
+                            <p class="text-sm text-gray-400">Follow us on TikTok</p>
+                        </div>
+                        <i class="fas fa-chevron-right ml-auto text-gray-500"></i>
+                    </a>
+                </div>
                 
                 <div class="mt-6 pt-6 border-t border-gray-800">
                     <h4 class="font-heading font-bold text-white mb-3">Need Help?</h4>
@@ -591,32 +551,34 @@
             statusElement.textContent = "Checking...";
             statusElement.className = "text-white mr-3";
             
-            fetch(`https://minecraft-mp.com/api/?object=servers&element=detail&key=${API_KEY}&id=${SERVER_ID}`)
-                .then(res => res.json())
+            // Add timestamp to prevent caching
+            const timestamp = new Date().getTime();
+            
+            fetch(`https://minecraft-mp.com/api/?object=servers&element=detail&key=${API_KEY}&id=${SERVER_ID}&_=${timestamp}`)
+                .then(res => {
+                    if (!res.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return res.json();
+                })
                 .then(data => {
+                    console.log("API Response:", data); // Debug log
+                    
                     // Perbaikan utama: Memeriksa properti yang benar dari respons API
-                    if (data && data.status && data.status === "online") {
+                    if (data && data.is_online === "1") {
                         statusIndicator.className = "status-indicator status-online";
                         statusElement.textContent = "Online";
                         statusElement.classList.remove("text-red-500");
                         statusElement.classList.add("text-green-500");
 
-                        playerCountElement.textContent = `${data.players} / ${data.maxplayers} players online`;
-                        
-                        // Update schema data
-                        document.querySelector('[itemprop="serverStatus"]').textContent = "Online";
-                        document.querySelector('[itemprop="playersOnline"]').textContent = `${data.players} / ${data.maxplayers}`;
+                        playerCountElement.textContent = `${data.players} / ${data.maxplayers}`;
                     } else {
                         statusIndicator.className = "status-indicator status-offline";
                         statusElement.textContent = "Offline";
                         statusElement.classList.remove("text-green-500");
                         statusElement.classList.add("text-red-500");
 
-                        playerCountElement.textContent = "0 / 0 players online";
-                        
-                        // Update schema data
-                        document.querySelector('[itemprop="serverStatus"]').textContent = "Offline";
-                        document.querySelector('[itemprop="playersOnline"]').textContent = "0 / 0";
+                        playerCountElement.textContent = "0 / 0 ";
                     }
                 })
                 .catch(err => {
@@ -708,7 +670,7 @@
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
             updateStatus();
-            setInterval(updateStatus, 30000);
+            setInterval(updateStatus, 15000); // Check every 15 seconds
             
             // Add scroll event listener
             window.addEventListener('scroll', updateActiveNavItem);
