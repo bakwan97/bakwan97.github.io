@@ -15,10 +15,10 @@ const RANK_DISPLAY_MAP = {
 	'creator': 'MEDIA',
     'omega': 'OMEGA',
     'defaultcustom': 'CUSTOM',
-    'helper': 'STAFF',
-    'builder': 'STAFF',
-    'moderator': 'STAFF',
-    'developer': 'STAFF',
+    'helper': 'HELPER',
+    'builder': 'BUILDER',
+    'moderator': 'MODERATOR',
+    'developer': 'DEVELOPER',
     'owner': 'OWNER'
 };
 
@@ -496,3 +496,4 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
