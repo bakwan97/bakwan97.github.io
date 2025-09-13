@@ -3,7 +3,7 @@ const SUPABASE_URL = 'https://ygpkzqivuhuztjityeik.supabase.co';
 const SUPABASE_API_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlncGt6cWl2dWh1enRqaXR5ZWlrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU3ODQwNTIsImV4cCI6MjA3MTM2MDA1Mn0.2u5e1XQR1nQNjp9yEPCDukwzgpvLaU0eW5UiJ2ST30I';
 
 // Rank Hierarchy (URUTAN DIPERBAIKI: dari rank tertinggi/termahal ke terendah/termurah)
-const RANK_HIERARCHY = ['owner', 'developer', 'moderator', 'builder', 'helper', 'defaultcustom', 'omega', 'creator', 'epsilon', 'alpha', 'beta', 'rajin', 'default'];
+const RANK_HIERARCHY = ['owner', 'developer', 'moderator', 'builder', 'helper', 'defaultcustom', 'omega', 'epsilon', 'alpha', 'beta', 'rajin', 'default'];
 
 // Rank display mapping
 const RANK_DISPLAY_MAP = {
@@ -12,13 +12,12 @@ const RANK_DISPLAY_MAP = {
     'beta': 'BETA',
     'alpha': 'ALPHA',
     'epsilon': 'EPSILON',
-    'creator': 'MEDIA'
     'omega': 'OMEGA',
     'defaultcustom': 'CUSTOM',
-    'helper': 'HELPER',
-    'builder': 'BUILDER',
-    'moderator': 'MODERATOR',
-    'developer': 'DEVELOPER',
+    'helper': 'STAFF',
+    'builder': 'STAFF',
+    'moderator': 'STAFF',
+    'developer': 'STAFF',
     'owner': 'OWNER'
 };
 
@@ -28,7 +27,6 @@ const RANK_PRICE_MAP = {
     'rajin': 0,
     'beta': 40000,
     'alpha': 80000,
-    'creator': 80000,
     'epsilon': 120000,
     'omega': 240000,
     'defaultcustom': 350000,
@@ -495,6 +493,4 @@ document.addEventListener('DOMContentLoaded', function() {
             this.classList.remove('glow-effect');
         });
     });
-
 });
-
