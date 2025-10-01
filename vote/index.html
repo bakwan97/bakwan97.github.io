@@ -328,14 +328,14 @@
         </div>
     </section>
 
-    <!-- Reset Info Section (Added at the bottom) -->
+    <!-- Reset Info Section -->
     <section class="py-12 bg-gradient-to-b from-secondary-dark to-secondary">
         <div class="container mx-auto px-6">
             <div class="max-w-2xl mx-auto">
                 <div class="card p-6 text-center">
                     <h3 class="text-xl font-heading font-bold text-primary mb-2">Monthly Top Voter Reset</h3>
                     <p class="text-xl font-bold text-white">Next reset In : </p>
-                    <div class="text-2xl font-bold text-gray-400" id="nextResetDate"></div>
+                    <div class="text-2xl font-bold text-gray-400" id="nextResetDate">Loading...</div>
                     <div class="mt-4 text-sm font-bold text-gray-400" id="resetStatus"><span id="countdown">- - -</span></div>
                 </div>
             </div>
@@ -389,31 +389,19 @@
         const monthNames = ["January", "February", "March", "April", "May", "June",
                            "July", "August", "September", "October", "November", "December"];
         
-        // Function to check if today is the reset day (every 1 month)
-        function isResetDay() {
-            const today = new Date();
-            // Reset on the 1st day of every month
-            return today.getDate() === 1;
-        }
-        
-        // Function to get next reset date
+        // Function to get next reset date - ALWAYS returns the NEXT month's 1st day
         function getNextResetDate() {
             const now = new Date();
-            let nextResetMonth = now.getMonth();
+            let nextResetMonth = now.getMonth() + 1; // Always next month
             let nextResetYear = now.getFullYear();
             
-            // If today is after the 1st, next reset is 1st of next month
-            if (now.getDate() > 1) {
-                nextResetMonth = now.getMonth() + 1;
-                
-                // If December, go to January next year
-                if (nextResetMonth > 11) {
-                    nextResetMonth = 0;
-                    nextResetYear = now.getFullYear() + 1;
-                }
+            // If current month is December, next reset is January next year
+            if (nextResetMonth > 11) {
+                nextResetMonth = 0;
+                nextResetYear = now.getFullYear() + 1;
             }
             
-            return new Date(nextResetYear, nextResetMonth, 1);
+            return new Date(nextResetYear, nextResetMonth, 1, 0, 0, 0, 0);
         }
         
         // Function to format date as "1 November 2025"
@@ -431,13 +419,6 @@
             
             // Update countdown
             updateCountdown(nextReset);
-            
-            // Check if today is reset day (for display purposes)
-            if (isResetDay()) {
-                document.getElementById('resetStatus').innerHTML = 
-                    "<span class='text-green-400'>Today is reset day! Votes have been reset.</span>";
-                document.getElementById('countdown').textContent = "Reset in progress";
-            }
         }
         
         // Function to update countdown to next reset
@@ -446,7 +427,9 @@
             const timeDiff = nextResetDate - now;
             
             if (timeDiff <= 0) {
-                document.getElementById('countdown').textContent = "Reset in progress";
+                document.getElementById('countdown').textContent = "Resetting...";
+                document.getElementById('resetStatus').innerHTML = 
+                    "<span class='text-green-400'>Reset in progress. Please wait...</span>";
                 return;
             }
             
@@ -456,6 +439,10 @@
             
             document.getElementById('countdown').textContent = 
                 `${days} days ${hours} hours ${minutes} minutes`;
+            
+            // Clear reset status if countdown is active
+            document.getElementById('resetStatus').innerHTML = 
+                `<span id="countdown">${days} days ${hours} hours ${minutes} minutes</span>`;
         }
         
         // Function to update leaderboard
@@ -469,9 +456,8 @@
                 updateResetInfo();
                 
                 // Fetch data from both APIs
-                let javaData = { voters: [] };
-                let mcpeData = { voters: [] };
-                let usingApiData = false;
+                let javaData = null;
+                let mcpeData = null;
                 
                 try {
                     const [javaRes, mcpeRes] = await Promise.all([
@@ -480,69 +466,87 @@
                     ]);
 
                     if (javaRes.ok) {
-                        javaData = await javaRes.json();
-                        usingApiData = true;
+                        try {
+                            javaData = await javaRes.json();
+                            console.log('Java API response:', javaData);
+                        } catch (jsonError) {
+                            console.warn('Java API JSON parse error:', jsonError);
+                        }
                     } else {
-                        console.warn('Java API failed');
+                        console.warn('Java API failed with status:', javaRes.status);
                     }
 
                     if (mcpeRes.ok) {
-                        mcpeData = await mcpeRes.json();
-                        usingApiData = true;
+                        try {
+                            mcpeData = await mcpeRes.json();
+                            console.log('MCPE API response:', mcpeData);
+                        } catch (jsonError) {
+                            console.warn('MCPE API JSON parse error:', jsonError);
+                        }
                     } else {
-                        console.warn('MCPE API failed');
+                        console.warn('MCPE API failed with status:', mcpeRes.status);
                     }
                 } catch (error) {
-                    console.warn('API fetch error', error);
+                    console.warn('API fetch error:', error);
                 }
                 
-                // If both APIs failed or returned no data, show message
-                if ((!javaData.voters || javaData.voters.length === 0) && 
-                    (!mcpeData.voters || mcpeData.voters.length === 0)) {
-                    tbody.innerHTML = '<tr><td colspan="3" class="py-3 px-4 text-center">No voter data available at the moment</td></tr>';
-                    
-                    // Update last updated time
-                    const now = new Date();
-                    document.getElementById('lastUpdated').innerHTML = 
-                        `Last updated: ${now.toLocaleTimeString()} - No data available`;
-                    return;
-                }
-
-                // Combine voters from both sources
+                // Initialize voter map
                 const voterMap = {};
+                let hasData = false;
 
                 // Process Java voters
-                if (javaData.voters && Array.isArray(javaData.voters)) {
+                if (javaData && javaData.voters && Array.isArray(javaData.voters) && javaData.voters.length > 0) {
                     javaData.voters.forEach(voter => {
-                        const username = voter.nickname;
-                        const votes = parseInt(voter.votes) || 0;
-                        
-                        if (voterMap[username]) {
-                            voterMap[username].votes += votes;
-                        } else {
-                            voterMap[username] = {
-                                name: username,
-                                votes: votes
-                            };
+                        if (voter && voter.nickname) {
+                            const username = voter.nickname;
+                            const votes = parseInt(voter.votes) || 0;
+                            
+                            if (votes > 0) {
+                                hasData = true;
+                                if (voterMap[username]) {
+                                    voterMap[username].votes += votes;
+                                } else {
+                                    voterMap[username] = {
+                                        name: username,
+                                        votes: votes
+                                    };
+                                }
+                            }
                         }
                     });
                 }
 
                 // Process MCPE voters
-                if (mcpeData.voters && Array.isArray(mcpeData.voters)) {
+                if (mcpeData && mcpeData.voters && Array.isArray(mcpeData.voters) && mcpeData.voters.length > 0) {
                     mcpeData.voters.forEach(voter => {
-                        const username = voter.nickname;
-                        const votes = parseInt(voter.votes) || 0;
-                        
-                        if (voterMap[username]) {
-                            voterMap[username].votes += votes;
-                        } else {
-                            voterMap[username] = {
-                                name: username,
-                                votes: votes
-                            };
+                        if (voter && voter.nickname) {
+                            const username = voter.nickname;
+                            const votes = parseInt(voter.votes) || 0;
+                            
+                            if (votes > 0) {
+                                hasData = true;
+                                if (voterMap[username]) {
+                                    voterMap[username].votes += votes;
+                                } else {
+                                    voterMap[username] = {
+                                        name: username,
+                                        votes: votes
+                                    };
+                                }
+                            }
                         }
                     });
+                }
+                
+                // Check if we have any data
+                if (!hasData || Object.keys(voterMap).length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="3" class="py-3 px-4 text-center">No votes yet this month. Be the first to vote!</td></tr>';
+                    
+                    // Update last updated time
+                    const now = new Date();
+                    document.getElementById('lastUpdated').innerHTML = 
+                        `Last updated: ${now.toLocaleTimeString()} - No votes yet`;
+                    return;
                 }
 
                 // Convert to array and sort by votes
@@ -553,11 +557,6 @@
                 const top5 = votersArray.slice(0, 5);
 
                 // Update the table
-                if (top5.length === 0) {
-                    tbody.innerHTML = '<tr><td colspan="3" class="py-3 px-4 text-center">No voter data available</td></tr>';
-                    return;
-                }
-
                 tbody.innerHTML = top5.map((voter, index) => `
                     <tr class="leaderboard-row border-b border-gray-700">
                         <td class="py-3 px-4 font-bold">${index + 1}</td>
