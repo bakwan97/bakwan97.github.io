@@ -317,7 +317,8 @@ function setupPurchaseButtons() {
             message += `IGN : ${currentUser.username}\n`;
             message += `Rank saat ini : ${getRankDisplay(currentUser.rank)}`;
             
-            const whatsappUrl = `https://wa.me/6287804812992?text=${encodeURIComponent(message)}`;
+            // NOMOR WHATSAPP DIUBAH KE +6285835339743
+            const whatsappUrl = `https://wa.me/6285835339743?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
         });
     });
@@ -336,13 +337,12 @@ function setupPurchaseButtons() {
             message += `IGN ${currentUser.username}\n`;
             message += `Rank ${getRankDisplay(currentUser.rank)}`;
             
-            const whatsappUrl = `https://wa.me/6287804812992?text=${encodeURIComponent(message)}`;
+            // NOMOR WHATSAPP DIUBAH KE +6285835339743
+            const whatsappUrl = `https://wa.me/6285835339743?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
         });
     });
 }
-
-// ... (fungsi-fungsi lainnya tetap sama seperti sebelumnya)
 
 function setupFAQs() {
     // FAQ toggle functionality remains the same as original
@@ -496,5 +496,3 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
-
-
